@@ -3,7 +3,6 @@
 npm-debug.log
 
 # Ignore node modules
-dist
 node_modules
 config.json
 
