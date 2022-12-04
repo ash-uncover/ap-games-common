@@ -43,20 +43,4 @@ class DataManager {
     }
 }
 _DataManager_basePath = new WeakMap();
-/*
-const DM = new DataManager('')
-interface Cards {
-  cards: Card[]
-}
-interface Card {
-  id: string
-}
-
-const loadCardsData = async () => {
-  const cards: Cards = await DM.load<Cards>(`/data/cards.json`)
-  cards.cards.forEach((card: Card) => {
-
-  })
-}
-*/
 exports.default = DataManager;

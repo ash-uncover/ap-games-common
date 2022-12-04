@@ -55,6 +55,7 @@ const ShortcutManager = {
         ShortcutManager.removeShortcuts(shortcuts.id, false);
         SHORTCUTS_SETS.push(shortcuts);
         (0, exports.updateShortcuts)();
+        return () => ShortcutManager.removeShortcuts(shortcuts.id);
     },
     removeShortcuts: (id, update) => {
         const set = SHORTCUTS_SETS.find(set => set.id === id);

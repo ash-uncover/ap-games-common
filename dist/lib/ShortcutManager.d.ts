@@ -20,7 +20,7 @@ export interface Shortcut extends ShortcutId {
 export declare const getShortcutId: (shortcut: ShortcutId) => string;
 export declare const updateShortcuts: () => void;
 declare const ShortcutManager: {
-    addShortcuts: (shortcuts: Shortcuts) => void;
+    addShortcuts: (shortcuts: Shortcuts) => () => void;
     removeShortcuts: (id: string, update?: boolean) => void;
     reset: () => void;
 };

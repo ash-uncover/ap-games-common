@@ -58,6 +58,9 @@ var ShortcutManager = {
     ShortcutManager.removeShortcuts(shortcuts.id, false);
     SHORTCUTS_SETS.push(shortcuts);
     updateShortcuts();
+    return function () {
+      return ShortcutManager.removeShortcuts(shortcuts.id);
+    };
   },
   removeShortcuts: function removeShortcuts(id, update) {
     var set = SHORTCUTS_SETS.find(function (set) {

@@ -75,21 +75,5 @@ var DataManager = /*#__PURE__*/function () {
   }]);
   return DataManager;
 }();
-/*
-const DM = new DataManager('')
-interface Cards {
-  cards: Card[]
-}
-interface Card {
-  id: string
-}
-
-const loadCardsData = async () => {
-  const cards: Cards = await DM.load<Cards>(`/data/cards.json`)
-  cards.cards.forEach((card: Card) => {
-
-  })
-}
-*/
 var _default = DataManager;
 exports["default"] = _default;

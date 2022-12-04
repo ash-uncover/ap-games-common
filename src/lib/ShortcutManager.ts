@@ -75,10 +75,11 @@ export const updateShortcuts = () => {
 }
 
 const ShortcutManager = {
-  addShortcuts: (shortcuts: Shortcuts) => {
+  addShortcuts: (shortcuts: Shortcuts): () => void => {
     ShortcutManager.removeShortcuts(shortcuts.id, false)
     SHORTCUTS_SETS.push(shortcuts)
     updateShortcuts()
+    return () => ShortcutManager.removeShortcuts(shortcuts.id)
   },
   removeShortcuts: (id: string, update?: boolean) => {
     const set = SHORTCUTS_SETS.find(set => set.id === id)

@@ -6,7 +6,7 @@ export * from './lib/ShortcutManager';
 export declare const AudioManager: typeof AudioManagerBase;
 export declare const DataManager: typeof DataManagerBase;
 export declare const ShortcutManager: {
-    addShortcuts: (shortcuts: import("./lib/ShortcutManager").Shortcuts) => void;
+    addShortcuts: (shortcuts: import("./lib/ShortcutManager").Shortcuts) => () => void;
     removeShortcuts: (id: string, update?: boolean | undefined) => void;
     reset: () => void;
 };
