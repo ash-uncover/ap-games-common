@@ -24,7 +24,7 @@ declare class AudioManager {
     set game(on: boolean);
     get gameVolume(): number;
     set gameVolume(value: number);
-    play(path: string, type?: AudioType): boolean;
+    play(path: string, type?: AudioType): () => void;
     stop(path: string): void;
 }
 export default AudioManager;

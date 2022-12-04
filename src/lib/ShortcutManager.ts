@@ -44,7 +44,6 @@ document.addEventListener('keyup', (event: KeyboardEvent) => {
   }
 })
 
-
 export const getShortcutId = (shortcut: ShortcutId) => {
   return `${shortcut.code}-${Boolean(shortcut.altKey)}-${Boolean(shortcut.ctrlKey)}-${Boolean(shortcut.shiftKey)}`
 }

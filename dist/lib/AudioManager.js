@@ -10,7 +10,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _AudioManager_instances, _AudioManager_basePath, _AudioManager_audios, _AudioManager_playing, _AudioManager_master, _AudioManager_masterVolume, _AudioManager_music, _AudioManager_musicVolume, _AudioManager_interface, _AudioManager_interfaceVolume, _AudioManager_game, _AudioManager_gameVolume, _AudioManager_updateVolumes;
+var _AudioManager_instances, _AudioManager_basePath, _AudioManager_audios, _AudioManager_playing, _AudioManager_master, _AudioManager_masterVolume, _AudioManager_music, _AudioManager_musicVolume, _AudioManager_interface, _AudioManager_interfaceVolume, _AudioManager_game, _AudioManager_gameVolume, _AudioManager_updateVolumes, _AudioManager_addAudio;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.normalizeVolumeValue = exports.AudioTypes = void 0;
 const js_utils_1 = require("@uncover/js-utils");
@@ -118,15 +118,12 @@ class AudioManager {
             });
         }
         catch (error) {
-            return false;
+            return () => { };
         }
-        return true;
+        return () => this.stop(path);
     }
     stop(path) {
-        if (!__classPrivateFieldGet(this, _AudioManager_audios, "f")[path]) {
-            __classPrivateFieldGet(this, _AudioManager_audios, "f")[path] = new Audio(`${__classPrivateFieldGet(this, _AudioManager_basePath, "f")}${path}`);
-            __classPrivateFieldGet(this, _AudioManager_audios, "f")[path].addEventListener('ended', () => this.stop(path));
-        }
+        __classPrivateFieldGet(this, _AudioManager_instances, "m", _AudioManager_addAudio).call(this, path);
         const playing = __classPrivateFieldGet(this, _AudioManager_playing, "f").find(play => play.path === path);
         __classPrivateFieldSet(this, _AudioManager_playing, js_utils_1.ArrayUtils.removeElement(__classPrivateFieldGet(this, _AudioManager_playing, "f"), playing), "f");
         __classPrivateFieldGet(this, _AudioManager_audios, "f")[path].pause();
@@ -165,5 +162,10 @@ _AudioManager_basePath = new WeakMap(), _AudioManager_audios = new WeakMap(), _A
             }
         }
     });
+}, _AudioManager_addAudio = function _AudioManager_addAudio(path) {
+    if (!__classPrivateFieldGet(this, _AudioManager_audios, "f")[path]) {
+        __classPrivateFieldGet(this, _AudioManager_audios, "f")[path] = new Audio(`${__classPrivateFieldGet(this, _AudioManager_basePath, "f")}${path}`);
+        __classPrivateFieldGet(this, _AudioManager_audios, "f")[path].addEventListener('ended', () => this.stop(path));
+    }
 };
 exports.default = AudioManager;

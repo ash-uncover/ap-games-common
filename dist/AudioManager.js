@@ -42,9 +42,11 @@ var _interfaceVolume = /*#__PURE__*/new WeakMap();
 var _game = /*#__PURE__*/new WeakMap();
 var _gameVolume = /*#__PURE__*/new WeakMap();
 var _updateVolumes = /*#__PURE__*/new WeakSet();
+var _addAudio = /*#__PURE__*/new WeakSet();
 var AudioManager = /*#__PURE__*/function () {
   function AudioManager(basePath) {
     _classCallCheck(this, AudioManager);
+    _classPrivateMethodInitSpec(this, _addAudio);
     _classPrivateMethodInitSpec(this, _updateVolumes);
     _classPrivateFieldInitSpec(this, _basePath, {
       writable: true,
@@ -167,6 +169,7 @@ var AudioManager = /*#__PURE__*/function () {
   }, {
     key: "play",
     value: function play(path) {
+      var _this = this;
       var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : AudioTypes.GAME;
       this.stop(path);
       switch (type) {
@@ -205,20 +208,16 @@ var AudioManager = /*#__PURE__*/function () {
           type: type
         });
       } catch (error) {
-        return false;
+        return function () {};
       }
-      return true;
+      return function () {
+        return _this.stop(path);
+      };
     }
   }, {
     key: "stop",
     value: function stop(path) {
-      var _this = this;
-      if (!_classPrivateFieldGet(this, _audios)[path]) {
-        _classPrivateFieldGet(this, _audios)[path] = new Audio("".concat(_classPrivateFieldGet(this, _basePath)).concat(path));
-        _classPrivateFieldGet(this, _audios)[path].addEventListener('ended', function () {
-          return _this.stop(path);
-        });
-      }
+      _classPrivateMethodGet(this, _addAudio, _addAudio2).call(this, path);
       var playing = _classPrivateFieldGet(this, _playing).find(function (play) {
         return play.path === path;
       });
@@ -262,6 +261,15 @@ function _updateVolumes2() {
         }
     }
   });
+}
+function _addAudio2(path) {
+  var _this3 = this;
+  if (!_classPrivateFieldGet(this, _audios)[path]) {
+    _classPrivateFieldGet(this, _audios)[path] = new Audio("".concat(_classPrivateFieldGet(this, _basePath)).concat(path));
+    _classPrivateFieldGet(this, _audios)[path].addEventListener('ended', function () {
+      return _this3.stop(path);
+    });
+  }
 }
 var _default = AudioManager;
 exports["default"] = _default;

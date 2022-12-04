@@ -20,7 +20,7 @@ class AudioManager {
 
   #basePath: string
   #audios: { [key: string]: HTMLAudioElement } = {}
-  #playing:{ path: string, type: string }[] = []
+  #playing: { path: string, type: string }[] = []
 
   #master = true
   #masterVolume = 100
@@ -110,7 +110,7 @@ class AudioManager {
     })
   }
 
-  play(path: string, type: AudioType = AudioTypes.GAME) {
+  play(path: string, type: AudioType = AudioTypes.GAME): () => void {
     this.stop(path)
     switch (type) {
       case AudioTypes.GAME: {
@@ -145,20 +145,24 @@ class AudioManager {
         type
       })
     } catch (error) {
-      return false
+      return () => {}
     }
-    return true
+    return () => this.stop(path)
   }
 
   stop(path: string) {
-    if (!this.#audios[path]) {
-      this.#audios[path] = new Audio(`${this.#basePath}${path}`)
-      this.#audios[path].addEventListener('ended', () => this.stop(path))
-    }
+    this.#addAudio(path)
     const playing = this.#playing.find(play => play.path === path)
     this.#playing = ArrayUtils.removeElement(this.#playing, playing)
     this.#audios[path].pause()
     this.#audios[path].currentTime = 0
+  }
+
+  #addAudio(path:string) {
+    if (!this.#audios[path]) {
+      this.#audios[path] = new Audio(`${this.#basePath}${path}`)
+      this.#audios[path].addEventListener('ended', () => this.stop(path))
+    }
   }
 }
 
