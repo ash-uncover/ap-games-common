@@ -78,7 +78,7 @@ class MessageServiceClass {
       wdow.postMessage({
         _messageService: this.#id,
         type: CONNECTION_ACKNOWLEDGE
-      })
+      }, '*')
     }
   }
 }

@@ -80,7 +80,7 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
         wdow.postMessage({
             _messageService: __classPrivateFieldGet(this, _MessageServiceClass_id, "f"),
             type: CONNECTION_ACKNOWLEDGE
-        });
+        }, '*');
     }
 };
 const MessageService = new MessageServiceClass();
