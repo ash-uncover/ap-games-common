@@ -85,6 +85,8 @@ class MessageServiceClass {
       // When receiving a post message
       LOGGER.info(`[${this.#id}] received message`)
       this.sendMessage({
+        _serviceId: event.data?._serviceId,
+        _dispatcherId: event.data?._dispatcherId,
         type: event.data?.type,
         payload: event.data?.payload
       })

@@ -67,7 +67,7 @@ class MessageServiceClass {
     }
 }
 _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new WeakMap(), _MessageServiceClass_services = new WeakMap(), _MessageServiceClass_instances = new WeakSet(), _MessageServiceClass_handleMessage = function _MessageServiceClass_handleMessage(event) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
     if (((_a = event.data) === null || _a === void 0 ? void 0 : _a._serviceId) && ((_b = event.data) === null || _b === void 0 ? void 0 : _b.type) === CONNECTION_REQUEST) {
         // This is when a child service wants to connect
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] child trying to connect`);
@@ -87,8 +87,10 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
         // When receiving a post message
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] received message`);
         this.sendMessage({
-            type: (_j = event.data) === null || _j === void 0 ? void 0 : _j.type,
-            payload: (_k = event.data) === null || _k === void 0 ? void 0 : _k.payload
+            _serviceId: (_j = event.data) === null || _j === void 0 ? void 0 : _j._serviceId,
+            _dispatcherId: (_k = event.data) === null || _k === void 0 ? void 0 : _k._dispatcherId,
+            type: (_l = event.data) === null || _l === void 0 ? void 0 : _l.type,
+            payload: (_m = event.data) === null || _m === void 0 ? void 0 : _m.payload
         });
     }
 }, _MessageServiceClass_addService = function _MessageServiceClass_addService(serviceId, wdow) {
