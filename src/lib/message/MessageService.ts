@@ -11,7 +11,7 @@ class MessageServiceClass {
 
   #id: string = `message-service-${UUID.next()}`
   #dispatchers: MessageDispatcher[] = []
-  #services: MessageDispatcher[] = []
+  #services: string[] = []
 
   // Constructor //
 
@@ -59,12 +59,26 @@ class MessageServiceClass {
     if (event.data?._messageService && event.data?.type === CONNECTION_REQUEST) {
       // This is when a child service wants to connect
       console.log('child trying to connect')
-      console.log(event)
+      const wdow = <Window>event.source!
+      this.#addService(event.data?._messageService, wdow)
     }
     if (event.data?._messageService && event.data?.type === CONNECTION_ACKNOWLEDGE) {
       // This is when a parent service has acknoledge connection
       console.log('parent acknowledge connection')
       console.log(event)
+    }
+  }
+
+  #addService(serviceId: string, wdow: Window) {
+    if (!this.#services.includes(serviceId)) {
+      const handler = (message: Message) => wdow.postMessage(message, '*')
+      const childDispatcher = new MessageDispatcher(handler)
+      this.addDispatcher(childDispatcher)
+      this.#services.push(serviceId)
+      wdow.postMessage({
+        _messageService: this.#id,
+        type: CONNECTION_ACKNOWLEDGE
+      })
     }
   }
 }

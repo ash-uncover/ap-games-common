@@ -13,7 +13,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _MessageDispatcher_id, _MessageDispatcher_init, _MessageDispatcher_handle;
+var _MessageDispatcher_id, _MessageDispatcher_init, _MessageDispatcher_handle, _MessageDispatcher_closure;
 Object.defineProperty(exports, "__esModule", { value: true });
 const js_utils_1 = require("@uncover/js-utils");
 const MessageService_1 = __importDefault(require("./MessageService"));
@@ -24,6 +24,9 @@ class MessageDispatcher {
         _MessageDispatcher_id.set(this, `message-dispatcher-${js_utils_1.UUID.next()}`);
         _MessageDispatcher_init.set(this, false);
         _MessageDispatcher_handle.set(this, void 0);
+        _MessageDispatcher_closure.set(this, null
+        // Constructor //
+        );
         __classPrivateFieldSet(this, _MessageDispatcher_handle, handleMessage, "f");
     }
     // Getters & Setters //
@@ -33,10 +36,12 @@ class MessageDispatcher {
     // Public //
     init() {
         __classPrivateFieldSet(this, _MessageDispatcher_init, true, "f");
-        const closure = MessageService_1.default.addDispatcher(this);
+        __classPrivateFieldSet(this, _MessageDispatcher_closure, MessageService_1.default.addDispatcher(this), "f");
         return () => {
             __classPrivateFieldSet(this, _MessageDispatcher_init, false, "f");
-            closure();
+            if (__classPrivateFieldGet(this, _MessageDispatcher_closure, "f")) {
+                __classPrivateFieldGet(this, _MessageDispatcher_closure, "f").call(this);
+            }
         };
     }
     onMessage(message) {
@@ -56,6 +61,6 @@ class MessageDispatcher {
         }
     }
 }
-_MessageDispatcher_id = new WeakMap(), _MessageDispatcher_init = new WeakMap(), _MessageDispatcher_handle = new WeakMap();
+_MessageDispatcher_id = new WeakMap(), _MessageDispatcher_init = new WeakMap(), _MessageDispatcher_handle = new WeakMap(), _MessageDispatcher_closure = new WeakMap();
 exports.default = MessageDispatcher;
 //# sourceMappingURL=MessageDispatcher.js.map

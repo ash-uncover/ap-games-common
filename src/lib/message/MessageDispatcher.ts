@@ -9,6 +9,7 @@ class MessageDispatcher {
   #id: string = `message-dispatcher-${UUID.next()}`
   #init: boolean = false
   #handle: (message: Message) => void
+  #closure: (() => void) | null = null
 
   // Constructor //
 
@@ -26,10 +27,12 @@ class MessageDispatcher {
 
   init() {
     this.#init = true
-    const closure = MessageService.addDispatcher(this)
+    this.#closure = MessageService.addDispatcher(this)
     return () => {
       this.#init = false
-      closure()
+      if (this.#closure) {
+        this.#closure()
+      }
     }
   }
 
