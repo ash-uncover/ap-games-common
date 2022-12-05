@@ -1,6 +1,9 @@
 import { UUID } from '@uncover/js-utils'
+import Logger from '@uncover/js-utils-logger'
 import Message from './Message'
 import MessageService from './MessageService'
+
+const LOGGER = new Logger('MessageDispatcher', 0)
 
 class MessageDispatcher {
 
@@ -37,6 +40,7 @@ class MessageDispatcher {
   }
 
   onMessage(message: Message) {
+    LOGGER.info(`[${this.#id}] on message`)
     if (this.#init && this.#handle) {
       this.#handle(message)
     } else {
@@ -45,6 +49,7 @@ class MessageDispatcher {
   }
 
   sendMessage(message: Message) {
+    LOGGER.info(`[${this.#id}] send message`)
     if (this.#init) {
       MessageService.sendMessage(this.id, message)
     } else {

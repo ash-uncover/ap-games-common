@@ -53,6 +53,7 @@ class MessageServiceClass {
         __classPrivateFieldSet(this, _MessageServiceClass_dispatchers, __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").filter(disp => disp !== dispatcher), "f");
     }
     sendMessage(dispatcherId, message) {
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message`);
         __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").forEach((dispatcher) => {
             if (dispatcher.id !== dispatcherId) {
                 dispatcher.onMessage(message);
@@ -64,13 +65,13 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     var _a, _b, _c, _d, _e;
     if (((_a = event.data) === null || _a === void 0 ? void 0 : _a._messageService) && ((_b = event.data) === null || _b === void 0 ? void 0 : _b.type) === CONNECTION_REQUEST) {
         // This is when a child service wants to connect
-        LOGGER.info(`${[__classPrivateFieldGet(this, _MessageServiceClass_id, "f")]} child trying to connect`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] child trying to connect`);
         const wdow = event.source;
         __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_addService).call(this, (_c = event.data) === null || _c === void 0 ? void 0 : _c._messageService, wdow);
     }
     if (((_d = event.data) === null || _d === void 0 ? void 0 : _d._messageService) && ((_e = event.data) === null || _e === void 0 ? void 0 : _e.type) === CONNECTION_ACKNOWLEDGE) {
         // This is when a parent service has acknoledge connection
-        LOGGER.info(`${[__classPrivateFieldGet(this, _MessageServiceClass_id, "f")]} parent acknowledge connection`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] parent acknowledge connection`);
         LOGGER.info(JSON.stringify(event));
         const parentDispatcher = new MessageDispatcher_1.default();
         parentDispatcher.init((message) => {

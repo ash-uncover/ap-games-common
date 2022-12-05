@@ -1,6 +1,5 @@
 import { UUID } from '@uncover/js-utils'
 import Logger from '@uncover/js-utils-logger'
-import LogLevels from '@uncover/js-utils-logger'
 import Message from './Message'
 import MessageDispatcher from './MessageDispatcher'
 
@@ -50,6 +49,7 @@ class MessageServiceClass {
   }
 
   sendMessage(dispatcherId: string, message: Message) {
+    LOGGER.info(`[${this.#id}] send message`)
     this.#dispatchers.forEach((dispatcher) => {
       if (dispatcher.id !== dispatcherId) {
         dispatcher.onMessage(message)
@@ -62,13 +62,13 @@ class MessageServiceClass {
   #handleMessage(event: MessageEvent) {
     if (event.data?._messageService && event.data?.type === CONNECTION_REQUEST) {
       // This is when a child service wants to connect
-      LOGGER.info(`${[this.#id]} child trying to connect`)
+      LOGGER.info(`[${this.#id}] child trying to connect`)
       const wdow = <Window>event.source!
       this.#addService(event.data?._messageService, wdow)
     }
     if (event.data?._messageService && event.data?.type === CONNECTION_ACKNOWLEDGE) {
       // This is when a parent service has acknoledge connection
-      LOGGER.info(`${[this.#id]} parent acknowledge connection`)
+      LOGGER.info(`[${this.#id}] parent acknowledge connection`)
       LOGGER.info(JSON.stringify(event))
       const parentDispatcher = new MessageDispatcher()
       parentDispatcher.init((message) => {

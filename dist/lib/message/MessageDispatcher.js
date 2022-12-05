@@ -16,7 +16,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 var _MessageDispatcher_id, _MessageDispatcher_init, _MessageDispatcher_handle, _MessageDispatcher_closure;
 Object.defineProperty(exports, "__esModule", { value: true });
 const js_utils_1 = require("@uncover/js-utils");
+const js_utils_logger_1 = __importDefault(require("@uncover/js-utils-logger"));
 const MessageService_1 = __importDefault(require("./MessageService"));
+const LOGGER = new js_utils_logger_1.default('MessageDispatcher', 0);
 class MessageDispatcher {
     // Constructor //
     constructor() {
@@ -46,6 +48,7 @@ class MessageDispatcher {
         };
     }
     onMessage(message) {
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f")}] on message`);
         if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f") && __classPrivateFieldGet(this, _MessageDispatcher_handle, "f")) {
             __classPrivateFieldGet(this, _MessageDispatcher_handle, "f").call(this, message);
         }
@@ -54,6 +57,7 @@ class MessageDispatcher {
         }
     }
     sendMessage(message) {
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f")}] send message`);
         if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f")) {
             MessageService_1.default.sendMessage(this.id, message);
         }
