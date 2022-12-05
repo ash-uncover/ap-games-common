@@ -53,7 +53,7 @@ class MessageServiceClass {
   }
 
   sendMessage(message: Message) {
-    LOGGER.info(`[${this.#id}] send message to ${this.#dispatchers.length} dispatchers`)
+    LOGGER.info(`[${this.#id}] send message to ${this.#dispatchers.length} dispatchers from ${message._dispatcherId}`)
     this.#dispatchers.forEach((dispatcher) => {
       if (dispatcher.id !== message._dispatcherId) {
         LOGGER.info(`[${this.#id}] send message on dispatcher [${dispatcher.id}]`)
@@ -68,7 +68,6 @@ class MessageServiceClass {
   // Private Methods //
 
   #handleMessage(event: MessageEvent) {
-    LOGGER.info(`[${this.#id}] handle message`)
     if (event.data?._serviceId && event.data?.type === CONNECTION_REQUEST) {
       // This is when a child service wants to connect
       LOGGER.info(`[${this.#id}] child trying to connect`)
@@ -89,9 +88,6 @@ class MessageServiceClass {
         type: event.data?.type,
         payload: event.data?.payload
       })
-    } else {
-      LOGGER.info(`[${this.#id}] unhandled message`)
-      console.log(event)
     }
   }
 

@@ -57,7 +57,7 @@ class MessageServiceClass {
         __classPrivateFieldSet(this, _MessageServiceClass_dispatchers, __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").filter(disp => disp !== dispatcher), "f");
     }
     sendMessage(message) {
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message to ${__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").length} dispatchers`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message to ${__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").length} dispatchers from ${message._dispatcherId}`);
         __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").forEach((dispatcher) => {
             if (dispatcher.id !== message._dispatcherId) {
                 LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message on dispatcher [${dispatcher.id}]`);
@@ -68,7 +68,6 @@ class MessageServiceClass {
 }
 _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new WeakMap(), _MessageServiceClass_services = new WeakMap(), _MessageServiceClass_instances = new WeakSet(), _MessageServiceClass_handleMessage = function _MessageServiceClass_handleMessage(event) {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
-    LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] handle message`);
     if (((_a = event.data) === null || _a === void 0 ? void 0 : _a._serviceId) && ((_b = event.data) === null || _b === void 0 ? void 0 : _b.type) === CONNECTION_REQUEST) {
         // This is when a child service wants to connect
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] child trying to connect`);
@@ -91,10 +90,6 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
             type: (_j = event.data) === null || _j === void 0 ? void 0 : _j.type,
             payload: (_k = event.data) === null || _k === void 0 ? void 0 : _k.payload
         });
-    }
-    else {
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] unhandled message`);
-        console.log(event);
     }
 }, _MessageServiceClass_addService = function _MessageServiceClass_addService(serviceId, wdow) {
     if (!__classPrivateFieldGet(this, _MessageServiceClass_services, "f").includes(serviceId)) {
