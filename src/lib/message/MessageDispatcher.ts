@@ -46,6 +46,7 @@ class MessageDispatcher {
   onMessage(message: Message) {
     LOGGER.info(`[${this.#id}] on message`)
     if (this.#init && this.#handle) {
+      LOGGER.info(`[${this.#id}] sending message`)
       this.#handle(message)
     } else {
       console.warn(`Receive Message but not init: ${this.id}`)

@@ -65,27 +65,29 @@ class MessageServiceClass {
   // Private Methods //
 
   #handleMessage(event: MessageEvent) {
+    LOGGER.info(`[${this.#id}] handle message`)
     if (event.data?._messageService && event.data?.type === CONNECTION_REQUEST) {
       // This is when a child service wants to connect
       LOGGER.info(`[${this.#id}] child trying to connect`)
       const wdow = <Window>event.source!
       this.#addService(event.data?._messageService, wdow)
-    }
-    if (event.data?._messageService && event.data?.type === CONNECTION_ACKNOWLEDGE) {
+    } else if (event.data?._messageService && event.data?.type === CONNECTION_ACKNOWLEDGE) {
       // This is when a parent service has acknoledge connection
       LOGGER.info(`[${this.#id}] parent acknowledge connection`)
       LOGGER.info(JSON.stringify(event))
-      const parentDispatcher = new MessageDispatcher('PARENT DISPATCHER')
+      const parentDispatcher = new MessageDispatcher('CHILD > PARENT DISPATCHER')
       parentDispatcher.init((message) => {
         window.parent.postMessage(message, '*')
       })
       this.addDispatcher(parentDispatcher)
+    } else {
+      LOGGER.info(`[${this.#id}] unhandled message`)
     }
   }
 
   #addService(serviceId: string, wdow: Window) {
     if (!this.#services.includes(serviceId)) {
-      const childDispatcher = new MessageDispatcher('CHILD DISPATCHER')
+      const childDispatcher = new MessageDispatcher('PARENT > CHILD DISPATCHER')
       const handler = (message: Message) => wdow.postMessage(message, '*')
       childDispatcher.init(handler)
       this.addDispatcher(childDispatcher)
