@@ -62,19 +62,20 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     var _a, _b, _c, _d, _e;
     if (((_a = event.data) === null || _a === void 0 ? void 0 : _a._messageService) && ((_b = event.data) === null || _b === void 0 ? void 0 : _b.type) === CONNECTION_REQUEST) {
         // This is when a child service wants to connect
-        console.log('child trying to connect');
+        console.log('child trying to connect' + __classPrivateFieldGet(this, _MessageServiceClass_id, "f"));
         const wdow = event.source;
         __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_addService).call(this, (_c = event.data) === null || _c === void 0 ? void 0 : _c._messageService, wdow);
     }
     if (((_d = event.data) === null || _d === void 0 ? void 0 : _d._messageService) && ((_e = event.data) === null || _e === void 0 ? void 0 : _e.type) === CONNECTION_ACKNOWLEDGE) {
         // This is when a parent service has acknoledge connection
-        console.log('parent acknowledge connection');
+        console.log('parent acknowledge connection ' + __classPrivateFieldGet(this, _MessageServiceClass_id, "f"));
         console.log(event);
     }
 }, _MessageServiceClass_addService = function _MessageServiceClass_addService(serviceId, wdow) {
     if (!__classPrivateFieldGet(this, _MessageServiceClass_services, "f").includes(serviceId)) {
+        const childDispatcher = new MessageDispatcher_1.default();
         const handler = (message) => wdow.postMessage(message, '*');
-        const childDispatcher = new MessageDispatcher_1.default(handler);
+        childDispatcher.init(handler);
         this.addDispatcher(childDispatcher);
         __classPrivateFieldGet(this, _MessageServiceClass_services, "f").push(serviceId);
         wdow.postMessage({

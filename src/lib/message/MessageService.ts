@@ -58,21 +58,22 @@ class MessageServiceClass {
   #handleMessage(event: MessageEvent) {
     if (event.data?._messageService && event.data?.type === CONNECTION_REQUEST) {
       // This is when a child service wants to connect
-      console.log('child trying to connect')
+      console.log('child trying to connect' + this.#id)
       const wdow = <Window>event.source!
       this.#addService(event.data?._messageService, wdow)
     }
     if (event.data?._messageService && event.data?.type === CONNECTION_ACKNOWLEDGE) {
       // This is when a parent service has acknoledge connection
-      console.log('parent acknowledge connection')
+      console.log('parent acknowledge connection ' + this.#id)
       console.log(event)
     }
   }
 
   #addService(serviceId: string, wdow: Window) {
     if (!this.#services.includes(serviceId)) {
+      const childDispatcher = new MessageDispatcher()
       const handler = (message: Message) => wdow.postMessage(message, '*')
-      const childDispatcher = new MessageDispatcher(handler)
+      childDispatcher.init(handler)
       this.addDispatcher(childDispatcher)
       this.#services.push(serviceId)
       wdow.postMessage({
