@@ -39,7 +39,9 @@ class MessageDispatcher {
         __classPrivateFieldSet(this, _MessageDispatcher_init, true, "f");
         __classPrivateFieldSet(this, _MessageDispatcher_handle, handleMessage, "f");
         __classPrivateFieldSet(this, _MessageDispatcher_closure, MessageService_1.default.addDispatcher(this), "f");
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f")}] starting`);
         return () => {
+            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f")}] closing`);
             __classPrivateFieldSet(this, _MessageDispatcher_init, false, "f");
             __classPrivateFieldSet(this, _MessageDispatcher_handle, null, "f");
             if (__classPrivateFieldGet(this, _MessageDispatcher_closure, "f")) {

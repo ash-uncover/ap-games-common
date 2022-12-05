@@ -35,6 +35,7 @@ class MessageServiceClass {
         window.addEventListener('message', __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_handleMessage).bind(this));
         if (window !== window.parent) {
             // Try to connect to a parent service
+            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] contact parent`);
             window.parent.postMessage({
                 _messageService: __classPrivateFieldGet(this, _MessageServiceClass_id, "f"),
                 type: CONNECTION_REQUEST
@@ -44,18 +45,21 @@ class MessageServiceClass {
     // Getters & Setters //
     // Public Methods //
     addDispatcher(dispatcher) {
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] add dispatcher [${dispatcher.id}]`);
         if (!__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").includes(dispatcher)) {
             __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").push(dispatcher);
         }
         return () => this.removeDispatcher(dispatcher);
     }
     removeDispatcher(dispatcher) {
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] remove dispatcher [${dispatcher.id}]`);
         __classPrivateFieldSet(this, _MessageServiceClass_dispatchers, __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").filter(disp => disp !== dispatcher), "f");
     }
     sendMessage(dispatcherId, message) {
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message to ${__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").length} dispatchers`);
         __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").forEach((dispatcher) => {
             if (dispatcher.id !== dispatcherId) {
+                LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message on dispatcher [${dispatcher.id}]`);
                 dispatcher.onMessage(message);
             }
         });

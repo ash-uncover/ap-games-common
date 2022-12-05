@@ -30,7 +30,9 @@ class MessageDispatcher {
     this.#init = true
     this.#handle = handleMessage
     this.#closure = MessageService.addDispatcher(this)
+    LOGGER.info(`[${this.#id}] starting`)
     return () => {
+      LOGGER.info(`[${this.#id}] closing`)
       this.#init = false
       this.#handle = null
       if (this.#closure) {

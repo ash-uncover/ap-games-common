@@ -26,6 +26,7 @@ class MessageServiceClass {
     )
     if (window !== window.parent) {
       // Try to connect to a parent service
+      LOGGER.info(`[${this.#id}] contact parent`)
       window.parent.postMessage({
         _messageService: this.#id,
         type: CONNECTION_REQUEST
@@ -38,6 +39,7 @@ class MessageServiceClass {
   // Public Methods //
 
   addDispatcher(dispatcher: MessageDispatcher) {
+    LOGGER.info(`[${this.#id}] add dispatcher [${dispatcher.id}]`)
     if (!this.#dispatchers.includes(dispatcher)) {
       this.#dispatchers.push(dispatcher)
     }
@@ -45,13 +47,15 @@ class MessageServiceClass {
   }
 
   removeDispatcher(dispatcher: MessageDispatcher) {
+    LOGGER.info(`[${this.#id}] remove dispatcher [${dispatcher.id}]`)
     this.#dispatchers = this.#dispatchers.filter(disp => disp !== dispatcher)
   }
 
   sendMessage(dispatcherId: string, message: Message) {
-    LOGGER.info(`[${this.#id}] send message`)
+    LOGGER.info(`[${this.#id}] send message to ${this.#dispatchers.length} dispatchers`)
     this.#dispatchers.forEach((dispatcher) => {
       if (dispatcher.id !== dispatcherId) {
+        LOGGER.info(`[${this.#id}] send message on dispatcher [${dispatcher.id}]`)
         dispatcher.onMessage(message)
       }
     })
