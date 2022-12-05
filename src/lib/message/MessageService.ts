@@ -29,7 +29,7 @@ class MessageServiceClass {
       // Try to connect to a parent service
       LOGGER.info(`[${this.#id}] contact parent`)
       window.parent.postMessage({
-        _messageService: this.#id,
+        _serviceId: this.#id,
         type: CONNECTION_REQUEST
       }, '*')
     }
@@ -57,7 +57,11 @@ class MessageServiceClass {
     this.#dispatchers.forEach((dispatcher) => {
       if (dispatcher.id !== dispatcherId) {
         LOGGER.info(`[${this.#id}] send message on dispatcher [${dispatcher.id}]`)
-        dispatcher.onMessage(message)
+        dispatcher.onMessage({
+          ...message,
+          _serviceId: this.#id,
+          _dispatcherId: dispatcherId
+        })
       }
     })
   }
@@ -66,12 +70,12 @@ class MessageServiceClass {
 
   #handleMessage(event: MessageEvent) {
     LOGGER.info(`[${this.#id}] handle message`)
-    if (event.data?._messageService && event.data?.type === CONNECTION_REQUEST) {
+    if (event.data?._serviceId && event.data?.type === CONNECTION_REQUEST) {
       // This is when a child service wants to connect
       LOGGER.info(`[${this.#id}] child trying to connect`)
       const wdow = <Window>event.source!
-      this.#addService(event.data?._messageService, wdow)
-    } else if (event.data?._messageService && event.data?.type === CONNECTION_ACKNOWLEDGE) {
+      this.#addService(event.data?._serviceId, wdow)
+    } else if (event.data?._serviceId && event.data?.type === CONNECTION_ACKNOWLEDGE) {
       // This is when a parent service has acknoledge connection
       LOGGER.info(`[${this.#id}] parent acknowledge connection`)
       LOGGER.info(JSON.stringify(event))
@@ -80,6 +84,12 @@ class MessageServiceClass {
         window.parent.postMessage(message, '*')
       })
       this.addDispatcher(parentDispatcher)
+    } else if (event.data?._serviceId && event.data?.dispatcherId) {
+      // When receiving a post message
+      this.sendMessage(event.data?.dispatcherId, {
+        type: event.data?.type,
+        payload: event.data?.payload
+      })
     } else {
       LOGGER.info(`[${this.#id}] unhandled message`)
     }
@@ -93,7 +103,7 @@ class MessageServiceClass {
       this.addDispatcher(childDispatcher)
       this.#services.push(serviceId)
       wdow.postMessage({
-        _messageService: this.#id,
+        _serviceId: this.#id,
         type: CONNECTION_ACKNOWLEDGE
       }, '*')
     }
