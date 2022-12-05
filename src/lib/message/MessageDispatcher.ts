@@ -1,12 +1,5 @@
-export interface Message {
-  type: string
-  payload: any
-}
-
-export interface MessageListener {
-  context: any
-  handleMessage: (message: Message) => void
-}
+import Message from './Message'
+import MessageListener from './MessageListener'
 
 class MessageDispatcherClass {
 
