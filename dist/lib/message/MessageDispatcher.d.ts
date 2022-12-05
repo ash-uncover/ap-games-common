@@ -1,13 +1,10 @@
 import Message from './Message';
-import MessageListener from './MessageListener';
-declare class MessageDispatcherClass {
+declare class MessageDispatcher {
     #private;
-    constructor();
-    dispatch(message: Message): void;
-    register(listener: MessageListener): void;
-    registerWindow(wdow: Window, origin: string): void;
-    registerParent(origin: string): void;
-    unregister(context: any): void;
+    constructor(handleMessage: ((message: Message) => void));
+    get id(): string;
+    init(): () => void;
+    onMessage(message: Message): void;
+    sendMessage(message: Message): void;
 }
-declare const MessageDispatcher: MessageDispatcherClass;
 export default MessageDispatcher;

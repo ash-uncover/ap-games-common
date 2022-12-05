@@ -10,62 +10,52 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _MessageDispatcherClass_instances, _MessageDispatcherClass_listeners, _MessageDispatcherClass_handlePostMessage;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var _MessageDispatcher_id, _MessageDispatcher_init, _MessageDispatcher_handle;
 Object.defineProperty(exports, "__esModule", { value: true });
-class MessageDispatcherClass {
+const js_utils_1 = require("@uncover/js-utils");
+const MessageService_1 = __importDefault(require("./MessageService"));
+class MessageDispatcher {
     // Constructor //
-    constructor() {
-        _MessageDispatcherClass_instances.add(this);
+    constructor(handleMessage) {
         // Attributes //
-        _MessageDispatcherClass_listeners.set(this, void 0);
-        __classPrivateFieldSet(this, _MessageDispatcherClass_listeners, [], "f");
-        window.addEventListener('message', __classPrivateFieldGet(this, _MessageDispatcherClass_instances, "m", _MessageDispatcherClass_handlePostMessage).bind(this));
+        _MessageDispatcher_id.set(this, `message-dispatcher-${js_utils_1.UUID.next()}`);
+        _MessageDispatcher_init.set(this, false);
+        _MessageDispatcher_handle.set(this, void 0);
+        __classPrivateFieldSet(this, _MessageDispatcher_handle, handleMessage, "f");
     }
     // Getters & Setters //
+    get id() {
+        return __classPrivateFieldGet(this, _MessageDispatcher_id, "f");
+    }
     // Public //
-    dispatch(message) {
-        __classPrivateFieldGet(this, _MessageDispatcherClass_listeners, "f").forEach((listener) => {
-            try {
-                listener.handleMessage.call(listener.context, message);
-            }
-            catch (error) {
-                // We do not want to crash the whole application
-                this.unregister(listener.context);
-            }
-        });
+    init() {
+        __classPrivateFieldSet(this, _MessageDispatcher_init, true, "f");
+        const closure = MessageService_1.default.addDispatcher(this);
+        return () => {
+            __classPrivateFieldSet(this, _MessageDispatcher_init, false, "f");
+            closure();
+        };
     }
-    register(listener) {
-        if (__classPrivateFieldGet(this, _MessageDispatcherClass_listeners, "f").some((list) => listener.context === list.context)) {
-            this.unregister(listener.context);
+    onMessage(message) {
+        if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f")) {
+            __classPrivateFieldGet(this, _MessageDispatcher_handle, "f").call(this, message);
         }
-        __classPrivateFieldGet(this, _MessageDispatcherClass_listeners, "f").push(listener);
-    }
-    registerWindow(wdow, origin) {
-        this.register({
-            context: wdow,
-            handleMessage: (message) => {
-                wdow.postMessage(message, origin);
-            }
-        });
-    }
-    registerParent(origin) {
-        if (window.parent) {
-            this.registerWindow(window.parent, origin);
+        else {
+            console.warn(`Receive Message but not init: ${this.id}`);
         }
     }
-    unregister(context) {
-        __classPrivateFieldSet(this, _MessageDispatcherClass_listeners, __classPrivateFieldGet(this, _MessageDispatcherClass_listeners, "f").filter(listener => listener.context !== context), "f");
+    sendMessage(message) {
+        if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f")) {
+            MessageService_1.default.sendMessage(this.id, message);
+        }
+        else {
+            console.warn(`Send Message but not init: ${this.id}`);
+        }
     }
 }
-_MessageDispatcherClass_listeners = new WeakMap(), _MessageDispatcherClass_instances = new WeakSet(), _MessageDispatcherClass_handlePostMessage = function _MessageDispatcherClass_handlePostMessage(event) {
-    var _a;
-    if ((_a = event.data) === null || _a === void 0 ? void 0 : _a._xbuilder) {
-        this.dispatch({
-            type: event.data.type,
-            payload: event.data.payload,
-        });
-    }
-};
-const MessageDispatcher = new MessageDispatcherClass();
+_MessageDispatcher_id = new WeakMap(), _MessageDispatcher_init = new WeakMap(), _MessageDispatcher_handle = new WeakMap();
 exports.default = MessageDispatcher;
 //# sourceMappingURL=MessageDispatcher.js.map

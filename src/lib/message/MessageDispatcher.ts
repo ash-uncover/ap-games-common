@@ -1,70 +1,53 @@
+import { UUID } from '@uncover/js-utils'
 import Message from './Message'
-import MessageListener from './MessageListener'
+import MessageService from './MessageService'
 
-class MessageDispatcherClass {
+class MessageDispatcher {
 
   // Attributes //
 
-  #listeners: MessageListener[]
+  #id: string = `message-dispatcher-${UUID.next()}`
+  #init: boolean = false
+  #handle: (message: Message) => void
 
   // Constructor //
 
-  constructor() {
-    this.#listeners = []
-    window.addEventListener('message', this.#handlePostMessage.bind(this))
+  constructor(handleMessage: ((message: Message) => void)) {
+    this.#handle = handleMessage
   }
 
   // Getters & Setters //
 
+  get id () {
+    return this.#id
+  }
+
   // Public //
 
-  dispatch(message: Message) {
-    this.#listeners.forEach((listener) => {
-      try {
-        listener.handleMessage.call(listener.context, message)
-      } catch (error) {
-        // We do not want to crash the whole application
-        this.unregister(listener.context)
-      }
-    })
-  }
-
-  register(listener: MessageListener) {
-    if (this.#listeners.some((list) => listener.context === list.context)) {
-      this.unregister(listener.context)
-    }
-    this.#listeners.push(listener)
-  }
-  registerWindow(wdow: Window, origin: string) {
-    this.register({
-      context: wdow,
-      handleMessage: (message) => {
-        wdow.postMessage(message, origin)
-      }
-    })
-  }
-  registerParent(origin: string) {
-    if (window.parent) {
-      this.registerWindow(window.parent, origin)
+  init() {
+    this.#init = true
+    const closure = MessageService.addDispatcher(this)
+    return () => {
+      this.#init = false
+      closure()
     }
   }
 
-  unregister(context: any) {
-    this.#listeners = this.#listeners.filter(listener => listener.context !== context)
+  onMessage (message: Message) {
+    if (this.#init) {
+      this.#handle(message)
+    } else {
+      console.warn(`Receive Message but not init: ${this.id}`)
+    }
   }
 
-  // Private //
-
-  #handlePostMessage(event: any) {
-    if (event.data?._xbuilder) {
-      this.dispatch({
-        type: event.data.type,
-        payload: event.data.payload,
-      })
+  sendMessage (message: Message) {
+    if (this.#init) {
+      MessageService.sendMessage(this.id, message)
+    } else {
+      console.warn(`Send Message but not init: ${this.id}`)
     }
   }
 }
-
-const MessageDispatcher = new MessageDispatcherClass()
 
 export default MessageDispatcher

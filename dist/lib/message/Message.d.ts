@@ -1,4 +1,5 @@
 interface Message {
+    _dispatcherId?: string;
     type: string;
     payload: any;
 }

@@ -1,7 +1,7 @@
 import AudioManagerBase from './lib/AudioManager';
 import DataManagerBase from './lib/DataManager';
 import MessageBase from './lib/message/Message';
-import MessageListenerBase from './lib/message/MessageListener';
+import MessageDispatcherBase from './lib/message/MessageDispatcher';
 export * from './lib/AudioManager';
 export * from './lib/DataManager';
 export * from './lib/FullscreenHelper';
@@ -13,18 +13,7 @@ export declare const FullscreenHelper: {
     exitFullscreen: () => void;
 };
 export type Message = MessageBase;
-export type MessageListener = MessageListenerBase;
-export declare const MessageDispatcher: {
-    "__#3@#listeners": MessageListenerBase[];
-    dispatch(message: MessageBase): void;
-    register(listener: MessageListenerBase): void;
-    registerWindow(wdow: Window, origin: string): void;
-    registerParent(origin: string): void;
-    unregister(context: any): void;
-    "__#3@#handlePostMessage"(event: any): void;
-};
-export declare const useMessageDispatch: () => (message: MessageBase) => void;
-export declare const useMessageDispatcher: () => void;
+export declare const MessageDispatcher: typeof MessageDispatcherBase;
 export declare const ShortcutManager: {
     addShortcuts: (shortcuts: import("./lib/ShortcutManager").Shortcuts) => () => void;
     removeShortcuts: (id: string, update?: boolean | undefined) => void;
