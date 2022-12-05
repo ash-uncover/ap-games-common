@@ -74,6 +74,13 @@ var MessageDispatcherClass = /*#__PURE__*/function () {
       });
     }
   }, {
+    key: "registerParent",
+    value: function registerParent(origin) {
+      if (window.parent) {
+        this.registerWindow(window.parent, origin);
+      }
+    }
+  }, {
     key: "unregister",
     value: function unregister(context) {
       _classPrivateFieldSet(this, _listeners, _classPrivateFieldGet(this, _listeners).filter(function (listener) {

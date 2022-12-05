@@ -43,6 +43,11 @@ class MessageDispatcherClass {
       }
     })
   }
+  registerParent(origin: string) {
+    if (window.parent) {
+      this.registerWindow(window.parent, origin)
+    }
+  }
 
   unregister(context: any) {
     this.#listeners = this.#listeners.filter(listener => listener.context !== context)

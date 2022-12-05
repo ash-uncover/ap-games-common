@@ -48,6 +48,11 @@ class MessageDispatcherClass {
             }
         });
     }
+    registerParent(origin) {
+        if (window.parent) {
+            this.registerWindow(window.parent, origin);
+        }
+    }
     unregister(context) {
         __classPrivateFieldSet(this, _MessageDispatcherClass_listeners, __classPrivateFieldGet(this, _MessageDispatcherClass_listeners, "f").filter(listener => listener.context !== context), "f");
     }

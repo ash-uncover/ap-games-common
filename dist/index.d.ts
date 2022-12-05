@@ -19,6 +19,7 @@ export declare const MessageDispatcher: {
     dispatch(message: MessageBase): void;
     register(listener: MessageListenerBase): void;
     registerWindow(wdow: Window, origin: string): void;
+    registerParent(origin: string): void;
     unregister(context: any): void;
     "__#3@#handlePostMessage"(event: any): void;
 };

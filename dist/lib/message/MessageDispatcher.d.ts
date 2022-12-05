@@ -6,6 +6,7 @@ declare class MessageDispatcherClass {
     dispatch(message: Message): void;
     register(listener: MessageListener): void;
     registerWindow(wdow: Window, origin: string): void;
+    registerParent(origin: string): void;
     unregister(context: any): void;
 }
 declare const MessageDispatcher: MessageDispatcherClass;
