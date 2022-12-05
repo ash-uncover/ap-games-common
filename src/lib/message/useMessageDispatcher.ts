@@ -1,16 +1,14 @@
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
 import MessageDispatcher from './MessageDispatcher'
 
-const useMessageDispatcher = () => {
-  const dispatch = useDispatch()
+const useMessageDispatcher = (callback: () => void) => {
   useEffect(() => {
     MessageDispatcher.register({
       context: this,
-      handleMessage: dispatch
+      handleMessage: callback
     })
     return () => MessageDispatcher.unregister(this)
   }, [])
 }
 
-export default useMessageDispatcher()
+export default useMessageDispatcher

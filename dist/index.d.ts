@@ -22,7 +22,7 @@ export declare const MessageDispatcher: {
     unregister(context: any): void;
     "__#3@#handlePostMessage"(event: any): void;
 };
-export declare const useMessageDispatcher: void;
+export declare const useMessageDispatcher: (callback: () => void) => void;
 export declare const ShortcutManager: {
     addShortcuts: (shortcuts: import("./lib/ShortcutManager").Shortcuts) => () => void;
     removeShortcuts: (id: string, update?: boolean | undefined) => void;

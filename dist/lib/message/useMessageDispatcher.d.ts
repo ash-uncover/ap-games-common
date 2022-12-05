@@ -1,2 +1,2 @@
-declare const _default: void;
-export default _default;
+declare const useMessageDispatcher: (callback: () => void) => void;
+export default useMessageDispatcher;
