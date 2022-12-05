@@ -5,7 +5,7 @@ declare class MessageServiceClass {
     constructor(id?: string);
     addDispatcher(dispatcher: MessageDispatcher): () => void;
     removeDispatcher(dispatcher: MessageDispatcher): void;
-    sendMessage(dispatcherId: string, message: Message): void;
+    sendMessage(message: Message): void;
 }
 declare const MessageService: MessageServiceClass;
 export default MessageService;

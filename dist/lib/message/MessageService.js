@@ -56,12 +56,12 @@ class MessageServiceClass {
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] remove dispatcher [${dispatcher.id}]`);
         __classPrivateFieldSet(this, _MessageServiceClass_dispatchers, __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").filter(disp => disp !== dispatcher), "f");
     }
-    sendMessage(dispatcherId, message) {
+    sendMessage(message) {
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message to ${__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").length} dispatchers`);
         __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").forEach((dispatcher) => {
-            if (dispatcher.id !== dispatcherId) {
+            if (dispatcher.id !== message._dispatcherId) {
                 LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message on dispatcher [${dispatcher.id}]`);
-                dispatcher.onMessage(Object.assign(Object.assign({}, message), { _serviceId: __classPrivateFieldGet(this, _MessageServiceClass_id, "f"), _dispatcherId: dispatcherId }));
+                dispatcher.onMessage(Object.assign({ _serviceId: __classPrivateFieldGet(this, _MessageServiceClass_id, "f") }, message));
             }
         });
     }
@@ -78,16 +78,16 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     else if (((_d = event.data) === null || _d === void 0 ? void 0 : _d._serviceId) && ((_e = event.data) === null || _e === void 0 ? void 0 : _e.type) === CONNECTION_ACKNOWLEDGE) {
         // This is when a parent service has acknoledge connection
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] parent acknowledge connection`);
-        const parentDispatcher = new MessageDispatcher_1.default('CHILD > PARENT DISPATCHER');
+        const parentDispatcher = new MessageDispatcher_1.default((_f = event.data) === null || _f === void 0 ? void 0 : _f._dispatcherId);
         parentDispatcher.init((message) => {
             window.parent.postMessage(message, '*');
         });
         this.addDispatcher(parentDispatcher);
     }
-    else if (((_f = event.data) === null || _f === void 0 ? void 0 : _f._serviceId) && ((_g = event.data) === null || _g === void 0 ? void 0 : _g._dispatcherId)) {
+    else if (((_g = event.data) === null || _g === void 0 ? void 0 : _g._serviceId) && ((_h = event.data) === null || _h === void 0 ? void 0 : _h._dispatcherId)) {
         // When receiving a post message
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] received message`);
-        this.sendMessage((_h = event.data) === null || _h === void 0 ? void 0 : _h._dispatcherId, {
+        this.sendMessage({
             type: (_j = event.data) === null || _j === void 0 ? void 0 : _j.type,
             payload: (_k = event.data) === null || _k === void 0 ? void 0 : _k.payload
         });
@@ -98,12 +98,13 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     }
 }, _MessageServiceClass_addService = function _MessageServiceClass_addService(serviceId, wdow) {
     if (!__classPrivateFieldGet(this, _MessageServiceClass_services, "f").includes(serviceId)) {
-        const childDispatcher = new MessageDispatcher_1.default('PARENT > CHILD DISPATCHER');
+        const childDispatcher = new MessageDispatcher_1.default();
         const handler = (message) => wdow.postMessage(message, '*');
         childDispatcher.init(handler);
         this.addDispatcher(childDispatcher);
         __classPrivateFieldGet(this, _MessageServiceClass_services, "f").push(serviceId);
         wdow.postMessage({
+            _dispatcherId: childDispatcher.id,
             _serviceId: __classPrivateFieldGet(this, _MessageServiceClass_id, "f"),
             type: CONNECTION_ACKNOWLEDGE
         }, '*');

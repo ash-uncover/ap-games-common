@@ -56,7 +56,10 @@ class MessageDispatcher {
   sendMessage(message: Message) {
     LOGGER.info(`[${this.#id}] send message`)
     if (this.#init) {
-      MessageService.sendMessage(this.id, message)
+      MessageService.sendMessage({
+        _dispatcherId: this.id,
+        ...message
+      })
     } else {
       console.warn(`Send Message but not init: ${this.id}`)
     }

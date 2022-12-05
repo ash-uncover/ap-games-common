@@ -52,15 +52,14 @@ class MessageServiceClass {
     this.#dispatchers = this.#dispatchers.filter(disp => disp !== dispatcher)
   }
 
-  sendMessage(dispatcherId: string, message: Message) {
+  sendMessage(message: Message) {
     LOGGER.info(`[${this.#id}] send message to ${this.#dispatchers.length} dispatchers`)
     this.#dispatchers.forEach((dispatcher) => {
-      if (dispatcher.id !== dispatcherId) {
+      if (dispatcher.id !== message._dispatcherId) {
         LOGGER.info(`[${this.#id}] send message on dispatcher [${dispatcher.id}]`)
         dispatcher.onMessage({
-          ...message,
           _serviceId: this.#id,
-          _dispatcherId: dispatcherId
+          ...message,
         })
       }
     })
@@ -78,7 +77,7 @@ class MessageServiceClass {
     } else if (event.data?._serviceId && event.data?.type === CONNECTION_ACKNOWLEDGE) {
       // This is when a parent service has acknoledge connection
       LOGGER.info(`[${this.#id}] parent acknowledge connection`)
-      const parentDispatcher = new MessageDispatcher('CHILD > PARENT DISPATCHER')
+      const parentDispatcher = new MessageDispatcher(event.data?._dispatcherId)
       parentDispatcher.init((message) => {
         window.parent.postMessage(message, '*')
       })
@@ -86,7 +85,7 @@ class MessageServiceClass {
     } else if (event.data?._serviceId && event.data?._dispatcherId) {
       // When receiving a post message
       LOGGER.info(`[${this.#id}] received message`)
-      this.sendMessage(event.data?._dispatcherId, {
+      this.sendMessage({
         type: event.data?.type,
         payload: event.data?.payload
       })
@@ -98,12 +97,13 @@ class MessageServiceClass {
 
   #addService(serviceId: string, wdow: Window) {
     if (!this.#services.includes(serviceId)) {
-      const childDispatcher = new MessageDispatcher('PARENT > CHILD DISPATCHER')
+      const childDispatcher = new MessageDispatcher()
       const handler = (message: Message) => wdow.postMessage(message, '*')
       childDispatcher.init(handler)
       this.addDispatcher(childDispatcher)
       this.#services.push(serviceId)
       wdow.postMessage({
+        _dispatcherId: childDispatcher.id,
         _serviceId: this.#id,
         type: CONNECTION_ACKNOWLEDGE
       }, '*')
