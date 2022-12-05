@@ -84,10 +84,10 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
         });
         this.addDispatcher(parentDispatcher);
     }
-    else if (((_f = event.data) === null || _f === void 0 ? void 0 : _f._serviceId) && ((_g = event.data) === null || _g === void 0 ? void 0 : _g.dispatcherId)) {
+    else if (((_f = event.data) === null || _f === void 0 ? void 0 : _f._serviceId) && ((_g = event.data) === null || _g === void 0 ? void 0 : _g._dispatcherId)) {
         // When receiving a post message
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] received message`);
-        this.sendMessage((_h = event.data) === null || _h === void 0 ? void 0 : _h.dispatcherId, {
+        this.sendMessage((_h = event.data) === null || _h === void 0 ? void 0 : _h._dispatcherId, {
             type: (_j = event.data) === null || _j === void 0 ? void 0 : _j.type,
             payload: (_k = event.data) === null || _k === void 0 ? void 0 : _k.payload
         });

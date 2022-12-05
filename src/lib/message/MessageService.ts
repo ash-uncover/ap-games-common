@@ -83,10 +83,10 @@ class MessageServiceClass {
         window.parent.postMessage(message, '*')
       })
       this.addDispatcher(parentDispatcher)
-    } else if (event.data?._serviceId && event.data?.dispatcherId) {
+    } else if (event.data?._serviceId && event.data?._dispatcherId) {
       // When receiving a post message
       LOGGER.info(`[${this.#id}] received message`)
-      this.sendMessage(event.data?.dispatcherId, {
+      this.sendMessage(event.data?._dispatcherId, {
         type: event.data?.type,
         payload: event.data?.payload
       })
