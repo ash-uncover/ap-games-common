@@ -8,3 +8,4 @@ const useMessageDispatch = () => {
     return MessageDispatcher_1.default.dispatch.bind(MessageDispatcher_1.default);
 };
 exports.default = useMessageDispatch;
+//# sourceMappingURL=useMessageDispatch.js.map

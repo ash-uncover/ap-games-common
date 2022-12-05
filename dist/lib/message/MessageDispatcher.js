@@ -68,3 +68,4 @@ _MessageDispatcherClass_listeners = new WeakMap(), _MessageDispatcherClass_insta
 };
 const MessageDispatcher = new MessageDispatcherClass();
 exports.default = MessageDispatcher;
+//# sourceMappingURL=MessageDispatcher.js.map

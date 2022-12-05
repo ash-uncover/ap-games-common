@@ -41,3 +41,4 @@ class DataManager {
 }
 _DataManager_basePath = new WeakMap();
 exports.default = DataManager;
+//# sourceMappingURL=DataManager.js.map

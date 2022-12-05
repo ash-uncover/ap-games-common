@@ -17,3 +17,4 @@ const useMessageDispatcher = () => {
     }, []);
 };
 exports.default = useMessageDispatcher;
+//# sourceMappingURL=useMessageDispatcher.js.map

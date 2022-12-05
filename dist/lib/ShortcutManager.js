@@ -71,3 +71,4 @@ const ShortcutManager = {
     }
 };
 exports.default = ShortcutManager;
+//# sourceMappingURL=ShortcutManager.js.map

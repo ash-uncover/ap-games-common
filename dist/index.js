@@ -40,3 +40,4 @@ exports.useMessageDispatch = useMessageDispatch_1.default;
 exports.useMessageDispatcher = useMessageDispatcher_1.default;
 // Shortcuts
 exports.ShortcutManager = ShortcutManager_1.default;
+//# sourceMappingURL=index.js.map
