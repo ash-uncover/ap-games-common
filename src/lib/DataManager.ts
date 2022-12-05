@@ -14,10 +14,11 @@ class DataManager {
 
   // Public Methods //
 
-  async load<T> (url: string): Promise<T> {
+  async load<T> (url: string, options?: object): Promise<T> {
     const headers = new Headers()
 
     const request = {
+      ...options,
       method: 'GET',
       headers
     }

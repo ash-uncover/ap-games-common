@@ -30,13 +30,10 @@ class DataManager {
     }
     // Getters & Setters //
     // Public Methods //
-    load(url) {
+    load(url, options) {
         return __awaiter(this, void 0, void 0, function* () {
             const headers = new Headers();
-            const request = {
-                method: 'GET',
-                headers
-            };
+            const request = Object.assign(Object.assign({}, options), { method: 'GET', headers });
             const response = yield fetch(`${__classPrivateFieldGet(this, _DataManager_basePath, "f")}${url}`, request);
             return yield response.json();
         });
