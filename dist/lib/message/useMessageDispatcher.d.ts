@@ -1,2 +1,2 @@
-declare const useMessageDispatcher: () => (message: import("./Message").default) => void;
+declare const useMessageDispatcher: () => void;
 export default useMessageDispatcher;

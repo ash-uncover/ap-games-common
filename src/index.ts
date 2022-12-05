@@ -5,6 +5,7 @@ import FullscreenHelperBase from './lib/FullscreenHelper'
 import MessageBase from './lib/message/Message'
 import MessageListenerBase from './lib/message/MessageListener'
 import MessageDispatcherBase from './lib/message/MessageDispatcher'
+import useMessageDispatchBase from './lib/message/useMessageDispatch'
 import useMessageDispatcherBase from './lib/message/useMessageDispatcher'
 
 import ShortcutManagerBase from './lib/ShortcutManager'
@@ -24,6 +25,7 @@ export const FullscreenHelper = FullscreenHelperBase
 export type Message = MessageBase
 export type MessageListener = MessageListenerBase
 export const MessageDispatcher = MessageDispatcherBase
+export const useMessageDispatch = useMessageDispatchBase
 export const useMessageDispatcher = useMessageDispatcherBase
 // Shortcuts
 export const ShortcutManager = ShortcutManagerBase

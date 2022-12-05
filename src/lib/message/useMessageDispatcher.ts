@@ -11,7 +11,6 @@ const useMessageDispatcher = () => {
     })
     return () => MessageDispatcher.unregister(this)
   }, [])
-  return MessageDispatcher.dispatch
 }
 
 export default useMessageDispatcher

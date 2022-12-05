@@ -20,7 +20,6 @@ var useMessageDispatcher = function useMessageDispatcher() {
       return _MessageDispatcher["default"].unregister(_this);
     };
   }, []);
-  return _MessageDispatcher["default"].dispatch;
 };
 var _default = useMessageDispatcher;
 exports["default"] = _default;

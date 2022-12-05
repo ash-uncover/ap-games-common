@@ -17,11 +17,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ShortcutManager = exports.useMessageDispatcher = exports.MessageDispatcher = exports.FullscreenHelper = exports.DataManager = exports.AudioManager = void 0;
+exports.ShortcutManager = exports.useMessageDispatcher = exports.useMessageDispatch = exports.MessageDispatcher = exports.FullscreenHelper = exports.DataManager = exports.AudioManager = void 0;
 const AudioManager_1 = __importDefault(require("./lib/AudioManager"));
 const DataManager_1 = __importDefault(require("./lib/DataManager"));
 const FullscreenHelper_1 = __importDefault(require("./lib/FullscreenHelper"));
 const MessageDispatcher_1 = __importDefault(require("./lib/message/MessageDispatcher"));
+const useMessageDispatch_1 = __importDefault(require("./lib/message/useMessageDispatch"));
 const useMessageDispatcher_1 = __importDefault(require("./lib/message/useMessageDispatcher"));
 const ShortcutManager_1 = __importDefault(require("./lib/ShortcutManager"));
 __exportStar(require("./lib/AudioManager"), exports);
@@ -35,6 +36,7 @@ exports.DataManager = DataManager_1.default;
 // Fullscreen
 exports.FullscreenHelper = FullscreenHelper_1.default;
 exports.MessageDispatcher = MessageDispatcher_1.default;
+exports.useMessageDispatch = useMessageDispatch_1.default;
 exports.useMessageDispatcher = useMessageDispatcher_1.default;
 // Shortcuts
 exports.ShortcutManager = ShortcutManager_1.default;
