@@ -78,7 +78,6 @@ class MessageServiceClass {
     } else if (event.data?._serviceId && event.data?.type === CONNECTION_ACKNOWLEDGE) {
       // This is when a parent service has acknoledge connection
       LOGGER.info(`[${this.#id}] parent acknowledge connection`)
-      LOGGER.info(JSON.stringify(event))
       const parentDispatcher = new MessageDispatcher('CHILD > PARENT DISPATCHER')
       parentDispatcher.init((message) => {
         window.parent.postMessage(message, '*')
@@ -86,12 +85,14 @@ class MessageServiceClass {
       this.addDispatcher(parentDispatcher)
     } else if (event.data?._serviceId && event.data?.dispatcherId) {
       // When receiving a post message
+      LOGGER.info(`[${this.#id}] received message`)
       this.sendMessage(event.data?.dispatcherId, {
         type: event.data?.type,
         payload: event.data?.payload
       })
     } else {
       LOGGER.info(`[${this.#id}] unhandled message`)
+      console.log(event)
     }
   }
 

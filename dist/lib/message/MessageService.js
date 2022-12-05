@@ -78,7 +78,6 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     else if (((_d = event.data) === null || _d === void 0 ? void 0 : _d._serviceId) && ((_e = event.data) === null || _e === void 0 ? void 0 : _e.type) === CONNECTION_ACKNOWLEDGE) {
         // This is when a parent service has acknoledge connection
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] parent acknowledge connection`);
-        LOGGER.info(JSON.stringify(event));
         const parentDispatcher = new MessageDispatcher_1.default('CHILD > PARENT DISPATCHER');
         parentDispatcher.init((message) => {
             window.parent.postMessage(message, '*');
@@ -87,6 +86,7 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     }
     else if (((_f = event.data) === null || _f === void 0 ? void 0 : _f._serviceId) && ((_g = event.data) === null || _g === void 0 ? void 0 : _g.dispatcherId)) {
         // When receiving a post message
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] received message`);
         this.sendMessage((_h = event.data) === null || _h === void 0 ? void 0 : _h.dispatcherId, {
             type: (_j = event.data) === null || _j === void 0 ? void 0 : _j.type,
             payload: (_k = event.data) === null || _k === void 0 ? void 0 : _k.payload
@@ -94,6 +94,7 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     }
     else {
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] unhandled message`);
+        console.log(event);
     }
 }, _MessageServiceClass_addService = function _MessageServiceClass_addService(serviceId, wdow) {
     if (!__classPrivateFieldGet(this, _MessageServiceClass_services, "f").includes(serviceId)) {
