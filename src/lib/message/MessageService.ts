@@ -26,7 +26,7 @@ class MessageServiceClass {
       window.parent.postMessage({
         _messageService: this.#id,
         type: CONNECTION_REQUEST
-      })
+      }, '*')
     }
   }
 

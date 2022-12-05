@@ -32,7 +32,7 @@ class MessageServiceClass {
             window.parent.postMessage({
                 _messageService: __classPrivateFieldGet(this, _MessageServiceClass_id, "f"),
                 type: CONNECTION_REQUEST
-            });
+            }, '*');
         }
     }
     // Getters & Setters //
