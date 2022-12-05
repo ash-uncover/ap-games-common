@@ -1,7 +1,7 @@
 import Message from './Message';
 declare class MessageDispatcher {
     #private;
-    constructor();
+    constructor(id?: string);
     get id(): string;
     init(handleMessage: ((message: Message) => void)): () => void;
     onMessage(message: Message): void;

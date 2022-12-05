@@ -9,14 +9,16 @@ class MessageDispatcher {
 
   // Attributes //
 
-  #id: string = `message-dispatcher-${UUID.next()}`
+  #id: string
   #init: boolean = false
   #handle: ((message: Message) => void) | null = null
   #closure: (() => void) | null = null
 
   // Constructor //
 
-  constructor() { }
+  constructor(id?: string) {
+    this.#id = id || `message-dispatcher-${UUID.next()}`
+  }
 
   // Getters & Setters //
 

@@ -18,7 +18,8 @@ class MessageServiceClass {
 
   // Constructor //
 
-  constructor() {
+  constructor(id?: string) {
+    this.#id = id || `message-service-${UUID.next()}`
     // Wait for registration of other services
     window.addEventListener(
       'message',
@@ -74,7 +75,7 @@ class MessageServiceClass {
       // This is when a parent service has acknoledge connection
       LOGGER.info(`[${this.#id}] parent acknowledge connection`)
       LOGGER.info(JSON.stringify(event))
-      const parentDispatcher = new MessageDispatcher()
+      const parentDispatcher = new MessageDispatcher('PARENT DISPATCHER')
       parentDispatcher.init((message) => {
         window.parent.postMessage(message, '*')
       })
@@ -84,7 +85,7 @@ class MessageServiceClass {
 
   #addService(serviceId: string, wdow: Window) {
     if (!this.#services.includes(serviceId)) {
-      const childDispatcher = new MessageDispatcher()
+      const childDispatcher = new MessageDispatcher('CHILD DISPATCHER')
       const handler = (message: Message) => wdow.postMessage(message, '*')
       childDispatcher.init(handler)
       this.addDispatcher(childDispatcher)

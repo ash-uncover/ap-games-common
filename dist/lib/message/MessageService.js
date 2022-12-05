@@ -1,14 +1,14 @@
 "use strict";
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -23,7 +23,7 @@ const CONNECTION_ACKNOWLEDGE = '__CONNECTION_ACKNOWLEDGE__';
 const LOGGER = new js_utils_logger_1.default('MessageService', 0);
 class MessageServiceClass {
     // Constructor //
-    constructor() {
+    constructor(id) {
         _MessageServiceClass_instances.add(this);
         // Attributes //
         _MessageServiceClass_id.set(this, `message-service-${js_utils_1.UUID.next()}`);
@@ -31,6 +31,7 @@ class MessageServiceClass {
         _MessageServiceClass_services.set(this, []
         // Constructor //
         );
+        __classPrivateFieldSet(this, _MessageServiceClass_id, id || `message-service-${js_utils_1.UUID.next()}`, "f");
         // Wait for registration of other services
         window.addEventListener('message', __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_handleMessage).bind(this));
         if (window !== window.parent) {
@@ -77,7 +78,7 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
         // This is when a parent service has acknoledge connection
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] parent acknowledge connection`);
         LOGGER.info(JSON.stringify(event));
-        const parentDispatcher = new MessageDispatcher_1.default();
+        const parentDispatcher = new MessageDispatcher_1.default('PARENT DISPATCHER');
         parentDispatcher.init((message) => {
             window.parent.postMessage(message, '*');
         });
@@ -85,7 +86,7 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     }
 }, _MessageServiceClass_addService = function _MessageServiceClass_addService(serviceId, wdow) {
     if (!__classPrivateFieldGet(this, _MessageServiceClass_services, "f").includes(serviceId)) {
-        const childDispatcher = new MessageDispatcher_1.default();
+        const childDispatcher = new MessageDispatcher_1.default('CHILD DISPATCHER');
         const handler = (message) => wdow.postMessage(message, '*');
         childDispatcher.init(handler);
         this.addDispatcher(childDispatcher);

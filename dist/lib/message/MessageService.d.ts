@@ -2,7 +2,7 @@ import Message from './Message';
 import MessageDispatcher from './MessageDispatcher';
 declare class MessageServiceClass {
     #private;
-    constructor();
+    constructor(id?: string);
     addDispatcher(dispatcher: MessageDispatcher): () => void;
     removeDispatcher(dispatcher: MessageDispatcher): void;
     sendMessage(dispatcherId: string, message: Message): void;

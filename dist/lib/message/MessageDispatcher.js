@@ -1,14 +1,14 @@
 "use strict";
-var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
 var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
     if (kind === "m") throw new TypeError("Private method is not writable");
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
+};
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -21,14 +21,15 @@ const MessageService_1 = __importDefault(require("./MessageService"));
 const LOGGER = new js_utils_logger_1.default('MessageDispatcher', 0);
 class MessageDispatcher {
     // Constructor //
-    constructor() {
+    constructor(id) {
         // Attributes //
-        _MessageDispatcher_id.set(this, `message-dispatcher-${js_utils_1.UUID.next()}`);
+        _MessageDispatcher_id.set(this, void 0);
         _MessageDispatcher_init.set(this, false);
         _MessageDispatcher_handle.set(this, null);
         _MessageDispatcher_closure.set(this, null
         // Constructor //
         );
+        __classPrivateFieldSet(this, _MessageDispatcher_id, id || `message-dispatcher-${js_utils_1.UUID.next()}`, "f");
     }
     // Getters & Setters //
     get id() {
