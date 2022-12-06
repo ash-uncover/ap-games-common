@@ -2,23 +2,38 @@ import { UUID } from '@uncover/js-utils'
 import Logger from '@uncover/js-utils-logger'
 import { IMessageService } from './IMessageService'
 import Message from './Message'
-import MessageService from './MessageService'
+import MessageServiceFrame from './MessageServiceFrame'
+
+const CONNECTION_REQUEST = '__CONNNECTION_REQUEST__'
+const CONNECTION_ACKNOWLEDGE = '__CONNECTION_ACKNOWLEDGE__'
 
 const LOGGER = new Logger('MessageDispatcher', 0)
 
-class MessageDispatcher implements IMessageService {
+class MessageDispatcherClass {
 
   // Attributes //
 
   #id: string
-  #init: boolean = false
-  #handle: ((message: Message) => void) | null = null
-  #closure: (() => void) | null = null
+  #services: IMessageService[] = []
+  #dispatchers: string[] = []
 
   // Constructor //
 
   constructor(id?: string) {
     this.#id = id || `message-dispatcher-${UUID.next()}`
+    // Wait for registration of other services
+    window.addEventListener(
+      'message',
+      this.#handleMessage.bind(this)
+    )
+    if (window !== window.parent) {
+      // Try to connect to a parent service
+      LOGGER.info(`[${this.idShort}] contact parent`)
+      window.parent.postMessage({
+        _dispatcherId: this.#id,
+        type: CONNECTION_REQUEST
+      }, '*')
+    }
   }
 
   // Getters & Setters //
@@ -31,43 +46,76 @@ class MessageDispatcher implements IMessageService {
     return this.#id.substring(this.#id.length - 3)
   }
 
-  // Public //
+  // Public Methods //
 
-  init(handleMessage: ((message: Message) => void)) {
-    this.#init = true
-    this.#handle = handleMessage
-    this.#closure = MessageService.addDispatcher(this)
-    LOGGER.info(`[${this.idShort}] starting`)
-    return () => {
-      LOGGER.info(`[${this.idShort}] closing`)
-      this.#init = false
-      this.#handle = null
-      if (this.#closure) {
-        this.#closure()
+  addService(service: IMessageService) {
+    LOGGER.info(`[${this.idShort}] add service [${service.idShort}]`)
+    if (!this.#services.includes(service)) {
+      this.#services.push(service)
+    }
+    return () => this.removeService(service)
+  }
+
+  removeService(service: IMessageService) {
+    LOGGER.info(`[${this.idShort}] remove service [${service.idShort}]`)
+    this.#services = this.#services.filter(serv => serv !== service)
+  }
+
+  sendMessage(message: Message) {
+    LOGGER.info(`[${this.idShort}] send message to ${this.#services.length} services from ${message._dispatcherId?.substring(message._serviceId!.length - 3)}`)
+    this.#services.forEach((service) => {
+      if (service.id !== message._serviceId) {
+        LOGGER.info(`[${this.idShort}] send message on service [${service.idShort}]`)
+        service.onMessage({
+          _dispatcherId: this.#id,
+          ...message,
+        })
+      }
+    })
+  }
+
+  // Private Methods //
+
+  #handleMessage(event: MessageEvent) {
+    const data = event.data || {}
+    if (data._dispatcherId) {
+      switch (data.type) {
+        case CONNECTION_REQUEST: {
+          this.#handleConnectionRequest(event)
+          break
+        }
+        case CONNECTION_ACKNOWLEDGE: {
+          this.#handleConnectionAcknowledge(event)
+          break
+        }
       }
     }
   }
 
-  onMessage(message: Message) {
-    if (this.#init && this.#handle) {
-      LOGGER.info(`[${this.idShort}] handling message`)
-      this.#handle(message)
-    } else {
-      console.warn(`Receive Message but not init: ${this.idShort}`)
+  #handleConnectionRequest(event: MessageEvent) {
+    LOGGER.info(`[${this.idShort}] child trying to connect`)
+    const dispatcherId = event.data?.dispatcherId
+    const wdow = <Window>event.source!
+    if (!this.#dispatchers.includes(dispatcherId)) {
+      const service = new MessageServiceFrame(wdow)
+      this.addService(service)
+      this.#dispatchers.push(dispatcherId)
+      service.onMessage({
+        _dispatcherId: this.#id,
+        _serviceId: service.id,
+        type: CONNECTION_ACKNOWLEDGE,
+        payload: null
+      })
     }
   }
 
-  sendMessage(message: Message) {
-    LOGGER.info(`[${this.idShort}] send message`)
-    if (this.#init) {
-      MessageService.sendMessage({
-        ...message,
-        _dispatcherId: this.id,
-      })
-    } else {
-      console.warn(`Send Message but not init: ${this.idShort}`)
-    }
+  #handleConnectionAcknowledge(event: MessageEvent) {
+    LOGGER.info(`[${this.idShort}] parent acknowledge connection`)
+    const service = new MessageServiceFrame(window.parent, event.data?._serviceId)
+    this.addService(service)
   }
 }
+
+const MessageDispatcher = new MessageDispatcherClass()
 
 export default MessageDispatcher

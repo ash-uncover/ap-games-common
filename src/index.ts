@@ -3,7 +3,7 @@ import DataManagerBase from './lib/DataManager'
 import FullscreenHelperBase from './lib/FullscreenHelper'
 
 import MessageBase from './lib/message/Message'
-import MessageDispatcherBase from './lib/message/MessageDispatcher'
+import MessageDispatcherBase from './lib/message/MessageService'
 
 import ShortcutManagerBase from './lib/ShortcutManager'
 

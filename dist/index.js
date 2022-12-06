@@ -21,7 +21,7 @@ exports.ShortcutManager = exports.MessageDispatcher = exports.FullscreenHelper =
 const AudioManager_1 = __importDefault(require("./lib/AudioManager"));
 const DataManager_1 = __importDefault(require("./lib/DataManager"));
 const FullscreenHelper_1 = __importDefault(require("./lib/FullscreenHelper"));
-const MessageDispatcher_1 = __importDefault(require("./lib/message/MessageDispatcher"));
+const MessageService_1 = __importDefault(require("./lib/message/MessageService"));
 const ShortcutManager_1 = __importDefault(require("./lib/ShortcutManager"));
 __exportStar(require("./lib/AudioManager"), exports);
 __exportStar(require("./lib/DataManager"), exports);
@@ -33,7 +33,7 @@ exports.AudioManager = AudioManager_1.default;
 exports.DataManager = DataManager_1.default;
 // Fullscreen
 exports.FullscreenHelper = FullscreenHelper_1.default;
-exports.MessageDispatcher = MessageDispatcher_1.default;
+exports.MessageDispatcher = MessageService_1.default;
 // Shortcuts
 exports.ShortcutManager = ShortcutManager_1.default;
 //# sourceMappingURL=index.js.map

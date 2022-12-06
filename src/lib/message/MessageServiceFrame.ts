@@ -2,11 +2,11 @@ import { UUID } from '@uncover/js-utils'
 import Logger from '@uncover/js-utils-logger'
 import { IMessageService } from './IMessageService'
 import Message from './Message'
-import MessageService from './MessageService'
+import MessageDispatcher from './MessageDispatcher'
 
-const LOGGER = new Logger('MessageFrameDispatcher', 0)
+const LOGGER = new Logger('MessageServiceFrame', 0)
 
-class MessageFrameDispatcher implements IMessageService {
+class MessageServiceFrame implements IMessageService {
 
   // Attributes //
 
@@ -16,7 +16,7 @@ class MessageFrameDispatcher implements IMessageService {
   // Constructor //
 
   constructor(wdow: Window, id?: string) {
-    this.#id = id || `message-frame-dispatcher-${UUID.next()}`
+    this.#id = id || `message-service-frame-${UUID.next()}`
     this.#window = wdow
     window.addEventListener(
       'message',
@@ -40,15 +40,15 @@ class MessageFrameDispatcher implements IMessageService {
     LOGGER.info(`[${this.idShort}] onMessage`)
     this.#window.postMessage({
       ...message,
-      _dispatcherId: this.#id
+      _serviceId: this.#id
     }, '*')
   }
 
   sendMessage(message: Message) {
     LOGGER.info(`[${this.idShort}] sendMessage`)
-    MessageService.sendMessage({
+    MessageDispatcher.sendMessage({
       ...message,
-      _dispatcherId: this.id,
+      _serviceId: this.id,
     })
   }
 
@@ -58,7 +58,7 @@ class MessageFrameDispatcher implements IMessageService {
     const data = event.data || {}
     if (data._serviceId && data._dispatcherId) {
       this.sendMessage({
-        _dispatcherId: this.#id,
+        _serviceId: this.#id,
         type: data.type,
         payload: data.payload
       })
@@ -66,4 +66,4 @@ class MessageFrameDispatcher implements IMessageService {
   }
 }
 
-export default MessageFrameDispatcher
+export default MessageServiceFrame
