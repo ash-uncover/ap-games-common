@@ -2,9 +2,6 @@ import AudioManagerBase from './lib/AudioManager'
 import DataManagerBase from './lib/DataManager'
 import FullscreenHelperBase from './lib/FullscreenHelper'
 
-import MessageBase from './lib/message/Message'
-import MessageServiceBase from './lib/message/MessageService'
-
 import ShortcutManagerBase from './lib/ShortcutManager'
 
 export * from './lib/AudioManager'
@@ -18,8 +15,5 @@ export const AudioManager = AudioManagerBase
 export const DataManager = DataManagerBase
 // Fullscreen
 export const FullscreenHelper = FullscreenHelperBase
-// Message
-export type Message = MessageBase
-export const MessageService = MessageServiceBase
 // Shortcuts
 export const ShortcutManager = ShortcutManagerBase

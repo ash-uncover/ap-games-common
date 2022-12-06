@@ -14,7 +14,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "npm run build:tsc && npm run build:babel",
+    "build": "npm run build:tsc",
     "build:babel": "babel src/lib --extensions .ts,.tsx --out-dir dist --copy-files",
     "build:tsc": "tsc"
   },
