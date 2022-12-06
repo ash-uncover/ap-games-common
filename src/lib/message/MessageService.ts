@@ -62,7 +62,7 @@ class MessageService implements IMessageService {
     if (this.#init) {
       MessageDispatcher.sendMessage({
         ...message,
-        _dispatcherId: this.id,
+        _serviceId: this.id,
       })
     } else {
       console.warn(`[${this.idShort}] sendMessage but not init`)

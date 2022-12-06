@@ -65,7 +65,7 @@ class MessageService {
     sendMessage(message) {
         LOGGER.info(`[${this.idShort}] sendMessage`);
         if (__classPrivateFieldGet(this, _MessageService_init, "f")) {
-            MessageDispatcher_1.default.sendMessage(Object.assign(Object.assign({}, message), { _dispatcherId: this.id }));
+            MessageDispatcher_1.default.sendMessage(Object.assign(Object.assign({}, message), { _serviceId: this.id }));
         }
         else {
             console.warn(`[${this.idShort}] sendMessage but not init`);
