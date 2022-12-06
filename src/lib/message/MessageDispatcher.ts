@@ -30,7 +30,7 @@ class MessageDispatcherClass {
       // Try to connect to a parent service
       LOGGER.info(`[${this.idShort}] contact parent`)
       window.parent.postMessage({
-        _dispatcherId: this.#id,
+        _dispatcherId: this.id,
         type: CONNECTION_REQUEST
       }, '*')
     }
@@ -93,7 +93,7 @@ class MessageDispatcherClass {
   }
 
   #handleConnectionRequest(event: MessageEvent) {
-    const dispatcherId = event.data?.dispatcherId
+    const dispatcherId = event.data?._dispatcherId
     LOGGER.info(`[${this.idShort}] child trying to connect [${dispatcherId.substring(dispatcherId.length - 3)}]`)
     LOGGER.info(`[${this.idShort}] ${this.#dispatchers.join(', ')}]`)
     const wdow = <Window>event.source!
