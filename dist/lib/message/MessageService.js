@@ -36,7 +36,7 @@ class MessageService {
         return __classPrivateFieldGet(this, _MessageService_id, "f");
     }
     get idShort() {
-        return __classPrivateFieldGet(this, _MessageService_id, "f").substring(__classPrivateFieldGet(this, _MessageService_id, "f").length - 3);
+        return `[${MessageDispatcher_1.default.idShort}-${__classPrivateFieldGet(this, _MessageService_id, "f").substring(__classPrivateFieldGet(this, _MessageService_id, "f").length - 3)}]`;
     }
     // Public //
     init(handleMessage) {

@@ -28,7 +28,7 @@ class MessageService implements IMessageService {
   }
 
   get idShort() {
-    return this.#id.substring(this.#id.length - 3)
+    return `[${MessageDispatcher.idShort}-${this.#id.substring(this.#id.length - 3)}]`
   }
 
   // Public //
