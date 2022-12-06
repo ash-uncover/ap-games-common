@@ -1,7 +1,9 @@
 import { UUID } from '@uncover/js-utils'
 import Logger from '@uncover/js-utils-logger'
+import { IMessageService } from './IMessageService'
 import Message from './Message'
 import MessageDispatcher from './MessageDispatcher'
+import MessageFrameDispatcher from './MessageFrameDispatcher'
 
 const CONNECTION_REQUEST = '__CONNNECTION_REQUEST__'
 const CONNECTION_ACKNOWLEDGE = '__CONNECTION_ACKNOWLEDGE__'
@@ -13,7 +15,7 @@ class MessageServiceClass {
   // Attributes //
 
   #id: string = `message-service-${UUID.next()}`
-  #dispatchers: MessageDispatcher[] = []
+  #dispatchers: IMessageService[] = []
   #services: string[] = []
 
   // Constructor //
@@ -47,7 +49,7 @@ class MessageServiceClass {
 
   // Public Methods //
 
-  addDispatcher(dispatcher: MessageDispatcher) {
+  addDispatcher(dispatcher: IMessageService) {
     LOGGER.info(`[${this.idShort}] add dispatcher [${dispatcher.idShort}]`)
     if (!this.#dispatchers.includes(dispatcher)) {
       this.#dispatchers.push(dispatcher)
@@ -55,7 +57,7 @@ class MessageServiceClass {
     return () => this.removeDispatcher(dispatcher)
   }
 
-  removeDispatcher(dispatcher: MessageDispatcher) {
+  removeDispatcher(dispatcher: IMessageService) {
     LOGGER.info(`[${this.idShort}] remove dispatcher [${dispatcher.idShort}]`)
     this.#dispatchers = this.#dispatchers.filter(disp => disp !== dispatcher)
   }
@@ -100,16 +102,15 @@ class MessageServiceClass {
     const serviceId = event.data?._serviceId
     const wdow = <Window>event.source!
     if (!this.#services.includes(serviceId)) {
-      const childDispatcher = new MessageDispatcher()
-      const handler = (message: Message) => wdow.postMessage(message, '*')
-      childDispatcher.init(handler)
+      const childDispatcher = new MessageFrameDispatcher(wdow)
       this.addDispatcher(childDispatcher)
       this.#services.push(serviceId)
-      wdow.postMessage({
-        type: CONNECTION_ACKNOWLEDGE,
-        _dispatcherId: childDispatcher.id,
+      childDispatcher.onMessage({
         _serviceId: this.#id,
-      }, '*')
+        _dispatcherId: childDispatcher.id,
+        type: CONNECTION_ACKNOWLEDGE,
+        payload: null
+      })
     }
   }
 
@@ -117,10 +118,7 @@ class MessageServiceClass {
     // This is when a parent service has acknoledge connection
     LOGGER.info(`[${this.idShort}] parent acknowledge connection`)
     console.log(event)
-    const parentDispatcher = new MessageDispatcher(event.data?._dispatcherId)
-    parentDispatcher.init((message) => {
-      window.parent.postMessage(message, '*')
-    })
+    const parentDispatcher = new MessageFrameDispatcher(window.parent, event.data?._dispatcherId)
     this.addDispatcher(parentDispatcher)
   }
 }

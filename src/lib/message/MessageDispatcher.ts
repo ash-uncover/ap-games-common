@@ -1,11 +1,12 @@
 import { UUID } from '@uncover/js-utils'
 import Logger from '@uncover/js-utils-logger'
+import { IMessageService } from './IMessageService'
 import Message from './Message'
 import MessageService from './MessageService'
 
 const LOGGER = new Logger('MessageDispatcher', 0)
 
-class MessageDispatcher {
+class MessageDispatcher implements IMessageService {
 
   // Attributes //
 
@@ -49,7 +50,7 @@ class MessageDispatcher {
 
   onMessage(message: Message) {
     if (this.#init && this.#handle) {
-      LOGGER.info(`[${this.idShort}] (on message) sending message`)
+      LOGGER.info(`[${this.idShort}] handling message`)
       this.#handle(message)
     } else {
       console.warn(`Receive Message but not init: ${this.idShort}`)

@@ -17,7 +17,7 @@ var _MessageServiceClass_instances, _MessageServiceClass_id, _MessageServiceClas
 Object.defineProperty(exports, "__esModule", { value: true });
 const js_utils_1 = require("@uncover/js-utils");
 const js_utils_logger_1 = __importDefault(require("@uncover/js-utils-logger"));
-const MessageDispatcher_1 = __importDefault(require("./MessageDispatcher"));
+const MessageFrameDispatcher_1 = __importDefault(require("./MessageFrameDispatcher"));
 const CONNECTION_REQUEST = '__CONNNECTION_REQUEST__';
 const CONNECTION_ACKNOWLEDGE = '__CONNECTION_ACKNOWLEDGE__';
 const LOGGER = new js_utils_logger_1.default('MessageService', 0);
@@ -99,26 +99,22 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     const serviceId = (_a = event.data) === null || _a === void 0 ? void 0 : _a._serviceId;
     const wdow = event.source;
     if (!__classPrivateFieldGet(this, _MessageServiceClass_services, "f").includes(serviceId)) {
-        const childDispatcher = new MessageDispatcher_1.default();
-        const handler = (message) => wdow.postMessage(message, '*');
-        childDispatcher.init(handler);
+        const childDispatcher = new MessageFrameDispatcher_1.default(wdow);
         this.addDispatcher(childDispatcher);
         __classPrivateFieldGet(this, _MessageServiceClass_services, "f").push(serviceId);
-        wdow.postMessage({
-            type: CONNECTION_ACKNOWLEDGE,
-            _dispatcherId: childDispatcher.id,
+        childDispatcher.onMessage({
             _serviceId: __classPrivateFieldGet(this, _MessageServiceClass_id, "f"),
-        }, '*');
+            _dispatcherId: childDispatcher.id,
+            type: CONNECTION_ACKNOWLEDGE,
+            payload: null
+        });
     }
 }, _MessageServiceClass_handleConnectionAcknowledge = function _MessageServiceClass_handleConnectionAcknowledge(event) {
     var _a;
     // This is when a parent service has acknoledge connection
     LOGGER.info(`[${this.idShort}] parent acknowledge connection`);
     console.log(event);
-    const parentDispatcher = new MessageDispatcher_1.default((_a = event.data) === null || _a === void 0 ? void 0 : _a._dispatcherId);
-    parentDispatcher.init((message) => {
-        window.parent.postMessage(message, '*');
-    });
+    const parentDispatcher = new MessageFrameDispatcher_1.default(window.parent, (_a = event.data) === null || _a === void 0 ? void 0 : _a._dispatcherId);
     this.addDispatcher(parentDispatcher);
 };
 const MessageService = new MessageServiceClass();

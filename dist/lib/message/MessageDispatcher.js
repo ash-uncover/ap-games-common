@@ -55,7 +55,7 @@ class MessageDispatcher {
     }
     onMessage(message) {
         if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f") && __classPrivateFieldGet(this, _MessageDispatcher_handle, "f")) {
-            LOGGER.info(`[${this.idShort}] (on message) sending message`);
+            LOGGER.info(`[${this.idShort}] handling message`);
             __classPrivateFieldGet(this, _MessageDispatcher_handle, "f").call(this, message);
         }
         else {

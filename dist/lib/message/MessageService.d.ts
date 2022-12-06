@@ -1,12 +1,12 @@
+import { IMessageService } from './IMessageService';
 import Message from './Message';
-import MessageDispatcher from './MessageDispatcher';
 declare class MessageServiceClass {
     #private;
     constructor(id?: string);
     get id(): string;
     get idShort(): string;
-    addDispatcher(dispatcher: MessageDispatcher): () => void;
-    removeDispatcher(dispatcher: MessageDispatcher): void;
+    addDispatcher(dispatcher: IMessageService): () => void;
+    removeDispatcher(dispatcher: IMessageService): void;
     sendMessage(message: Message): void;
 }
 declare const MessageService: MessageServiceClass;
