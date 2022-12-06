@@ -64,7 +64,7 @@ class MessageDispatcherClass {
     }
     sendMessage(message) {
         var _a;
-        LOGGER.info(`[${this.idShort}] send message to ${__classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").length} services from ${(_a = message._dispatcherId) === null || _a === void 0 ? void 0 : _a.substring(message._serviceId.length - 3)}`);
+        LOGGER.info(`[${this.idShort}] send message to ${__classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").length} services from ${(_a = message._serviceId) === null || _a === void 0 ? void 0 : _a.substring(message._serviceId.length - 3)}`);
         __classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").forEach((service) => {
             if (service.id !== message._serviceId) {
                 LOGGER.info(`[${this.idShort}] send message on service [${service.idShort}]`);

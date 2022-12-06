@@ -62,7 +62,7 @@ class MessageDispatcherClass {
   }
 
   sendMessage(message: Message) {
-    LOGGER.info(`[${this.idShort}] send message to ${this.#services.length} services from ${message._dispatcherId?.substring(message._serviceId!.length - 3)}`)
+    LOGGER.info(`[${this.idShort}] send message to ${this.#services.length} services from ${message._serviceId?.substring(message._serviceId!.length - 3)}`)
     this.#services.forEach((service) => {
       if (service.id !== message._serviceId) {
         LOGGER.info(`[${this.idShort}] send message on service [${service.idShort}]`)
