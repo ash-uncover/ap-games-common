@@ -89,8 +89,9 @@ _MessageDispatcherClass_id = new WeakMap(), _MessageDispatcherClass_services = n
     }
 }, _MessageDispatcherClass_handleConnectionRequest = function _MessageDispatcherClass_handleConnectionRequest(event) {
     var _a;
-    LOGGER.info(`[${this.idShort}] child trying to connect`);
     const dispatcherId = (_a = event.data) === null || _a === void 0 ? void 0 : _a.dispatcherId;
+    LOGGER.info(`[${this.idShort}] child trying to connect [${dispatcherId.substring(dispatcherId.length - 3)}]`);
+    LOGGER.info(`[${this.idShort}] ${__classPrivateFieldGet(this, _MessageDispatcherClass_dispatchers, "f").join(', ')}]`);
     const wdow = event.source;
     if (!__classPrivateFieldGet(this, _MessageDispatcherClass_dispatchers, "f").includes(dispatcherId)) {
         const service = new MessageServiceFrame_1.default(wdow);

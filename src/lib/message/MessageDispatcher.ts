@@ -93,8 +93,9 @@ class MessageDispatcherClass {
   }
 
   #handleConnectionRequest(event: MessageEvent) {
-    LOGGER.info(`[${this.idShort}] child trying to connect`)
     const dispatcherId = event.data?.dispatcherId
+    LOGGER.info(`[${this.idShort}] child trying to connect [${dispatcherId.substring(dispatcherId.length - 3)}]`)
+    LOGGER.info(`[${this.idShort}] ${this.#dispatchers.join(', ')}]`)
     const wdow = <Window>event.source!
     if (!this.#dispatchers.includes(dispatcherId)) {
       const service = new MessageServiceFrame(wdow)
