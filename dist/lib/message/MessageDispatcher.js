@@ -35,14 +35,17 @@ class MessageDispatcher {
     get id() {
         return __classPrivateFieldGet(this, _MessageDispatcher_id, "f");
     }
+    get idShort() {
+        return __classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3);
+    }
     // Public //
     init(handleMessage) {
         __classPrivateFieldSet(this, _MessageDispatcher_init, true, "f");
         __classPrivateFieldSet(this, _MessageDispatcher_handle, handleMessage, "f");
         __classPrivateFieldSet(this, _MessageDispatcher_closure, MessageService_1.default.addDispatcher(this), "f");
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3)}] starting`);
+        LOGGER.info(`[${this.idShort}] starting`);
         return () => {
-            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3)}] closing`);
+            LOGGER.info(`[${this.idShort}] closing`);
             __classPrivateFieldSet(this, _MessageDispatcher_init, false, "f");
             __classPrivateFieldSet(this, _MessageDispatcher_handle, null, "f");
             if (__classPrivateFieldGet(this, _MessageDispatcher_closure, "f")) {
@@ -52,20 +55,20 @@ class MessageDispatcher {
     }
     onMessage(message) {
         if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f") && __classPrivateFieldGet(this, _MessageDispatcher_handle, "f")) {
-            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3)}] (on message) sending message`);
+            LOGGER.info(`[${this.idShort}] (on message) sending message`);
             __classPrivateFieldGet(this, _MessageDispatcher_handle, "f").call(this, message);
         }
         else {
-            console.warn(`Receive Message but not init: ${this.id}`);
+            console.warn(`Receive Message but not init: ${this.idShort}`);
         }
     }
     sendMessage(message) {
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3)}] send message`);
+        LOGGER.info(`[${this.idShort}] send message`);
         if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f")) {
-            MessageService_1.default.sendMessage(Object.assign({ _dispatcherId: this.id }, message));
+            MessageService_1.default.sendMessage(Object.assign(Object.assign({}, message), { _dispatcherId: this.id }));
         }
         else {
-            console.warn(`Send Message but not init: ${this.id}`);
+            console.warn(`Send Message but not init: ${this.idShort}`);
         }
     }
 }

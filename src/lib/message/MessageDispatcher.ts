@@ -26,15 +26,19 @@ class MessageDispatcher {
     return this.#id
   }
 
+  get idShort() {
+    return this.#id.substring(this.#id.length - 3)
+  }
+
   // Public //
 
   init(handleMessage: ((message: Message) => void)) {
     this.#init = true
     this.#handle = handleMessage
     this.#closure = MessageService.addDispatcher(this)
-    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] starting`)
+    LOGGER.info(`[${this.idShort}] starting`)
     return () => {
-      LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] closing`)
+      LOGGER.info(`[${this.idShort}] closing`)
       this.#init = false
       this.#handle = null
       if (this.#closure) {
@@ -45,22 +49,22 @@ class MessageDispatcher {
 
   onMessage(message: Message) {
     if (this.#init && this.#handle) {
-      LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] (on message) sending message`)
+      LOGGER.info(`[${this.idShort}] (on message) sending message`)
       this.#handle(message)
     } else {
-      console.warn(`Receive Message but not init: ${this.id}`)
+      console.warn(`Receive Message but not init: ${this.idShort}`)
     }
   }
 
   sendMessage(message: Message) {
-    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] send message`)
+    LOGGER.info(`[${this.idShort}] send message`)
     if (this.#init) {
       MessageService.sendMessage({
+        ...message,
         _dispatcherId: this.id,
-        ...message
       })
     } else {
-      console.warn(`Send Message but not init: ${this.id}`)
+      console.warn(`Send Message but not init: ${this.idShort}`)
     }
   }
 }
