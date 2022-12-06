@@ -3,7 +3,7 @@ import DataManagerBase from './lib/DataManager'
 import FullscreenHelperBase from './lib/FullscreenHelper'
 
 import MessageBase from './lib/message/Message'
-import MessageDispatcherBase from './lib/message/MessageService'
+import MessageServiceBase from './lib/message/MessageService'
 
 import ShortcutManagerBase from './lib/ShortcutManager'
 
@@ -20,6 +20,6 @@ export const DataManager = DataManagerBase
 export const FullscreenHelper = FullscreenHelperBase
 // Message
 export type Message = MessageBase
-export const MessageDispatcher = MessageDispatcherBase
+export const MessageService = MessageServiceBase
 // Shortcuts
 export const ShortcutManager = ShortcutManagerBase

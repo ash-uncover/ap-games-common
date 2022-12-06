@@ -17,7 +17,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ShortcutManager = exports.MessageDispatcher = exports.FullscreenHelper = exports.DataManager = exports.AudioManager = void 0;
+exports.ShortcutManager = exports.MessageService = exports.FullscreenHelper = exports.DataManager = exports.AudioManager = void 0;
 const AudioManager_1 = __importDefault(require("./lib/AudioManager"));
 const DataManager_1 = __importDefault(require("./lib/DataManager"));
 const FullscreenHelper_1 = __importDefault(require("./lib/FullscreenHelper"));
@@ -33,7 +33,7 @@ exports.AudioManager = AudioManager_1.default;
 exports.DataManager = DataManager_1.default;
 // Fullscreen
 exports.FullscreenHelper = FullscreenHelper_1.default;
-exports.MessageDispatcher = MessageService_1.default;
+exports.MessageService = MessageService_1.default;
 // Shortcuts
 exports.ShortcutManager = ShortcutManager_1.default;
 //# sourceMappingURL=index.js.map
