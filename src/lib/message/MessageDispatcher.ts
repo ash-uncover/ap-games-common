@@ -98,7 +98,7 @@ class MessageDispatcherClass {
     LOGGER.info(`[${this.idShort}] current childs: ${this.#dispatchers.join(', ')}`)
     const wdow = <Window>event.source!
     if (!this.#dispatchers.includes(dispatcherId)) {
-      const service = new MessageServiceFrame(wdow)
+      const service = new MessageServiceFrame(dispatcherId, wdow)
       this.addService(service)
       this.#dispatchers.push(dispatcherId)
       service.onMessage({
@@ -112,7 +112,7 @@ class MessageDispatcherClass {
 
   #handleConnectionAcknowledge(event: MessageEvent) {
     LOGGER.info(`[${this.idShort}] parent acknowledge connection`)
-    const service = new MessageServiceFrame(window.parent, event.data?._serviceId)
+    const service = new MessageServiceFrame(event.data?._dispatcherId, window.parent, event.data?._serviceId)
     this.addService(service)
   }
 }

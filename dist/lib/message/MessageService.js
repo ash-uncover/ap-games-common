@@ -43,9 +43,9 @@ class MessageService {
         __classPrivateFieldSet(this, _MessageService_init, true, "f");
         __classPrivateFieldSet(this, _MessageService_handle, handleMessage, "f");
         __classPrivateFieldSet(this, _MessageService_closure, MessageDispatcher_1.default.addService(this), "f");
-        LOGGER.info(`[${this.idShort}] starting`);
+        LOGGER.info(`${this.idShort} starting`);
         return () => {
-            LOGGER.info(`[${this.idShort}] closing`);
+            LOGGER.info(`${this.idShort} closing`);
             __classPrivateFieldSet(this, _MessageService_init, false, "f");
             __classPrivateFieldSet(this, _MessageService_handle, null, "f");
             if (__classPrivateFieldGet(this, _MessageService_closure, "f")) {
@@ -55,20 +55,20 @@ class MessageService {
     }
     onMessage(message) {
         if (__classPrivateFieldGet(this, _MessageService_init, "f") && __classPrivateFieldGet(this, _MessageService_handle, "f")) {
-            LOGGER.info(`[${this.idShort}] onMessage`);
+            LOGGER.info(`${this.idShort} onMessage`);
             __classPrivateFieldGet(this, _MessageService_handle, "f").call(this, message);
         }
         else {
-            console.warn(`[${this.idShort}] onMessage but not init`);
+            console.warn(`${this.idShort} onMessage but not init`);
         }
     }
     sendMessage(message) {
-        LOGGER.info(`[${this.idShort}] sendMessage`);
+        LOGGER.info(`${this.idShort} sendMessage`);
         if (__classPrivateFieldGet(this, _MessageService_init, "f")) {
             MessageDispatcher_1.default.sendMessage(Object.assign(Object.assign({}, message), { _serviceId: this.id }));
         }
         else {
-            console.warn(`[${this.idShort}] sendMessage but not init`);
+            console.warn(`${this.idShort} sendMessage but not init`);
         }
     }
 }

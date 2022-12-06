@@ -11,11 +11,13 @@ class MessageServiceFrame implements IMessageService {
   // Attributes //
 
   #id: string
+  #dispatcherId: string
   #window: Window
 
   // Constructor //
 
-  constructor(wdow: Window, id?: string) {
+  constructor(dispatcherId: string, wdow: Window, id?: string) {
+    this.#dispatcherId = dispatcherId
     this.#id = id || `message-service-frame-${UUID.next()}`
     this.#window = wdow
     window.addEventListener(
@@ -56,7 +58,7 @@ class MessageServiceFrame implements IMessageService {
 
   #handleMessage(event: MessageEvent) {
     const data = event.data || {}
-    if (data._serviceId && data._dispatcherId) {
+    if (data._serviceId && data._dispatcherId && data._dispatcherId === this.#dispatcherId) {
       this.sendMessage({
         _serviceId: this.#id,
         type: data.type,

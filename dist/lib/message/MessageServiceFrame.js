@@ -13,7 +13,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _MessageServiceFrame_instances, _MessageServiceFrame_id, _MessageServiceFrame_window, _MessageServiceFrame_handleMessage;
+var _MessageServiceFrame_instances, _MessageServiceFrame_id, _MessageServiceFrame_dispatcherId, _MessageServiceFrame_window, _MessageServiceFrame_handleMessage;
 Object.defineProperty(exports, "__esModule", { value: true });
 const js_utils_1 = require("@uncover/js-utils");
 const js_utils_logger_1 = __importDefault(require("@uncover/js-utils-logger"));
@@ -21,11 +21,13 @@ const MessageDispatcher_1 = __importDefault(require("./MessageDispatcher"));
 const LOGGER = new js_utils_logger_1.default('MessageServiceFrame', 0);
 class MessageServiceFrame {
     // Constructor //
-    constructor(wdow, id) {
+    constructor(dispatcherId, wdow, id) {
         _MessageServiceFrame_instances.add(this);
         // Attributes //
         _MessageServiceFrame_id.set(this, void 0);
+        _MessageServiceFrame_dispatcherId.set(this, void 0);
         _MessageServiceFrame_window.set(this, void 0);
+        __classPrivateFieldSet(this, _MessageServiceFrame_dispatcherId, dispatcherId, "f");
         __classPrivateFieldSet(this, _MessageServiceFrame_id, id || `message-service-frame-${js_utils_1.UUID.next()}`, "f");
         __classPrivateFieldSet(this, _MessageServiceFrame_window, wdow, "f");
         window.addEventListener('message', __classPrivateFieldGet(this, _MessageServiceFrame_instances, "m", _MessageServiceFrame_handleMessage).bind(this));
@@ -47,9 +49,9 @@ class MessageServiceFrame {
         MessageDispatcher_1.default.sendMessage(Object.assign(Object.assign({}, message), { _serviceId: this.id }));
     }
 }
-_MessageServiceFrame_id = new WeakMap(), _MessageServiceFrame_window = new WeakMap(), _MessageServiceFrame_instances = new WeakSet(), _MessageServiceFrame_handleMessage = function _MessageServiceFrame_handleMessage(event) {
+_MessageServiceFrame_id = new WeakMap(), _MessageServiceFrame_dispatcherId = new WeakMap(), _MessageServiceFrame_window = new WeakMap(), _MessageServiceFrame_instances = new WeakSet(), _MessageServiceFrame_handleMessage = function _MessageServiceFrame_handleMessage(event) {
     const data = event.data || {};
-    if (data._serviceId && data._dispatcherId) {
+    if (data._serviceId && data._dispatcherId && data._dispatcherId === __classPrivateFieldGet(this, _MessageServiceFrame_dispatcherId, "f")) {
         this.sendMessage({
             _serviceId: __classPrivateFieldGet(this, _MessageServiceFrame_id, "f"),
             type: data.type,

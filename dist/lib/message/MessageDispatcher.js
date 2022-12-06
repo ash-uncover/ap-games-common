@@ -94,7 +94,7 @@ _MessageDispatcherClass_id = new WeakMap(), _MessageDispatcherClass_services = n
     LOGGER.info(`[${this.idShort}] current childs: ${__classPrivateFieldGet(this, _MessageDispatcherClass_dispatchers, "f").join(', ')}`);
     const wdow = event.source;
     if (!__classPrivateFieldGet(this, _MessageDispatcherClass_dispatchers, "f").includes(dispatcherId)) {
-        const service = new MessageServiceFrame_1.default(wdow);
+        const service = new MessageServiceFrame_1.default(dispatcherId, wdow);
         this.addService(service);
         __classPrivateFieldGet(this, _MessageDispatcherClass_dispatchers, "f").push(dispatcherId);
         service.onMessage({
@@ -105,9 +105,9 @@ _MessageDispatcherClass_id = new WeakMap(), _MessageDispatcherClass_services = n
         });
     }
 }, _MessageDispatcherClass_handleConnectionAcknowledge = function _MessageDispatcherClass_handleConnectionAcknowledge(event) {
-    var _a;
+    var _a, _b;
     LOGGER.info(`[${this.idShort}] parent acknowledge connection`);
-    const service = new MessageServiceFrame_1.default(window.parent, (_a = event.data) === null || _a === void 0 ? void 0 : _a._serviceId);
+    const service = new MessageServiceFrame_1.default((_a = event.data) === null || _a === void 0 ? void 0 : _a._dispatcherId, window.parent, (_b = event.data) === null || _b === void 0 ? void 0 : _b._serviceId);
     this.addService(service);
 };
 const MessageDispatcher = new MessageDispatcherClass();
