@@ -40,9 +40,9 @@ class MessageDispatcher {
         __classPrivateFieldSet(this, _MessageDispatcher_init, true, "f");
         __classPrivateFieldSet(this, _MessageDispatcher_handle, handleMessage, "f");
         __classPrivateFieldSet(this, _MessageDispatcher_closure, MessageService_1.default.addDispatcher(this), "f");
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f")}] starting`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3)}] starting`);
         return () => {
-            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f")}] closing`);
+            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3)}] closing`);
             __classPrivateFieldSet(this, _MessageDispatcher_init, false, "f");
             __classPrivateFieldSet(this, _MessageDispatcher_handle, null, "f");
             if (__classPrivateFieldGet(this, _MessageDispatcher_closure, "f")) {
@@ -52,7 +52,7 @@ class MessageDispatcher {
     }
     onMessage(message) {
         if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f") && __classPrivateFieldGet(this, _MessageDispatcher_handle, "f")) {
-            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f")}] (on message) sending message`);
+            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3)}] (on message) sending message`);
             __classPrivateFieldGet(this, _MessageDispatcher_handle, "f").call(this, message);
         }
         else {
@@ -60,7 +60,7 @@ class MessageDispatcher {
         }
     }
     sendMessage(message) {
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f")}] send message`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageDispatcher_id, "f").substring(__classPrivateFieldGet(this, _MessageDispatcher_id, "f").length - 3)}] send message`);
         if (__classPrivateFieldGet(this, _MessageDispatcher_init, "f")) {
             MessageService_1.default.sendMessage(Object.assign({ _dispatcherId: this.id }, message));
         }

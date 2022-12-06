@@ -36,7 +36,7 @@ class MessageServiceClass {
         window.addEventListener('message', __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_handleMessage).bind(this));
         if (window !== window.parent) {
             // Try to connect to a parent service
-            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] contact parent`);
+            LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceClass_id, "f").length - 3)}] contact parent`);
             window.parent.postMessage({
                 _serviceId: __classPrivateFieldGet(this, _MessageServiceClass_id, "f"),
                 type: CONNECTION_REQUEST
@@ -46,21 +46,21 @@ class MessageServiceClass {
     // Getters & Setters //
     // Public Methods //
     addDispatcher(dispatcher) {
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] add dispatcher [${dispatcher.id}]`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceClass_id, "f").length - 3)}] add dispatcher [${dispatcher.id}]`);
         if (!__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").includes(dispatcher)) {
             __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").push(dispatcher);
         }
         return () => this.removeDispatcher(dispatcher);
     }
     removeDispatcher(dispatcher) {
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] remove dispatcher [${dispatcher.id}]`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceClass_id, "f").length - 3)}] remove dispatcher [${dispatcher.id}]`);
         __classPrivateFieldSet(this, _MessageServiceClass_dispatchers, __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").filter(disp => disp !== dispatcher), "f");
     }
     sendMessage(message) {
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message to ${__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").length} dispatchers from ${message._dispatcherId}`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceClass_id, "f").length - 3)}] send message to ${__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").length} dispatchers from ${message._dispatcherId}`);
         __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").forEach((dispatcher) => {
             if (dispatcher.id !== message._dispatcherId) {
-                LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] send message on dispatcher [${dispatcher.id}]`);
+                LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceClass_id, "f").length - 3)}] send message on dispatcher [${dispatcher.id}]`);
                 dispatcher.onMessage(Object.assign({ _serviceId: __classPrivateFieldGet(this, _MessageServiceClass_id, "f") }, message));
             }
         });
@@ -76,7 +76,8 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
     }
     else if (((_e = event.data) === null || _e === void 0 ? void 0 : _e._serviceId) && ((_f = event.data) === null || _f === void 0 ? void 0 : _f._dispatcherId)) {
         // When receiving a post message
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] received message`);
+        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceClass_id, "f").length - 3)}] received message`);
+        console.log(event);
         /*
         this.sendMessage({
           _serviceId: event.data?._serviceId,
@@ -89,7 +90,7 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
 }, _MessageServiceClass_handleConnectionRequest = function _MessageServiceClass_handleConnectionRequest(event) {
     var _a;
     // This is when a child service wants to connect
-    LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] child trying to connect`);
+    LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceClass_id, "f").length - 3)}] child trying to connect`);
     console.log(event);
     const serviceId = (_a = event.data) === null || _a === void 0 ? void 0 : _a._serviceId;
     const wdow = event.source;
@@ -108,7 +109,7 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
 }, _MessageServiceClass_handleConnectionAcknowledge = function _MessageServiceClass_handleConnectionAcknowledge(event) {
     var _a;
     // This is when a parent service has acknoledge connection
-    LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] parent acknowledge connection`);
+    LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceClass_id, "f").length - 3)}] parent acknowledge connection`);
     console.log(event);
     const parentDispatcher = new MessageDispatcher_1.default((_a = event.data) === null || _a === void 0 ? void 0 : _a._dispatcherId);
     parentDispatcher.init((message) => {

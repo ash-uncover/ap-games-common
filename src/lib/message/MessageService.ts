@@ -27,7 +27,7 @@ class MessageServiceClass {
     )
     if (window !== window.parent) {
       // Try to connect to a parent service
-      LOGGER.info(`[${this.#id}] contact parent`)
+      LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] contact parent`)
       window.parent.postMessage({
         _serviceId: this.#id,
         type: CONNECTION_REQUEST
@@ -40,7 +40,7 @@ class MessageServiceClass {
   // Public Methods //
 
   addDispatcher(dispatcher: MessageDispatcher) {
-    LOGGER.info(`[${this.#id}] add dispatcher [${dispatcher.id}]`)
+    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] add dispatcher [${dispatcher.id}]`)
     if (!this.#dispatchers.includes(dispatcher)) {
       this.#dispatchers.push(dispatcher)
     }
@@ -48,15 +48,15 @@ class MessageServiceClass {
   }
 
   removeDispatcher(dispatcher: MessageDispatcher) {
-    LOGGER.info(`[${this.#id}] remove dispatcher [${dispatcher.id}]`)
+    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] remove dispatcher [${dispatcher.id}]`)
     this.#dispatchers = this.#dispatchers.filter(disp => disp !== dispatcher)
   }
 
   sendMessage(message: Message) {
-    LOGGER.info(`[${this.#id}] send message to ${this.#dispatchers.length} dispatchers from ${message._dispatcherId}`)
+    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] send message to ${this.#dispatchers.length} dispatchers from ${message._dispatcherId}`)
     this.#dispatchers.forEach((dispatcher) => {
       if (dispatcher.id !== message._dispatcherId) {
-        LOGGER.info(`[${this.#id}] send message on dispatcher [${dispatcher.id}]`)
+        LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] send message on dispatcher [${dispatcher.id}]`)
         dispatcher.onMessage({
           _serviceId: this.#id,
           ...message,
@@ -74,7 +74,8 @@ class MessageServiceClass {
       this.#handleConnectionAcknowledge(event)
     } else if (event.data?._serviceId && event.data?._dispatcherId) {
       // When receiving a post message
-      LOGGER.info(`[${this.#id}] received message`)
+      LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] received message`)
+      console.log(event)
       /*
       this.sendMessage({
         _serviceId: event.data?._serviceId,
@@ -88,7 +89,7 @@ class MessageServiceClass {
 
   #handleConnectionRequest(event: MessageEvent) {
     // This is when a child service wants to connect
-    LOGGER.info(`[${this.#id}] child trying to connect`)
+    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] child trying to connect`)
     console.log(event)
     const serviceId = event.data?._serviceId
     const wdow = <Window>event.source!
@@ -108,7 +109,7 @@ class MessageServiceClass {
 
   #handleConnectionAcknowledge(event: MessageEvent) {
     // This is when a parent service has acknoledge connection
-    LOGGER.info(`[${this.#id}] parent acknowledge connection`)
+    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] parent acknowledge connection`)
     console.log(event)
     const parentDispatcher = new MessageDispatcher(event.data?._dispatcherId)
     parentDispatcher.init((message) => {

@@ -32,9 +32,9 @@ class MessageDispatcher {
     this.#init = true
     this.#handle = handleMessage
     this.#closure = MessageService.addDispatcher(this)
-    LOGGER.info(`[${this.#id}] starting`)
+    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] starting`)
     return () => {
-      LOGGER.info(`[${this.#id}] closing`)
+      LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] closing`)
       this.#init = false
       this.#handle = null
       if (this.#closure) {
@@ -45,7 +45,7 @@ class MessageDispatcher {
 
   onMessage(message: Message) {
     if (this.#init && this.#handle) {
-      LOGGER.info(`[${this.#id}] (on message) sending message`)
+      LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] (on message) sending message`)
       this.#handle(message)
     } else {
       console.warn(`Receive Message but not init: ${this.id}`)
@@ -53,7 +53,7 @@ class MessageDispatcher {
   }
 
   sendMessage(message: Message) {
-    LOGGER.info(`[${this.#id}] send message`)
+    LOGGER.info(`[${this.#id.substring(this.#id.length - 3)}] send message`)
     if (this.#init) {
       MessageService.sendMessage({
         _dispatcherId: this.id,
