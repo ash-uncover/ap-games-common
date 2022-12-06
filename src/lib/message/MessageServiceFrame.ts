@@ -31,13 +31,13 @@ class MessageServiceFrame implements IMessageService {
   }
 
   get idShort() {
-    return this.#id.substring(this.#id.length - 3)
+    return `[${MessageDispatcher.idShort}-${this.#id.substring(this.#id.length - 3)}]`
   }
 
   // Public Methods //
 
   onMessage(message: Message) {
-    LOGGER.info(`[${this.idShort}] onMessage`)
+    LOGGER.info(`${this.idShort} onMessage`)
     this.#window.postMessage({
       ...message,
       _serviceId: this.#id
@@ -45,7 +45,7 @@ class MessageServiceFrame implements IMessageService {
   }
 
   sendMessage(message: Message) {
-    LOGGER.info(`[${this.idShort}] sendMessage`)
+    LOGGER.info(`${this.idShort} sendMessage`)
     MessageDispatcher.sendMessage({
       ...message,
       _serviceId: this.id,

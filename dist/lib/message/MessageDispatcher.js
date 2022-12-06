@@ -52,22 +52,22 @@ class MessageDispatcherClass {
     }
     // Public Methods //
     addService(service) {
-        LOGGER.info(`[${this.idShort}] add service [${service.idShort}]`);
+        LOGGER.info(`[${this.idShort}] add service ${service.idShort}`);
         if (!__classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").includes(service)) {
             __classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").push(service);
         }
         return () => this.removeService(service);
     }
     removeService(service) {
-        LOGGER.info(`[${this.idShort}] remove service [${service.idShort}]`);
+        LOGGER.info(`[${this.idShort}] remove service ${service.idShort}`);
         __classPrivateFieldSet(this, _MessageDispatcherClass_services, __classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").filter(serv => serv !== service), "f");
     }
     sendMessage(message) {
         var _a;
-        LOGGER.info(`[${this.idShort}] send message to ${__classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").length} services from ${(_a = message._serviceId) === null || _a === void 0 ? void 0 : _a.substring(message._serviceId.length - 3)}`);
+        LOGGER.info(`[${this.idShort}] send message to ${__classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").length - 1} services from [${this.idShort}-${(_a = message._serviceId) === null || _a === void 0 ? void 0 : _a.substring(message._serviceId.length - 3)}]`);
         __classPrivateFieldGet(this, _MessageDispatcherClass_services, "f").forEach((service) => {
             if (service.id !== message._serviceId) {
-                LOGGER.info(`[${this.idShort}] send message on service [${service.idShort}]`);
+                LOGGER.info(`[${this.idShort}] send message on service ${service.idShort}`);
                 service.onMessage(Object.assign({ _dispatcherId: __classPrivateFieldGet(this, _MessageDispatcherClass_id, "f") }, message));
             }
         });
@@ -91,7 +91,7 @@ _MessageDispatcherClass_id = new WeakMap(), _MessageDispatcherClass_services = n
     var _a;
     const dispatcherId = (_a = event.data) === null || _a === void 0 ? void 0 : _a._dispatcherId;
     LOGGER.info(`[${this.idShort}] child trying to connect [${dispatcherId.substring(dispatcherId.length - 3)}]`);
-    LOGGER.info(`[${this.idShort}] ${__classPrivateFieldGet(this, _MessageDispatcherClass_dispatchers, "f").join(', ')}]`);
+    LOGGER.info(`[${this.idShort}] current childs: ${__classPrivateFieldGet(this, _MessageDispatcherClass_dispatchers, "f").join(', ')}`);
     const wdow = event.source;
     if (!__classPrivateFieldGet(this, _MessageDispatcherClass_dispatchers, "f").includes(dispatcherId)) {
         const service = new MessageServiceFrame_1.default(wdow);

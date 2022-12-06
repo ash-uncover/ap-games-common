@@ -49,7 +49,7 @@ class MessageDispatcherClass {
   // Public Methods //
 
   addService(service: IMessageService) {
-    LOGGER.info(`[${this.idShort}] add service [${service.idShort}]`)
+    LOGGER.info(`[${this.idShort}] add service ${service.idShort}`)
     if (!this.#services.includes(service)) {
       this.#services.push(service)
     }
@@ -57,15 +57,15 @@ class MessageDispatcherClass {
   }
 
   removeService(service: IMessageService) {
-    LOGGER.info(`[${this.idShort}] remove service [${service.idShort}]`)
+    LOGGER.info(`[${this.idShort}] remove service ${service.idShort}`)
     this.#services = this.#services.filter(serv => serv !== service)
   }
 
   sendMessage(message: Message) {
-    LOGGER.info(`[${this.idShort}] send message to ${this.#services.length} services from ${message._serviceId?.substring(message._serviceId!.length - 3)}`)
+    LOGGER.info(`[${this.idShort}] send message to ${this.#services.length - 1} services from [${this.idShort}-${message._serviceId?.substring(message._serviceId!.length - 3)}]`)
     this.#services.forEach((service) => {
       if (service.id !== message._serviceId) {
-        LOGGER.info(`[${this.idShort}] send message on service [${service.idShort}]`)
+        LOGGER.info(`[${this.idShort}] send message on service ${service.idShort}`)
         service.onMessage({
           _dispatcherId: this.#id,
           ...message,
@@ -95,7 +95,7 @@ class MessageDispatcherClass {
   #handleConnectionRequest(event: MessageEvent) {
     const dispatcherId = event.data?._dispatcherId
     LOGGER.info(`[${this.idShort}] child trying to connect [${dispatcherId.substring(dispatcherId.length - 3)}]`)
-    LOGGER.info(`[${this.idShort}] ${this.#dispatchers.join(', ')}]`)
+    LOGGER.info(`[${this.idShort}] current childs: ${this.#dispatchers.join(', ')}`)
     const wdow = <Window>event.source!
     if (!this.#dispatchers.includes(dispatcherId)) {
       const service = new MessageServiceFrame(wdow)

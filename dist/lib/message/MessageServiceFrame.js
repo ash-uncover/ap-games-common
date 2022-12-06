@@ -35,15 +35,15 @@ class MessageServiceFrame {
         return __classPrivateFieldGet(this, _MessageServiceFrame_id, "f");
     }
     get idShort() {
-        return __classPrivateFieldGet(this, _MessageServiceFrame_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceFrame_id, "f").length - 3);
+        return `[${MessageDispatcher_1.default.idShort}-${__classPrivateFieldGet(this, _MessageServiceFrame_id, "f").substring(__classPrivateFieldGet(this, _MessageServiceFrame_id, "f").length - 3)}]`;
     }
     // Public Methods //
     onMessage(message) {
-        LOGGER.info(`[${this.idShort}] onMessage`);
+        LOGGER.info(`${this.idShort} onMessage`);
         __classPrivateFieldGet(this, _MessageServiceFrame_window, "f").postMessage(Object.assign(Object.assign({}, message), { _serviceId: __classPrivateFieldGet(this, _MessageServiceFrame_id, "f") }), '*');
     }
     sendMessage(message) {
-        LOGGER.info(`[${this.idShort}] sendMessage`);
+        LOGGER.info(`${this.idShort} sendMessage`);
         MessageDispatcher_1.default.sendMessage(Object.assign(Object.assign({}, message), { _serviceId: this.id }));
     }
 }
