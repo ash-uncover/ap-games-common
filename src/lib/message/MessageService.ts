@@ -63,7 +63,7 @@ class MessageServiceClass {
   }
 
   sendMessage(message: Message) {
-    LOGGER.info(`[${this.idShort}] send message to ${this.#dispatchers.length} dispatchers from ${message._dispatcherId}`)
+    LOGGER.info(`[${this.idShort}] send message to ${this.#dispatchers.length} dispatchers from ${message._dispatcherId?.substring(message._dispatcherId!.length - 3)}`)
     this.#dispatchers.forEach((dispatcher) => {
       if (dispatcher.id !== message._dispatcherId) {
         LOGGER.info(`[${this.idShort}] send message on dispatcher [${dispatcher.idShort}]`)
@@ -82,16 +82,6 @@ class MessageServiceClass {
       this.#handleConnectionRequest(event)
     } else if (event.data?._serviceId && event.data?.type === CONNECTION_ACKNOWLEDGE) {
       this.#handleConnectionAcknowledge(event)
-    } else if (event.data?._serviceId && event.data?._dispatcherId) {
-      // When receiving a post message
-      LOGGER.info(`[${this.idShort}] received message`)
-      console.log(event)
-      this.sendMessage({
-        _serviceId: event.data?._serviceId,
-        _dispatcherId: event.data?._dispatcherId,
-        type: event.data?.type,
-        payload: event.data?.payload
-      })
     }
   }
 

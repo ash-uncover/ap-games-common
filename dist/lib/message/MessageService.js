@@ -63,7 +63,8 @@ class MessageServiceClass {
         __classPrivateFieldSet(this, _MessageServiceClass_dispatchers, __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").filter(disp => disp !== dispatcher), "f");
     }
     sendMessage(message) {
-        LOGGER.info(`[${this.idShort}] send message to ${__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").length} dispatchers from ${message._dispatcherId}`);
+        var _a;
+        LOGGER.info(`[${this.idShort}] send message to ${__classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").length} dispatchers from ${(_a = message._dispatcherId) === null || _a === void 0 ? void 0 : _a.substring(message._dispatcherId.length - 3)}`);
         __classPrivateFieldGet(this, _MessageServiceClass_dispatchers, "f").forEach((dispatcher) => {
             if (dispatcher.id !== message._dispatcherId) {
                 LOGGER.info(`[${this.idShort}] send message on dispatcher [${dispatcher.idShort}]`);
@@ -73,23 +74,12 @@ class MessageServiceClass {
     }
 }
 _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new WeakMap(), _MessageServiceClass_services = new WeakMap(), _MessageServiceClass_instances = new WeakSet(), _MessageServiceClass_handleMessage = function _MessageServiceClass_handleMessage(event) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+    var _a, _b, _c, _d;
     if (((_a = event.data) === null || _a === void 0 ? void 0 : _a._serviceId) && ((_b = event.data) === null || _b === void 0 ? void 0 : _b.type) === CONNECTION_REQUEST) {
         __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_handleConnectionRequest).call(this, event);
     }
     else if (((_c = event.data) === null || _c === void 0 ? void 0 : _c._serviceId) && ((_d = event.data) === null || _d === void 0 ? void 0 : _d.type) === CONNECTION_ACKNOWLEDGE) {
         __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_handleConnectionAcknowledge).call(this, event);
-    }
-    else if (((_e = event.data) === null || _e === void 0 ? void 0 : _e._serviceId) && ((_f = event.data) === null || _f === void 0 ? void 0 : _f._dispatcherId)) {
-        // When receiving a post message
-        LOGGER.info(`[${this.idShort}] received message`);
-        console.log(event);
-        this.sendMessage({
-            _serviceId: (_g = event.data) === null || _g === void 0 ? void 0 : _g._serviceId,
-            _dispatcherId: (_h = event.data) === null || _h === void 0 ? void 0 : _h._dispatcherId,
-            type: (_j = event.data) === null || _j === void 0 ? void 0 : _j.type,
-            payload: (_k = event.data) === null || _k === void 0 ? void 0 : _k.payload
-        });
     }
 }, _MessageServiceClass_handleConnectionRequest = function _MessageServiceClass_handleConnectionRequest(event) {
     var _a;
