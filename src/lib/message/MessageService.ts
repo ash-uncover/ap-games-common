@@ -69,31 +69,29 @@ class MessageServiceClass {
 
   #handleMessage(event: MessageEvent) {
     if (event.data?._serviceId && event.data?.type === CONNECTION_REQUEST) {
-      // This is when a child service wants to connect
-      LOGGER.info(`[${this.#id}] child trying to connect`)
-      const wdow = <Window>event.source!
-      this.#addService(event.data?._serviceId, wdow)
+      this.#handleConnectionRequest(event)
     } else if (event.data?._serviceId && event.data?.type === CONNECTION_ACKNOWLEDGE) {
-      // This is when a parent service has acknoledge connection
-      LOGGER.info(`[${this.#id}] parent acknowledge connection`)
-      const parentDispatcher = new MessageDispatcher(event.data?._dispatcherId)
-      parentDispatcher.init((message) => {
-        window.parent.postMessage(message, '*')
-      })
-      this.addDispatcher(parentDispatcher)
+      this.#handleConnectionAcknowledge(event)
     } else if (event.data?._serviceId && event.data?._dispatcherId) {
       // When receiving a post message
       LOGGER.info(`[${this.#id}] received message`)
+      /*
       this.sendMessage({
         _serviceId: event.data?._serviceId,
         _dispatcherId: event.data?._dispatcherId,
         type: event.data?.type,
         payload: event.data?.payload
       })
+      */
     }
   }
 
-  #addService(serviceId: string, wdow: Window) {
+  #handleConnectionRequest(event: MessageEvent) {
+    // This is when a child service wants to connect
+    LOGGER.info(`[${this.#id}] child trying to connect`)
+    console.log(event)
+    const serviceId = event.data?._serviceId
+    const wdow = <Window>event.source!
     if (!this.#services.includes(serviceId)) {
       const childDispatcher = new MessageDispatcher()
       const handler = (message: Message) => wdow.postMessage(message, '*')
@@ -106,6 +104,17 @@ class MessageServiceClass {
         type: CONNECTION_ACKNOWLEDGE
       }, '*')
     }
+  }
+
+  #handleConnectionAcknowledge(event: MessageEvent) {
+    // This is when a parent service has acknoledge connection
+    LOGGER.info(`[${this.#id}] parent acknowledge connection`)
+    console.log(event)
+    const parentDispatcher = new MessageDispatcher(event.data?._dispatcherId)
+    parentDispatcher.init((message) => {
+      window.parent.postMessage(message, '*')
+    })
+    this.addDispatcher(parentDispatcher)
   }
 }
 

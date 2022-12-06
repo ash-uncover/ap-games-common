@@ -13,7 +13,7 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var _MessageServiceClass_instances, _MessageServiceClass_id, _MessageServiceClass_dispatchers, _MessageServiceClass_services, _MessageServiceClass_handleMessage, _MessageServiceClass_addService;
+var _MessageServiceClass_instances, _MessageServiceClass_id, _MessageServiceClass_dispatchers, _MessageServiceClass_services, _MessageServiceClass_handleMessage, _MessageServiceClass_handleConnectionRequest, _MessageServiceClass_handleConnectionAcknowledge;
 Object.defineProperty(exports, "__esModule", { value: true });
 const js_utils_1 = require("@uncover/js-utils");
 const js_utils_logger_1 = __importDefault(require("@uncover/js-utils-logger"));
@@ -67,33 +67,32 @@ class MessageServiceClass {
     }
 }
 _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new WeakMap(), _MessageServiceClass_services = new WeakMap(), _MessageServiceClass_instances = new WeakSet(), _MessageServiceClass_handleMessage = function _MessageServiceClass_handleMessage(event) {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+    var _a, _b, _c, _d, _e, _f;
     if (((_a = event.data) === null || _a === void 0 ? void 0 : _a._serviceId) && ((_b = event.data) === null || _b === void 0 ? void 0 : _b.type) === CONNECTION_REQUEST) {
-        // This is when a child service wants to connect
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] child trying to connect`);
-        const wdow = event.source;
-        __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_addService).call(this, (_c = event.data) === null || _c === void 0 ? void 0 : _c._serviceId, wdow);
+        __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_handleConnectionRequest).call(this, event);
     }
-    else if (((_d = event.data) === null || _d === void 0 ? void 0 : _d._serviceId) && ((_e = event.data) === null || _e === void 0 ? void 0 : _e.type) === CONNECTION_ACKNOWLEDGE) {
-        // This is when a parent service has acknoledge connection
-        LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] parent acknowledge connection`);
-        const parentDispatcher = new MessageDispatcher_1.default((_f = event.data) === null || _f === void 0 ? void 0 : _f._dispatcherId);
-        parentDispatcher.init((message) => {
-            window.parent.postMessage(message, '*');
-        });
-        this.addDispatcher(parentDispatcher);
+    else if (((_c = event.data) === null || _c === void 0 ? void 0 : _c._serviceId) && ((_d = event.data) === null || _d === void 0 ? void 0 : _d.type) === CONNECTION_ACKNOWLEDGE) {
+        __classPrivateFieldGet(this, _MessageServiceClass_instances, "m", _MessageServiceClass_handleConnectionAcknowledge).call(this, event);
     }
-    else if (((_g = event.data) === null || _g === void 0 ? void 0 : _g._serviceId) && ((_h = event.data) === null || _h === void 0 ? void 0 : _h._dispatcherId)) {
+    else if (((_e = event.data) === null || _e === void 0 ? void 0 : _e._serviceId) && ((_f = event.data) === null || _f === void 0 ? void 0 : _f._dispatcherId)) {
         // When receiving a post message
         LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] received message`);
+        /*
         this.sendMessage({
-            _serviceId: (_j = event.data) === null || _j === void 0 ? void 0 : _j._serviceId,
-            _dispatcherId: (_k = event.data) === null || _k === void 0 ? void 0 : _k._dispatcherId,
-            type: (_l = event.data) === null || _l === void 0 ? void 0 : _l.type,
-            payload: (_m = event.data) === null || _m === void 0 ? void 0 : _m.payload
-        });
+          _serviceId: event.data?._serviceId,
+          _dispatcherId: event.data?._dispatcherId,
+          type: event.data?.type,
+          payload: event.data?.payload
+        })
+        */
     }
-}, _MessageServiceClass_addService = function _MessageServiceClass_addService(serviceId, wdow) {
+}, _MessageServiceClass_handleConnectionRequest = function _MessageServiceClass_handleConnectionRequest(event) {
+    var _a;
+    // This is when a child service wants to connect
+    LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] child trying to connect`);
+    console.log(event);
+    const serviceId = (_a = event.data) === null || _a === void 0 ? void 0 : _a._serviceId;
+    const wdow = event.source;
     if (!__classPrivateFieldGet(this, _MessageServiceClass_services, "f").includes(serviceId)) {
         const childDispatcher = new MessageDispatcher_1.default();
         const handler = (message) => wdow.postMessage(message, '*');
@@ -106,6 +105,16 @@ _MessageServiceClass_id = new WeakMap(), _MessageServiceClass_dispatchers = new 
             type: CONNECTION_ACKNOWLEDGE
         }, '*');
     }
+}, _MessageServiceClass_handleConnectionAcknowledge = function _MessageServiceClass_handleConnectionAcknowledge(event) {
+    var _a;
+    // This is when a parent service has acknoledge connection
+    LOGGER.info(`[${__classPrivateFieldGet(this, _MessageServiceClass_id, "f")}] parent acknowledge connection`);
+    console.log(event);
+    const parentDispatcher = new MessageDispatcher_1.default((_a = event.data) === null || _a === void 0 ? void 0 : _a._dispatcherId);
+    parentDispatcher.init((message) => {
+        window.parent.postMessage(message, '*');
+    });
+    this.addDispatcher(parentDispatcher);
 };
 const MessageService = new MessageServiceClass();
 exports.default = MessageService;
