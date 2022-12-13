@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "declaration": true,
+    "emitDeclarationOnly": true,
     "esModuleInterop": true,
     "jsx": "react",
     "lib": [
@@ -19,7 +20,7 @@
     ]
   },
   "include": [
-    "src"
+    "src/lib"
   ],
   "exclude": [
     "dist",
