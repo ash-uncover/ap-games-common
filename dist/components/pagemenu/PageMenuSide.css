@@ -6,15 +6,14 @@
   container-name: menuSide;
 
   /* XS Screen layout */
-
-  & .page-menu-side__title {
+}
+.page-menu-side .page-menu-side__title {
     display: none;
   }
 
-  /* S Screen layout */
-
-  @container menuSide (min-height: 100px) and (min-width: 7rem) {
-    & .page-menu-side__title {
+/* S Screen layout */
+@container menuSide (min-height: 100px) and (min-width: 7rem) {
+    .page-menu-side .page-menu-side__title {
       display: block;
       text-align: center;
       font-size: 1.25rem;
@@ -22,21 +21,18 @@
     }
   }
 
-  /* M Screen layout */
-
-  @container menuSide (min-height: 100px) and (min-width: 10rem) {
-    & .page-menu-side__title {
+/* M Screen layout */
+@container menuSide (min-height: 100px) and (min-width: 10rem) {
+    .page-menu-side .page-menu-side__title {
       font-size: 1.5rem;
       margin-top: 1.5rem;
     }
   }
 
-  /* L+ Screen layout */
-
-  @container menuSide (min-height: 100px) and (min-width: 12rem) {
-    & .page-menu-side__title {
+/* L+ Screen layout */
+@container menuSide (min-height: 100px) and (min-width: 12rem) {
+    .page-menu-side .page-menu-side__title {
       font-size: 1.75rem;
       margin-top: 2rem;
     }
   }
-}

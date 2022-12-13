@@ -8,16 +8,19 @@
   color: var(--page-side-menu-item__color);
 
   cursor: pointer;
+}
 
-  &.selected {
+.page-menu-side-item.selected {
     --page-side-menu-item__background: var(--base_selected_background);
     --page-side-menu-item__color: var(--base_selected_color);
   }
 
-  &:hover {
+.page-menu-side-item:hover {
     --page-side-menu-item__background: var(--base_highlight_background);
     --page-side-menu-item__color: var(--base_highlight_color);
   }
+
+.page-menu-side-item {
 
   flex-shrink: 0;
 }
@@ -28,19 +31,21 @@
   width: 3rem;
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
+}
 
-  & .page-menu-side-item__content {
+.page-menu-side-item .page-menu-side-item__content {
     text-align: center;
-    & .page-menu-side-item__icon {
+  }
+
+.page-menu-side-item .page-menu-side-item__content .page-menu-side-item__icon {
       display: block;
       margin-bottom: 0.25rem;
     }
-    & .page-menu-side-item__text {
+
+.page-menu-side-item .page-menu-side-item__content .page-menu-side-item__text {
       display: block;
       font-size: 0.75rem;
     }
-  }
-}
 
 /* S Screen layout */
 
@@ -54,17 +59,13 @@
 /* M Screen layout */
 
 @container menuSide (min-height: 100px) and (min-width: 10rem) {
-  .page-menu-side-item {
-    & .page-menu-side-item__content {
-      & .page-menu-side-item__icon {
+      .page-menu-side-item .page-menu-side-item__content .page-menu-side-item__icon {
         font-size: 1.25rem;
         margin-bottom: 0.5rem;
       }
-      & .page-menu-side-item__text {
+      .page-menu-side-item .page-menu-side-item__content .page-menu-side-item__text {
         font-size: 1rem;
       }
-    }
-  }
 }
 
 /* L+ Screen layout */
@@ -72,15 +73,13 @@
 @container menuSide (min-height: 100px) and (min-width: 12rem) {
   .page-menu-side-item {
     padding: 1rem 1rem;
-    & .page-menu-side-item__content {
-      & .page-menu-side-item__icon {
+  }
+      .page-menu-side-item .page-menu-side-item__content .page-menu-side-item__icon {
         font-size: 1.75rem;
         margin-bottom: 0.5rem;
       }
-      & .page-menu-side-item__text {
+      .page-menu-side-item .page-menu-side-item__content .page-menu-side-item__text {
         font-size: 1.25rem;
         font-weight: bold;
       }
-    }
-  }
 }

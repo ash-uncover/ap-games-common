@@ -9,8 +9,9 @@
 
   --page-menu-side__height: 5rem;
   --page-menu-side__width: 100%;
+}
 
-  & .page-menu-side {
+.page-menu .page-menu-side {
     position: absolute;
     bottom: 0;
     height: var(--page-menu-side__height);
@@ -18,14 +19,13 @@
     width: var(--page-menu-side__width);
   }
 
-  & .page-menu-content {
+.page-menu .page-menu-content {
     position: absolute;
     top: 0;
     left: 0;
     bottom: var(--page-menu-side__height);
     width: 100%;
   }
-}
 
 /* S Screen layout */
 
@@ -33,14 +33,15 @@
   .page-menu {
     --page-menu-side__height: 100%;
     --page-menu-side__width: 7rem;
-    & .page-menu-side {
+  }
+    .page-menu .page-menu-side {
       position: absolute;
       top: 0;
       height: 100%;
       left: 0;
       width: var(--page-menu-side__width);
     }
-    & .page-menu-content {
+    .page-menu .page-menu-content {
       position: absolute;
       width: auto;
       top: 0;
@@ -48,7 +49,6 @@
       left: var(--page-menu-side__width);
       right: 0;
     }
-  }
 }
 
 /* M Screen layout */

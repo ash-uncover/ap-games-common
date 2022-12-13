@@ -1,10 +1,10 @@
-.menu-step-input {
-  & .container {
+
+  .menu-step-input .container {
     height: 2rem;
     display: flex;
     align-items: center;
-
-    & .slider {
+  }
+.menu-step-input .container .slider {
       height: 2rem;
       position: relative;
       flex-grow: 1;
@@ -21,16 +21,15 @@
       justify-content: center;
 
       color: black;
-
-      & .value {
+    }
+.menu-step-input .container .slider .value {
         position: absolute;
         left: 0;
         background: white;
         height: 100%;
         transition: width 0.05s;
       }
-    }
-    & .button {
+.menu-step-input .container .button {
       border-radius: 0.5rem;
       margin: 0 0.25rem;
       height: 2rem;
@@ -38,5 +37,3 @@
       border: 0;
       cursor: pointer;
     }
-  }
-}
