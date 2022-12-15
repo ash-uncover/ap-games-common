@@ -5,9 +5,9 @@
 
   position: relative;
   top: 0;
-  bottom: 0;
+  height: 100%;
   left: 0;
-  right: 0;
+  width: 100%;
 
   --page-menu-side__height: 5rem;
   --page-menu-side__width: 100%;
