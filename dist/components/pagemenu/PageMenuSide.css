@@ -1,4 +1,4 @@
-@import '../../../styles/variables.css';
+@import '../../styles/variables.css';
 
 .page-menu-side {
   background: var(--base_background);
