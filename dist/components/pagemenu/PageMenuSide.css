@@ -1,3 +1,5 @@
+@import '../../../styles/variables.css';
+
 .page-menu-side {
   background: var(--base_background);
   color: var(--base_color);
@@ -7,11 +9,13 @@
 
   /* XS Screen layout */
 }
+
 .page-menu-side .page-menu-side__title {
     display: none;
   }
 
 /* S Screen layout */
+
 @container menuSide (min-height: 100px) and (min-width: 7rem) {
     .page-menu-side .page-menu-side__title {
       display: block;
@@ -22,6 +26,7 @@
   }
 
 /* M Screen layout */
+
 @container menuSide (min-height: 100px) and (min-width: 10rem) {
     .page-menu-side .page-menu-side__title {
       font-size: 1.5rem;
@@ -30,6 +35,7 @@
   }
 
 /* L+ Screen layout */
+
 @container menuSide (min-height: 100px) and (min-width: 12rem) {
     .page-menu-side .page-menu-side__title {
       font-size: 1.75rem;

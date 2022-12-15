@@ -1,3 +1,5 @@
+@import '../../../styles/variables.css';
+
 .page-menu-side {
   background: var(--base_background);
   color: var(--base_color);
