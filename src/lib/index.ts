@@ -1,4 +1,4 @@
-// Components > MeunCheckbox
+// Components > MenuCheckbox
 export {
   MenuCheckboxProperties,
   MenuCheckbox,
@@ -35,6 +35,12 @@ export {
   PageMenuSideItemsProperties,
   PageMenuSideItems,
 } from './components/pagemenu/PageMenuSideItems'
+// Components > SquareGrid
+export {
+  SquareGridProperties,
+  SquareGrid,
+} from './components/grid/SquareGrid'
+
 
 // Lib > Audio
 export {

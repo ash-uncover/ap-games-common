@@ -159,6 +159,18 @@ Object.defineProperty(exports, "Shortcuts", {
     return _ShortcutManager.Shortcuts;
   }
 });
+Object.defineProperty(exports, "SquareGrid", {
+  enumerable: true,
+  get: function get() {
+    return _SquareGrid.SquareGrid;
+  }
+});
+Object.defineProperty(exports, "SquareGridProperties", {
+  enumerable: true,
+  get: function get() {
+    return _SquareGrid.SquareGridProperties;
+  }
+});
 Object.defineProperty(exports, "normalizeVolumeValue", {
   enumerable: true,
   get: function get() {
@@ -172,6 +184,7 @@ var _PageMenuContent = require("./components/pagemenu/PageMenuContent");
 var _PageMenuSide = require("./components/pagemenu/PageMenuSide");
 var _PageMenuSideItem = require("./components/pagemenu/PageMenuSideItem");
 var _PageMenuSideItems = require("./components/pagemenu/PageMenuSideItems");
+var _SquareGrid = require("./components/grid/SquareGrid");
 var _AudioManager = require("./utils/AudioManager");
 var _DataManager = require("./utils/DataManager");
 var _FullscreenHelper = require("./utils/FullscreenHelper");
