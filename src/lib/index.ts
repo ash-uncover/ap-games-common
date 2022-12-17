@@ -1,3 +1,8 @@
+// Components > GridContainer
+export {
+  GridContainerProperties,
+  GridContainer,
+} from './components/gridcontainer/GridContainer'
 // Components > MenuCheckbox
 export {
   MenuCheckboxProperties,
