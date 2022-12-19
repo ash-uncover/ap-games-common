@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect, useRef } from 'react'
 import './GridContainer.css'
 
 export interface GridContainerProperties {
+  className?: string
   width: number
   height: number
 
@@ -10,6 +11,7 @@ export interface GridContainerProperties {
 }
 
 export const GridContainer = ({
+  className,
   width,
   height,
 
@@ -48,10 +50,14 @@ export const GridContainer = ({
 
   // Rendering //
 
+  const classes = ['grid-container']
+  if (className) {
+    classes.push(className)
+  }
 
   return (
     <div
-      className='grid-container'
+      className={classes.join(' ')}
       ref={container}
     >
       <div
