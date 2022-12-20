@@ -12,6 +12,7 @@
     & .grid-tiles-row-cell {
       width: 0px;
       flex-grow: 1;
+      overflow: hidden;
     }
   }
 }
