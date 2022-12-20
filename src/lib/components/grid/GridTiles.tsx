@@ -9,7 +9,7 @@ export interface GridTilesProperties {
   height: number
   width: number
 
-  children: ReactNode
+  children: ReactNode[]
 }
 
 export const GridTiles = ({
@@ -20,30 +20,39 @@ export const GridTiles = ({
   children,
 }: GridTilesProperties) => {
 
-
   // Rendering //
 
-  const maxChildren = height * width
-
-  const renderChildren = () => {
-    if (Array.isArray(children)) {
-      const result = []
-      for (let i = 0; i < maxChildren && i < children.length ; i++) {
-        result.push(renderChild(children[i], i + 1))
-      }
-      return result
+  const renderGrid = () => {
+    const result = []
+    for (let indexRow = 0; indexRow < height; indexRow++) {
+      result.push(renderGridRow(indexRow))
     }
-    return renderChild(children)
+    return result
   }
-
-  const renderChild = (element: ReactNode, index?: number) => {
+  const renderGridRow = (indexRow: number) => {
+    const result = []
+    for (let indexCol = 0; indexCol < width; indexCol++) {
+      result.push(renderGridCell(indexRow, indexCol))
+    }
     return (
       <div
-        className='grid-tiles-item'
-        key={index ? `tile-${index}` : undefined}
-        style={{
-          width: `${100 / width}%`
-        }}
+        className='grid-tiles-row'
+        key={`grid-tiles-row-${indexRow}`}
+      >
+        {result}
+      </div>
+    )
+  }
+  const renderGridCell = (indexRow: number, indexCol: number) => {
+    let element = null
+    const indexCell = indexRow * width + indexCol
+    if (indexCell < children.length) {
+      element = children[indexCell]
+    }
+    return (
+      <div
+        className='grid-tiles-row-cell'
+        key={`grid-cell-${indexRow}-${indexCol}`}
       >
         {element}
       </div>
@@ -57,11 +66,12 @@ export const GridTiles = ({
 
   return (
     <GridContainer
-      className={classes.join(' ')}
       height={height}
       width={width}
     >
-      {renderChildren()}
+      <div className={classes.join(' ')}>
+        {renderGrid()}
+      </div>
     </GridContainer>
   )
 }

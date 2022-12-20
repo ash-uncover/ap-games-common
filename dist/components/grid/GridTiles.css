@@ -1,5 +1,15 @@
-
-  .grid-tiles .grid-tiles-item {
-    display: inline-block;
-    aspect-ratio: 1;
+.grid-tiles {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.grid-tiles .grid-tiles-row {
+    height: 0px;
+    flex-grow: 1;
+    display: flex;
   }
+.grid-tiles .grid-tiles-row .grid-tiles-row-cell {
+      width: 0px;
+      flex-grow: 1;
+    }
