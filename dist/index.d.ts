@@ -1,4 +1,5 @@
-export { GridContainerProperties, GridContainer, } from './components/gridcontainer/GridContainer';
+export { GridContainerProperties, GridContainer, } from './components/grid/GridContainer';
+export { GridTilesProperties, GridTiles, } from './components/grid/GridTiles';
 export { MenuCheckboxProperties, MenuCheckbox, } from './components/menu/MenuCheckbox';
 export { MenuStepInputProperties, MenuStepInput, } from './components/menu/MenuStepInput';
 export { PageMenuProperties, PageMenuPageProperties, PageMenu, } from './components/pagemenu/PageMenu';

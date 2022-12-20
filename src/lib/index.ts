@@ -1,8 +1,13 @@
-// Components > GridContainer
+// Components > grid > GridContainer
 export {
   GridContainerProperties,
   GridContainer,
-} from './components/gridcontainer/GridContainer'
+} from './components/grid/GridContainer'
+// Components > grid > GridContainer
+export {
+  GridTilesProperties,
+  GridTiles,
+} from './components/grid/GridTiles'
 // Components > MenuCheckbox
 export {
   MenuCheckboxProperties,

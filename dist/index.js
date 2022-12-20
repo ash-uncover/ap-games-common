@@ -45,6 +45,18 @@ Object.defineProperty(exports, "GridContainerProperties", {
     return _GridContainer.GridContainerProperties;
   }
 });
+Object.defineProperty(exports, "GridTiles", {
+  enumerable: true,
+  get: function get() {
+    return _GridTiles.GridTiles;
+  }
+});
+Object.defineProperty(exports, "GridTilesProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GridTiles.GridTilesProperties;
+  }
+});
 Object.defineProperty(exports, "MenuCheckbox", {
   enumerable: true,
   get: function get() {
@@ -189,7 +201,8 @@ Object.defineProperty(exports, "normalizeVolumeValue", {
     return _AudioManager.normalizeVolumeValue;
   }
 });
-var _GridContainer = require("./components/gridcontainer/GridContainer");
+var _GridContainer = require("./components/grid/GridContainer");
+var _GridTiles = require("./components/grid/GridTiles");
 var _MenuCheckbox = require("./components/menu/MenuCheckbox");
 var _MenuStepInput = require("./components/menu/MenuStepInput");
 var _PageMenu = require("./components/pagemenu/PageMenu");
