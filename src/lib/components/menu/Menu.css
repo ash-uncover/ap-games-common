@@ -1,0 +1,75 @@
+@import '../../styles/variables.css';
+
+.menu {
+  height: 100%;
+  overflow: hidden;
+  background: var(--base_background);
+  color: var(--base_color);
+
+  /* XS Screen layout */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .menu__title {
+    display: none;
+  }
+
+  & .menu__items {
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  /* S Screen layout */
+
+  @container (min-height: 10rem) and (min-width: 7rem) {
+    flex-direction: column;
+
+    & .menu__title {
+      display: block;
+      text-align: center;
+      font-size: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    & .menu__items {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  /* M Screen layout */
+
+  @container (min-height: 10rem) and (min-width: 10rem) {
+    & .menu__title {
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    & .menu__items {
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+  }
+
+  /* L+ Screen layout */
+
+  @container (min-height: 10rem) and (min-width: 12rem) {
+    & .menu__title {
+      font-size: 1.75rem;
+      margin-top: 2rem;
+    }
+    & .menu__items {
+      padding: 2rem;
+    }
+  }
+}

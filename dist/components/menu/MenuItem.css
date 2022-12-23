@@ -1,0 +1,110 @@
+@import '../../styles/variables.css';
+
+/* Colors & Variables */
+
+.menu-item {
+  --page-side-menu-item__background: var(--base_item_background);
+  --page-side-menu-item__color: var(--base_item_color);
+
+  background: var(--page-side-menu-item__background);
+  color: var(--page-side-menu-item__color);
+
+  cursor: pointer;
+}
+
+.menu-item:hover:not(.menu-item--selected) {
+    --page-side-menu-item__background: var(--base_hover_background);
+    --page-side-menu-item__color: var(--base_hover_color);
+  }
+
+.menu-item.menu-item--selected {
+    --page-side-menu-item__background: var(--base_selected_background);
+    --page-side-menu-item__color: var(--base_selected_color);
+    font-weight: bold;
+  }
+
+.menu-item {
+
+  flex-shrink: 0;
+}
+
+/* XS Screen layout */
+
+.menu-item {
+  border-radius: 0.5rem;
+}
+
+.menu-item .menu-item__content {
+    height: 2.5rem;
+    width: 2.5rem;
+    padding: 0.25rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+.menu-item .menu-item__content .menu-item__icon {
+      font-size: 0.9rem;
+      margin-bottom: 0.15rem;
+    }
+
+.menu-item .menu-item__content .menu-item__text {
+      font-size: 0.7rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 100%;
+    }
+
+/* S Screen layout */
+
+@container (min-height: 10rem) and (min-width: 7rem) {
+    .menu-item .menu-item__content {
+      height: 2.5rem;
+      width: 3.5rem;
+      padding: 0.5rem;
+    }
+      .menu-item .menu-item__content .menu-item__icon {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+      .menu-item .menu-item__content .menu-item__text {
+        font-size: 0.85rem;
+      }
+}
+
+/* M Screen layout */
+
+@container (min-height: 10rem) and (min-width: 10rem) {
+    .menu-item .menu-item__content {
+      height: 3rem;
+      width: 4.5rem;
+      padding: 0.5rem;
+    }
+      .menu-item .menu-item__content .menu-item__icon {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+      }
+      .menu-item .menu-item__content .menu-item__text {
+        font-size: 1rem;
+      }
+}
+
+/* L+ Screen layout */
+
+@container (min-height: 10rem) and (min-width: 12rem) {
+    .menu-item .menu-item__content {
+      height: 4rem;
+      width: 5rem;
+      padding: 0.75rem;
+    }
+      .menu-item .menu-item__content .menu-item__icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.35rem;
+      }
+      .menu-item .menu-item__content .menu-item__text {
+        font-size: 1.25rem;
+      }
+}

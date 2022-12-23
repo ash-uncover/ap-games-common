@@ -3,53 +3,56 @@ export {
   GridContainerProperties,
   GridContainer,
 } from './components/grid/GridContainer'
-// Components > grid > GridContainer
+// Components > grid > GridTiles
 export {
   GridTilesProperties,
   GridTiles,
 } from './components/grid/GridTiles'
-// Components > MenuCheckbox
-export {
-  MenuCheckboxProperties,
-  MenuCheckbox,
-} from './components/menu/MenuCheckbox'
-// Components > MenuStepInput
-export {
-  MenuStepInputProperties,
-  MenuStepInput,
-} from './components/menu/MenuStepInput'
-// Components > PageMenu
-export {
-  PageMenuProperties,
-  PageMenuPageProperties,
-  PageMenu,
-} from './components/pagemenu/PageMenu'
-// Components > PageMenuContent
-export {
-  PageMenuContentProperties,
-  PageMenuContent,
-} from './components/pagemenu/PageMenuContent'
-// Components > PageMenuSide
-export {
-  PageMenuSideProperties,
-  PageMenuSideItemsInfo,
-  PageMenuSide,
-} from './components/pagemenu/PageMenuSide'
-// Components > PageMenuSideItem
-export {
-  PageMenuSideItemProperties,
-  PageMenuSideItem,
-} from './components/pagemenu/PageMenuSideItem'
-// Components > PageMenuSideItems
-export {
-  PageMenuSideItemsProperties,
-  PageMenuSideItems,
-} from './components/pagemenu/PageMenuSideItems'
-// Components > SquareGrid
+// Components > gris > SquareGrid
 export {
   SquareGridProperties,
   SquareGrid,
 } from './components/grid/SquareGrid'
+
+
+// Components > menu > Menu
+export {
+  MenuProperties,
+  Menu,
+} from './components/menu/menu'
+// Components > menu > MenuItem
+export {
+  MenuItemProperties,
+  MenuItem,
+} from './components/menu/MenuItem'
+
+
+// Components > menu > controls > MenuCheckbox
+export {
+  MenuCheckboxProperties,
+  MenuCheckbox,
+} from './components/menu/controls/MenuCheckbox'
+// Components > menu > controls > MenuStepInput
+export {
+  MenuStepInputProperties,
+  MenuStepInput,
+} from './components/menu/controls/MenuStepInput'
+
+// Components > page > Page
+export {
+  PageProperties,
+  Page,
+} from './components/page/Page'
+// Components > page > PageMenu
+export {
+  PageMenuProperties,
+  PageMenu,
+} from './components/page/PageMenu'
+// Components > page > PageContent
+export {
+  PageContentProperties,
+  PageContent,
+} from './components/page/PageContent'
 
 
 // Lib > Audio

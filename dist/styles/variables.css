@@ -5,9 +5,9 @@
   --base_item_background: #343434;
   --base_item_color: #BCBCBC;
 
-  --base_selected_background: #565656;
-  --base_selected_color: #D3D3D3;
+  --base_selected_background: #00d4ff;
+  --base_selected_color: #161616;
 
-  --base_highlight_background: #DDDDDD;
-  --base_highlight_color: #060606;
+  --base_hover_background: #DDDDDD;
+  --base_hover_color: #060606;
 }

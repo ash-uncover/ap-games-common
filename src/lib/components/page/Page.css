@@ -1,0 +1,50 @@
+.page {
+  position: relative;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+
+  container-type: size;
+  container-name: page;
+
+  --page-menu__height: 5rem;
+  --page-menu__width: 100%;
+}
+
+
+/* S Screen layout */
+
+@media (min-width: 576px) {
+  .page {
+    --page-menu__height: 100%;
+    --page-menu__width: 7rem;
+  }
+}
+
+/* M Screen layout */
+
+@media (min-width: 768px) {
+  .page {
+    --page-menu__width: 10rem;
+  }
+}
+
+/* L Screen layout */
+
+@media (min-width: 992px) {
+  .page {
+    --page-menu__width: 12rem;
+  }
+}
+
+/* XL Screen layout */
+
+@media (min-width: 1200px) {
+}
+
+/* XXL Screen layout */
+
+@media (min-width: 1400px) {
+
+}

@@ -57,6 +57,12 @@ Object.defineProperty(exports, "GridTilesProperties", {
     return _GridTiles.GridTilesProperties;
   }
 });
+Object.defineProperty(exports, "Menu", {
+  enumerable: true,
+  get: function get() {
+    return _menu.Menu;
+  }
+});
 Object.defineProperty(exports, "MenuCheckbox", {
   enumerable: true,
   get: function get() {
@@ -67,6 +73,24 @@ Object.defineProperty(exports, "MenuCheckboxProperties", {
   enumerable: true,
   get: function get() {
     return _MenuCheckbox.MenuCheckboxProperties;
+  }
+});
+Object.defineProperty(exports, "MenuItem", {
+  enumerable: true,
+  get: function get() {
+    return _MenuItem.MenuItem;
+  }
+});
+Object.defineProperty(exports, "MenuItemProperties", {
+  enumerable: true,
+  get: function get() {
+    return _MenuItem.MenuItemProperties;
+  }
+});
+Object.defineProperty(exports, "MenuProperties", {
+  enumerable: true,
+  get: function get() {
+    return _menu.MenuProperties;
   }
 });
 Object.defineProperty(exports, "MenuStepInput", {
@@ -81,28 +105,28 @@ Object.defineProperty(exports, "MenuStepInputProperties", {
     return _MenuStepInput.MenuStepInputProperties;
   }
 });
+Object.defineProperty(exports, "Page", {
+  enumerable: true,
+  get: function get() {
+    return _Page.Page;
+  }
+});
+Object.defineProperty(exports, "PageContent", {
+  enumerable: true,
+  get: function get() {
+    return _PageContent.PageContent;
+  }
+});
+Object.defineProperty(exports, "PageContentProperties", {
+  enumerable: true,
+  get: function get() {
+    return _PageContent.PageContentProperties;
+  }
+});
 Object.defineProperty(exports, "PageMenu", {
   enumerable: true,
   get: function get() {
     return _PageMenu.PageMenu;
-  }
-});
-Object.defineProperty(exports, "PageMenuContent", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenuContent.PageMenuContent;
-  }
-});
-Object.defineProperty(exports, "PageMenuContentProperties", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenuContent.PageMenuContentProperties;
-  }
-});
-Object.defineProperty(exports, "PageMenuPageProperties", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenu.PageMenuPageProperties;
   }
 });
 Object.defineProperty(exports, "PageMenuProperties", {
@@ -111,46 +135,10 @@ Object.defineProperty(exports, "PageMenuProperties", {
     return _PageMenu.PageMenuProperties;
   }
 });
-Object.defineProperty(exports, "PageMenuSide", {
+Object.defineProperty(exports, "PageProperties", {
   enumerable: true,
   get: function get() {
-    return _PageMenuSide.PageMenuSide;
-  }
-});
-Object.defineProperty(exports, "PageMenuSideItem", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenuSideItem.PageMenuSideItem;
-  }
-});
-Object.defineProperty(exports, "PageMenuSideItemProperties", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenuSideItem.PageMenuSideItemProperties;
-  }
-});
-Object.defineProperty(exports, "PageMenuSideItems", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenuSideItems.PageMenuSideItems;
-  }
-});
-Object.defineProperty(exports, "PageMenuSideItemsInfo", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenuSide.PageMenuSideItemsInfo;
-  }
-});
-Object.defineProperty(exports, "PageMenuSideItemsProperties", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenuSideItems.PageMenuSideItemsProperties;
-  }
-});
-Object.defineProperty(exports, "PageMenuSideProperties", {
-  enumerable: true,
-  get: function get() {
-    return _PageMenuSide.PageMenuSideProperties;
+    return _Page.PageProperties;
   }
 });
 Object.defineProperty(exports, "Shortcut", {
@@ -203,14 +191,14 @@ Object.defineProperty(exports, "normalizeVolumeValue", {
 });
 var _GridContainer = require("./components/grid/GridContainer");
 var _GridTiles = require("./components/grid/GridTiles");
-var _MenuCheckbox = require("./components/menu/MenuCheckbox");
-var _MenuStepInput = require("./components/menu/MenuStepInput");
-var _PageMenu = require("./components/pagemenu/PageMenu");
-var _PageMenuContent = require("./components/pagemenu/PageMenuContent");
-var _PageMenuSide = require("./components/pagemenu/PageMenuSide");
-var _PageMenuSideItem = require("./components/pagemenu/PageMenuSideItem");
-var _PageMenuSideItems = require("./components/pagemenu/PageMenuSideItems");
 var _SquareGrid = require("./components/grid/SquareGrid");
+var _menu = require("./components/menu/menu");
+var _MenuItem = require("./components/menu/MenuItem");
+var _MenuCheckbox = require("./components/menu/controls/MenuCheckbox");
+var _MenuStepInput = require("./components/menu/controls/MenuStepInput");
+var _Page = require("./components/page/Page");
+var _PageMenu = require("./components/page/PageMenu");
+var _PageContent = require("./components/page/PageContent");
 var _AudioManager = require("./utils/AudioManager");
 var _DataManager = require("./utils/DataManager");
 var _FullscreenHelper = require("./utils/FullscreenHelper");

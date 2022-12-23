@@ -1,46 +1,55 @@
-import React, { ReactNode } from 'react'
-import { GridTiles } from '../lib/components/grid/GridTiles'
+import React from 'react'
+// Components
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  Menu,
+  Page
+} from '../lib'
 
 export const App = () => {
 
+  // Hooks //
+
   // Rendering //
 
-  const width = 4
-  const height = 5
-
-  const renderCells = () => {
-    const result: ReactNode[] = []
-    for (let h = 0 ; h < height;h++) {
-      for (let w = 0 ; w < width;w++) {
-        result.push(renderCell(h * width + w))
-      }
-    }
-    return result
+  const renderPageMenu = () => {
+    return (
+      <Menu
+        title='Home'
+        items={[{
+          icon: <FontAwesomeIcon icon={['fas', 'gamepad']} />,
+          selected: true,
+          text: 'Play',
+          onClick: () => {}
+        },{
+          icon: <FontAwesomeIcon icon={['fas', 'gear']} />,
+          text: 'Options',
+          onClick: () => {}
+        },{
+          icon: <FontAwesomeIcon icon={['fas', 'gifts']} />,
+          text: 'Credits',
+          onClick: () => {}
+        }, {
+          icon: <FontAwesomeIcon icon={['fas', 'right-from-bracket']} />,
+          text: 'Exit',
+          onClick: () => {}
+        }]}
+      />
+    )
   }
 
-  const renderCell = (index: number) => {
+  const renderPageContent = () => {
     return (
       <div
-        style={{
-          boxSizing: 'border-box',
-          border: '1px solid red',
-          height: '100%',
-          width: '100%'
-        }}
-      >
-        {index}
-      </div>
+        style={{ background: '#888', height: '100%' }}
+      />
     )
   }
 
   return (
-    <div>
-      <GridTiles
-        width={width}
-        height={height}
-      >
-        {renderCells()}
-      </GridTiles>
-    </div>
+    <Page
+      menu={renderPageMenu()}
+      content={renderPageContent()}
+    />
   )
 }
