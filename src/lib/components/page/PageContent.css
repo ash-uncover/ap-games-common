@@ -14,9 +14,10 @@
 @container page (min-width: 576px) {
   .page-content {
     bottom: 0;
-    height: 100%;
     left: var(--page-menu__width);
     right: 0;
+    height: 100%;
+    width: auto;
   }
 }
 
