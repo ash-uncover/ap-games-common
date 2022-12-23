@@ -5,6 +5,8 @@
   bottom: var(--page-menu__height);
   width: 100%;
 
+  overflow: scroll;
+
   container-type: size;
   container-name: page-content;
 }
