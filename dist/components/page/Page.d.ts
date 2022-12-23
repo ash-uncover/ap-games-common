@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import './Page.css';
-export interface PageProperties {
-    menu: ReactNode;
-    content: ReactNode;
-}
-export declare const Page: ({ menu, content }: PageProperties) => JSX.Element;
+export type PageProperties = {
+    children: ReactNode;
+};
+export declare const Page: ({ children }: PageProperties) => JSX.Element;

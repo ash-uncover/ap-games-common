@@ -1,18 +1,13 @@
 import React, { ReactNode } from 'react'
-// Components
-import { PageMenu } from './PageMenu'
-import { PageContent } from './PageContent'
 // Style
 import './Page.css'
 
-export interface PageProperties {
-  menu: ReactNode
-  content: ReactNode
+export type PageProperties = {
+  children: ReactNode
 }
 
 export const Page = ({
-  menu,
-  content
+  children
 }: PageProperties) => {
 
   // Hooks //
@@ -23,12 +18,7 @@ export const Page = ({
 
   return (
     <div className='page'>
-      <PageMenu>
-        {menu}
-      </PageMenu>
-      <PageContent>
-        {content}
-      </PageContent>
+      {children}
     </div>
   )
 }
