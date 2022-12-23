@@ -17,7 +17,7 @@
     "build": "npm run build:tsc && npm run build:babel && npm run build:css",
     "build:babel": "babel src/lib --extensions .ts,.tsx --out-dir dist",
     "build:css": "postcss src/lib/**/*.css --base src/lib --dir dist",
-    "build:tsc": "tsc",
+    "build:tsc": "tsc --project tsconfig.build.json",
     "start": "webpack serve --progress --mode development"
   },
   "dependencies": {
