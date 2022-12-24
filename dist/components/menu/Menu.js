@@ -24,7 +24,9 @@ var Menu = function Menu(_ref) {
   }, title) : null, /*#__PURE__*/_react["default"].createElement("ul", {
     className: "menu__items"
   }, items.map(function (item) {
-    return /*#__PURE__*/_react["default"].createElement(_MenuItem.MenuItem, _extends({}, item, {
+    return /*#__PURE__*/_react["default"].createElement(_MenuItem.MenuItem, _extends({
+      key: item.text
+    }, item, {
       collapsed: collapsed
     }));
   })));

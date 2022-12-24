@@ -35,6 +35,7 @@ export const Menu = ({
         {items.map((item) => {
           return (
             <MenuItem
+              key={item.text}
               {...item}
               collapsed={collapsed}
             />
