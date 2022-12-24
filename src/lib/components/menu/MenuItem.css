@@ -56,7 +56,7 @@
 
 /* S Screen layout */
 
-@container (min-height: 10rem) and (min-width: 7rem) {
+@container (min-height: 5rem) and (min-width: 7rem) {
   .menu-item {
     & .menu-item__content {
       height: 2.5rem;
@@ -75,7 +75,7 @@
 
 /* M Screen layout */
 
-@container (min-height: 10rem) and (min-width: 10rem) {
+@container (min-height: 5rem) and (min-width: 10rem) {
   .menu-item {
     & .menu-item__content {
       height: 3rem;
@@ -94,7 +94,7 @@
 
 /* L+ Screen layout */
 
-@container (min-height: 10rem) and (min-width: 12rem) {
+@container (min-height: 5rem) and (min-width: 12rem) {
   .menu-item {
     & .menu-item__content {
       height: 4rem;
