@@ -7,17 +7,23 @@ import {
   Page,
   PageContent,
   PageMenu,
-  Panel
+  Panel,
+  Switch
 } from '../lib'
 
 export const App = () => {
 
   // Hooks //
 
-  const [value, setValue] = useState(50)
+  const [sliderValue, setSliderValue] = useState(50)
+  const [switchValue, setSwitchValue] = useState(false)
+
+  const handleSwitchChange = (v: boolean) => {
+    setSwitchValue(v)
+  }
 
   const handleValueChange = (v: number) => {
-    setValue(v)
+    setSliderValue(v)
   }
 
   // Rendering //
@@ -55,11 +61,16 @@ export const App = () => {
         </Panel>
 
         <Panel title='Title'>
+          <Switch
+            label='Switch'
+            checked={switchValue}
+            onChange={handleSwitchChange}
+          />
           <Slider
             label='Slider'
             min={50}
             max={100}
-            value={value}
+            value={sliderValue}
             onChange={handleValueChange}
           />
         </Panel>

@@ -1,7 +1,7 @@
 .control-button {
 
-  --control-button_background: var(--base_background_1);
-  --control-button_color: var(--base_background_4);
+  --control-button_background: var(--base_background_2);
+  --control-button_color: var(--base_background_6);
 
   margin: 0 0.25rem;
   height: 1.5rem;
@@ -15,3 +15,7 @@
   align-items: center;
   justify-content: center;
 }
+.control-button:hover {
+    --control-button_background: var(--base_background_4);
+    --control-button_color: var(--base_background_8);
+  }

@@ -1,22 +1,22 @@
-import React, { FormEvent, useState } from 'react'
-// Libs
-import { UUID } from '@uncover/js-utils'
+import React, { FormEvent, useId } from 'react'
 
-export interface MenuCheckboxProperties {
+import './Switch.css'
+
+export interface SwitchProperties {
   checked: boolean
   label: string
   onChange: (arg: boolean) => void
 }
 
-export const MenuCheckbox = ({
+export const Switch = ({
   checked,
   label,
   onChange,
-}: MenuCheckboxProperties) => {
+}: SwitchProperties) => {
 
   // Hooks //
 
-  const [id] = useState<string>(`menu-checkbox-${UUID.next()}`)
+  const id = useId()
 
   // Events //
 
@@ -27,17 +27,25 @@ export const MenuCheckbox = ({
   // Rendering //
 
   return (
-    <div className='menu-checkbox'>
+    <div className='switch'>
       <input
         id={id}
+        className='switch__input'
         type='checkbox'
+        style= {{
+          display: 'none'
+        }}
         name={label}
         checked={checked}
         onChange={handleChange}
       />
       <label
         htmlFor={id}
+        className='switch__label'
       >
+        <div
+          className='switch__control'
+        />
         {label}
       </label>
     </div>

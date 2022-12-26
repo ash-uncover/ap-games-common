@@ -1,3 +1,5 @@
+@import '../../styles/variables.css';
+
 .page-content {
   position: absolute;
   top: 0;
@@ -10,7 +12,7 @@
   container-type: size;
   container-name: page-content;
 
-  background: var(--base_2_background);
+  background: var(--base_background_2);
 }
 
 /* S Screen layout */

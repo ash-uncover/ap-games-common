@@ -172,7 +172,11 @@ var Slider = function Slider(_ref) {
     icon: ['fas', 'chevron-left']
   })), /*#__PURE__*/_react["default"].createElement("div", {
     className: "slider__control",
-    onClick: handleSliderClick
+    onClick: handleSliderClick,
+    onTouchStart: handleTouchStart,
+    onMouseDown: handleMouseDown,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "slider__control--bar",
     ref: sliderBar
@@ -184,14 +188,11 @@ var Slider = function Slider(_ref) {
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "slider__control--indicator",
-    tabIndex: 0,
-    onTouchStart: handleTouchStart,
-    onMouseDown: handleMouseDown,
-    onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave
+    tabIndex: 0
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "slider__control--toolip",
     style: {
+      pointerEvents: 'none',
       opacity: showTooltip ? 1 : 0,
       transition: 'opacity 0.5s'
     }

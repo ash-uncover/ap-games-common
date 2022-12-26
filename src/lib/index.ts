@@ -27,16 +27,17 @@ export {
 } from './components/menu/MenuItem'
 
 
-// Components > menu > controls > MenuCheckbox
-export {
-  MenuCheckboxProperties,
-  MenuCheckbox,
-} from './components/menu/controls/MenuCheckbox'
 // Components > menu > controls > Slider
 export {
   SliderProperties,
   Slider,
 } from './components/menu/controls/Slider'
+// Components > menu > controls > Switch
+export {
+  SwitchProperties,
+  Switch,
+} from './components/menu/controls/Switch'
+
 
 // Components > page > Page
 export {

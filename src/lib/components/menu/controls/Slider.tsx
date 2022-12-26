@@ -187,6 +187,10 @@ export const Slider = ({
       <div
         className='slider__control'
         onClick={handleSliderClick}
+        onTouchStart={handleTouchStart}
+        onMouseDown={handleMouseDown}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
 
         <div
@@ -203,16 +207,13 @@ export const Slider = ({
             <div
               className='slider__control--indicator'
               tabIndex={0}
-              onTouchStart={handleTouchStart}
-              onMouseDown={handleMouseDown}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
             >
             </div>
 
             <div
               className='slider__control--toolip'
               style={{
+                pointerEvents: 'none',
                 opacity: showTooltip ? 1 : 0,
                 transition: 'opacity 0.5s'
               }}

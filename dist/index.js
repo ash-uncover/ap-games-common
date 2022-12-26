@@ -63,18 +63,6 @@ Object.defineProperty(exports, "Menu", {
     return _menu.Menu;
   }
 });
-Object.defineProperty(exports, "MenuCheckbox", {
-  enumerable: true,
-  get: function get() {
-    return _MenuCheckbox.MenuCheckbox;
-  }
-});
-Object.defineProperty(exports, "MenuCheckboxProperties", {
-  enumerable: true,
-  get: function get() {
-    return _MenuCheckbox.MenuCheckboxProperties;
-  }
-});
 Object.defineProperty(exports, "MenuItem", {
   enumerable: true,
   get: function get() {
@@ -207,6 +195,18 @@ Object.defineProperty(exports, "SquareGridProperties", {
     return _SquareGrid.SquareGridProperties;
   }
 });
+Object.defineProperty(exports, "Switch", {
+  enumerable: true,
+  get: function get() {
+    return _Switch.Switch;
+  }
+});
+Object.defineProperty(exports, "SwitchProperties", {
+  enumerable: true,
+  get: function get() {
+    return _Switch.SwitchProperties;
+  }
+});
 Object.defineProperty(exports, "normalizeVolumeValue", {
   enumerable: true,
   get: function get() {
@@ -218,8 +218,8 @@ var _GridTiles = require("./components/grid/GridTiles");
 var _SquareGrid = require("./components/grid/SquareGrid");
 var _menu = require("./components/menu/menu");
 var _MenuItem = require("./components/menu/MenuItem");
-var _MenuCheckbox = require("./components/menu/controls/MenuCheckbox");
 var _Slider = require("./components/menu/controls/Slider");
+var _Switch = require("./components/menu/controls/Switch");
 var _Page = require("./components/page/Page");
 var _PageMenu = require("./components/page/PageMenu");
 var _PageContent = require("./components/page/PageContent");
