@@ -32,11 +32,11 @@ export {
   MenuCheckboxProperties,
   MenuCheckbox,
 } from './components/menu/controls/MenuCheckbox'
-// Components > menu > controls > MenuStepInput
+// Components > menu > controls > Slider
 export {
-  MenuStepInputProperties,
-  MenuStepInput,
-} from './components/menu/controls/MenuStepInput'
+  SliderProperties,
+  Slider,
+} from './components/menu/controls/Slider'
 
 // Components > page > Page
 export {
@@ -53,6 +53,17 @@ export {
   PageContentProperties,
   PageContent,
 } from './components/page/PageContent'
+
+// Components > panel > Panel
+export {
+  PanelProperties,
+  Panel,
+} from './components/panel/Panel'
+// Components > panel > PanelButton
+export {
+  PanelButtonProperties,
+  PanelButton,
+} from './components/panel/PanelButton'
 
 
 // Lib > Audio

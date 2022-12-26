@@ -3,7 +3,7 @@
 .menu {
   height: 100%;
   overflow: hidden;
-  background: var(--base_background);
+  background: var(--base_background_1);
   color: var(--base_color);
 
   /* XS Screen layout */

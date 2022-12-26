@@ -1,0 +1,17 @@
+.control-button {
+
+  --control-button_background: var(--base_background_1);
+  --control-button_color: var(--base_background_4);
+
+  margin: 0 0.25rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  background: var(--control-button_background);
+  color: var(--control-button_color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

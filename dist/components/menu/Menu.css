@@ -3,7 +3,7 @@
 .menu {
   height: 100%;
   overflow: hidden;
-  background: var(--base_background);
+  background: var(--base_background_1);
   color: var(--base_color);
 
   /* XS Screen layout */
@@ -31,7 +31,7 @@
 
 /* S Screen layout */
 
-@container (min-height: 10rem) and (min-width: 7rem) {
+@container (min-height: 5rem) and (min-width: 7rem) {
 
 .menu {
     flex-direction: column;
@@ -54,7 +54,7 @@
 
 /* M Screen layout */
 
-@container (min-height: 10rem) and (min-width: 10rem) {
+@container (min-height: 5rem) and (min-width: 10rem) {
     .menu .menu__title {
       font-size: 1.5rem;
       margin-top: 1.5rem;
@@ -67,7 +67,7 @@
 
 /* L+ Screen layout */
 
-@container (min-height: 10rem) and (min-width: 12rem) {
+@container (min-height: 5rem) and (min-width: 12rem) {
     .menu .menu__title {
       font-size: 1.75rem;
       margin-top: 2rem;

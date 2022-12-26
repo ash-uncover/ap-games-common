@@ -93,18 +93,6 @@ Object.defineProperty(exports, "MenuProperties", {
     return _menu.MenuProperties;
   }
 });
-Object.defineProperty(exports, "MenuStepInput", {
-  enumerable: true,
-  get: function get() {
-    return _MenuStepInput.MenuStepInput;
-  }
-});
-Object.defineProperty(exports, "MenuStepInputProperties", {
-  enumerable: true,
-  get: function get() {
-    return _MenuStepInput.MenuStepInputProperties;
-  }
-});
 Object.defineProperty(exports, "Page", {
   enumerable: true,
   get: function get() {
@@ -141,6 +129,30 @@ Object.defineProperty(exports, "PageProperties", {
     return _Page.PageProperties;
   }
 });
+Object.defineProperty(exports, "Panel", {
+  enumerable: true,
+  get: function get() {
+    return _Panel.Panel;
+  }
+});
+Object.defineProperty(exports, "PanelButton", {
+  enumerable: true,
+  get: function get() {
+    return _PanelButton.PanelButton;
+  }
+});
+Object.defineProperty(exports, "PanelButtonProperties", {
+  enumerable: true,
+  get: function get() {
+    return _PanelButton.PanelButtonProperties;
+  }
+});
+Object.defineProperty(exports, "PanelProperties", {
+  enumerable: true,
+  get: function get() {
+    return _Panel.PanelProperties;
+  }
+});
 Object.defineProperty(exports, "Shortcut", {
   enumerable: true,
   get: function get() {
@@ -171,6 +183,18 @@ Object.defineProperty(exports, "Shortcuts", {
     return _ShortcutManager.Shortcuts;
   }
 });
+Object.defineProperty(exports, "Slider", {
+  enumerable: true,
+  get: function get() {
+    return _Slider.Slider;
+  }
+});
+Object.defineProperty(exports, "SliderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _Slider.SliderProperties;
+  }
+});
 Object.defineProperty(exports, "SquareGrid", {
   enumerable: true,
   get: function get() {
@@ -195,10 +219,12 @@ var _SquareGrid = require("./components/grid/SquareGrid");
 var _menu = require("./components/menu/menu");
 var _MenuItem = require("./components/menu/MenuItem");
 var _MenuCheckbox = require("./components/menu/controls/MenuCheckbox");
-var _MenuStepInput = require("./components/menu/controls/MenuStepInput");
+var _Slider = require("./components/menu/controls/Slider");
 var _Page = require("./components/page/Page");
 var _PageMenu = require("./components/page/PageMenu");
 var _PageContent = require("./components/page/PageContent");
+var _Panel = require("./components/panel/Panel");
+var _PanelButton = require("./components/panel/PanelButton");
 var _AudioManager = require("./utils/AudioManager");
 var _DataManager = require("./utils/DataManager");
 var _FullscreenHelper = require("./utils/FullscreenHelper");

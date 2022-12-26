@@ -3,32 +3,28 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.Panel = void 0;
 var _react = _interopRequireDefault(require("react"));
 require("./Panel.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+// Styles
+
 var Panel = function Panel(_ref) {
-  var children = _ref.children,
-    top = _ref.top,
-    left = _ref.left,
-    bottom = _ref.bottom,
-    right = _ref.right,
-    width = _ref.width,
-    height = _ref.height;
+  var className = _ref.className,
+    title = _ref.title,
+    children = _ref.children;
+  // Hooks //
+
+  // Events //
+
   // Rendering //
 
+  var classes = ['panel'];
+  if (className) {
+    classes.push(className);
+  }
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "panel",
-    style: {
-      position: 'absolute',
-      top: top,
-      bottom: bottom,
-      left: left,
-      right: right,
-      width: width,
-      height: height
-    }
-  }, children);
+    className: classes.join(' ')
+  }, title ? /*#__PURE__*/_react["default"].createElement("h3", null, title) : null, children);
 };
-var _default = Panel;
-exports["default"] = _default;
+exports.Panel = Panel;

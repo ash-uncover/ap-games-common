@@ -9,6 +9,8 @@
 
   container-type: size;
   container-name: page-content;
+
+  background: var(--base_2_background);
 }
 
 /* S Screen layout */

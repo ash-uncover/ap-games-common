@@ -1,45 +1,38 @@
 import React, { ReactNode } from 'react'
-
+// Styles
 import './Panel.css'
 
-interface PanelProperties {
-  children: ReactNode
-  top?: string
-  left?: string
-  bottom?: string
-  right?: string
-  width?: string
-  height?: string
+export interface PanelProperties {
+  className?: string
+  title?: string
+  children?: ReactNode
 }
 
-const Panel = ({
+export const Panel = ({
+  className,
+  title,
   children,
-  top,
-  left,
-  bottom,
-  right,
-  width,
-  height,
 }: PanelProperties) => {
+
+  // Hooks //
+
+  // Events //
 
   // Rendering //
 
+  const classes = ['panel']
+  if (className) {
+    classes.push(className)
+  }
+
   return (
-    <div
-      className='panel'
-      style={{
-        position: 'absolute',
-        top,
-        bottom,
-        left,
-        right,
-        width,
-        height,
-      }}
-    >
+    <div className={classes.join(' ')}>
+      {title ?
+        <h3>
+          {title}
+        </h3>
+        : null}
       {children}
     </div>
   )
 }
-
-export default Panel

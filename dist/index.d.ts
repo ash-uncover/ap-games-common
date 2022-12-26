@@ -4,10 +4,12 @@ export { SquareGridProperties, SquareGrid, } from './components/grid/SquareGrid'
 export { MenuProperties, Menu, } from './components/menu/menu';
 export { MenuItemProperties, MenuItem, } from './components/menu/MenuItem';
 export { MenuCheckboxProperties, MenuCheckbox, } from './components/menu/controls/MenuCheckbox';
-export { MenuStepInputProperties, MenuStepInput, } from './components/menu/controls/MenuStepInput';
+export { SliderProperties, Slider, } from './components/menu/controls/Slider';
 export { PageProperties, Page, } from './components/page/Page';
 export { PageMenuProperties, PageMenu, } from './components/page/PageMenu';
 export { PageContentProperties, PageContent, } from './components/page/PageContent';
+export { PanelProperties, Panel, } from './components/panel/Panel';
+export { PanelButtonProperties, PanelButton, } from './components/panel/PanelButton';
 export { AudioManager, AudioType, AudioTypes, normalizeVolumeValue, } from './utils/AudioManager';
 export { DataManager } from './utils/DataManager';
 export { FullscreenHelper } from './utils/FullscreenHelper';

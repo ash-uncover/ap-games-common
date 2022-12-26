@@ -3,22 +3,22 @@
 /* Colors & Variables */
 
 .menu-item {
-  --page-side-menu-item__background: var(--base_item_background);
-  --page-side-menu-item__color: var(--base_item_color);
+  --menu-item__background: var(--base_item_background);
+  --menu-item__color: var(--base_item_color);
 
-  background: var(--page-side-menu-item__background);
-  color: var(--page-side-menu-item__color);
+  background: var(--menu-item__background);
+  color: var(--menu-item__color);
 
   cursor: pointer;
 
   &:hover:not(.menu-item--selected) {
-    --page-side-menu-item__background: var(--base_hover_background);
-    --page-side-menu-item__color: var(--base_hover_color);
+    --menu-item__background: var(--base_hover_background);
+    --menu-item__color: var(--base_hover_color);
   }
 
   &.menu-item--selected {
-    --page-side-menu-item__background: var(--base_selected_background);
-    --page-side-menu-item__color: var(--base_selected_color);
+    --menu-item__background: var(--base_selected_background);
+    --menu-item__color: var(--base_selected_color);
     font-weight: bold;
   }
 
