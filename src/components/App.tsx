@@ -8,20 +8,30 @@ import {
   PageContent,
   PageMenu,
   Panel,
-  Switch
+  Switch,
+  Select
 } from '../lib'
 
 export const App = () => {
 
   // Hooks //
 
-  const [sliderValue, setSliderValue] = useState(50)
-  const [switchValue, setSwitchValue] = useState(false)
-
-  const handleSwitchChange = (v: boolean) => {
-    setSwitchValue(v)
+  const [selectEnabled, setSelectDisabled] = useState(true)
+  const handleSelectDisabledChange = (v: boolean) => {
+    setSelectDisabled(v)
   }
 
+  const [selectValue, setSelectValue] = useState('1')
+  const handleSelectChange = (v: string) => {
+    setSelectValue(v)
+  }
+
+  const [sliderEnabled, setSliderDisabled] = useState(true)
+  const handleSliderDisabledChange = (v: boolean) => {
+    setSliderDisabled(v)
+  }
+
+  const [sliderValue, setSliderValue] = useState(50)
   const handleValueChange = (v: number) => {
     setSliderValue(v)
   }
@@ -53,6 +63,7 @@ export const App = () => {
           }]}
         />
       </PageMenu>
+
       <PageContent>
         <Panel>
           <h2>
@@ -61,12 +72,30 @@ export const App = () => {
         </Panel>
 
         <Panel title='Title'>
+
           <Switch
-            label='Switch'
-            checked={switchValue}
-            onChange={handleSwitchChange}
+            label='Enable select'
+            checked={selectEnabled}
+            onChange={handleSelectDisabledChange}
+          />
+          <Select
+            disabled={!selectEnabled}
+            value={selectValue}
+            values={[
+              { id: '1', text: 'Value 1' },
+              { id: '2', text: 'Value 2' },
+              { id: '3', text: 'Value 3' }
+            ]}
+            onChange={handleSelectChange}
+          />
+
+          <Switch
+            label='Enable slider'
+            checked={sliderEnabled}
+            onChange={handleSliderDisabledChange}
           />
           <Slider
+            disabled={!sliderEnabled}
             label='Slider'
             min={50}
             max={100}

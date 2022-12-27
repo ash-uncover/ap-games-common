@@ -1,16 +1,13 @@
 @import '../../../styles/variables.css';
 
 .slider {
+  --slider__control_background: var(--base_background_2);
+  --slider__control-bar_background: var(--base_background_3);
+  --slider__control-bar-active_background: var(--base_selected_background);
+
   height: 2rem;
   display: flex;
   align-items: center;
-
-  --slider__control_background: var(--base_background_1);
-  --slider__control-bar_background: var(--base_background_2);
-  --slider__control-bar-active_background: var(--base_selected_background);
-
-  --slider__button_background: var(--base_background_1);
-  --slider__button_color: var(--base_background_4);
 
   & .slider__control {
     flex-grow: 1;
@@ -81,4 +78,12 @@
       }
     }
   }
+
+  &.slider--disabled {
+    --slider__control_background: var(--base_background_1);
+    --slider__control-bar_background: var(--base_background_2);
+    --slider__control-bar-active_background: var(--base_5_background);
+
+    pointer-events: none;
+ }
 }

@@ -21,7 +21,9 @@ var DEFAULT_STEPS = 10;
 var TOOLTIP_TIMEOUT;
 var TOOLTIP_TIMEOUT_DELAY = 1000;
 var Slider = function Slider(_ref) {
-  var label = _ref.label,
+  var className = _ref.className,
+    disabled = _ref.disabled,
+    label = _ref.label,
     min = _ref.min,
     max = _ref.max,
     step = _ref.step,
@@ -155,8 +157,15 @@ var Slider = function Slider(_ref) {
 
   // Rendering //
 
+  var classes = ['slider'];
+  if (className) {
+    classes.push(className);
+  }
+  if (disabled) {
+    classes.push('slider--disabled');
+  }
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "slider"
+    className: classes.join(' ')
   }, /*#__PURE__*/_react["default"].createElement("input", {
     style: {
       display: 'none'
@@ -167,6 +176,7 @@ var Slider = function Slider(_ref) {
     value: currentValue,
     onChange: handleChange
   }), /*#__PURE__*/_react["default"].createElement(_ControlButton.ControlButton, {
+    disabled: disabled,
     onClick: handleValueDown
   }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
     icon: ['fas', 'chevron-left']
@@ -197,6 +207,7 @@ var Slider = function Slider(_ref) {
       transition: 'opacity 0.5s'
     }
   }, currentValue, "%")))), /*#__PURE__*/_react["default"].createElement(_ControlButton.ControlButton, {
+    disabled: disabled,
     onClick: handleValueUp
   }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
     icon: ['fas', 'chevron-right']

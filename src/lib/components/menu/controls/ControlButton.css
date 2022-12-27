@@ -19,4 +19,9 @@
     --control-button_background: var(--base_background_4);
     --control-button_color: var(--base_background_8);
   }
+
+  &.control-button--disabled {
+    --control-button_background: var(--base_background_1);
+    --control-button_color: var(--base_background_4);
+  }
 }

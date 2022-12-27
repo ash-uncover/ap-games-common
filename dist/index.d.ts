@@ -3,6 +3,7 @@ export { GridTilesProperties, GridTiles, } from './components/grid/GridTiles';
 export { SquareGridProperties, SquareGrid, } from './components/grid/SquareGrid';
 export { MenuProperties, Menu, } from './components/menu/menu';
 export { MenuItemProperties, MenuItem, } from './components/menu/MenuItem';
+export { SelectProperties, Select, } from './components/menu/controls/Select';
 export { SliderProperties, Slider, } from './components/menu/controls/Slider';
 export { SwitchProperties, Switch, } from './components/menu/controls/Switch';
 export { PageProperties, Page, } from './components/page/Page';

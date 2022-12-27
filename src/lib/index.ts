@@ -27,6 +27,11 @@ export {
 } from './components/menu/MenuItem'
 
 
+// Components > menu > controls > Select
+export {
+  SelectProperties,
+  Select,
+} from './components/menu/controls/Select'
 // Components > menu > controls > Slider
 export {
   SliderProperties,

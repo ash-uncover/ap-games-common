@@ -1,6 +1,8 @@
 /// <reference types="react" />
 import './Slider.css';
 export interface SliderProperties {
+    className?: string;
+    disabled?: boolean;
     label: string;
     min: number;
     max: number;
@@ -8,4 +10,4 @@ export interface SliderProperties {
     value: number;
     onChange: (arg: number) => void;
 }
-export declare const Slider: ({ label, min, max, step, value, onChange, }: SliderProperties) => JSX.Element;
+export declare const Slider: ({ className, disabled, label, min, max, step, value, onChange, }: SliderProperties) => JSX.Element;

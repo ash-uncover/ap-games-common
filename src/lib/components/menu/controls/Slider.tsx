@@ -11,6 +11,8 @@ let TOOLTIP_TIMEOUT: ReturnType<typeof setTimeout>
 const TOOLTIP_TIMEOUT_DELAY = 1000
 
 export interface SliderProperties {
+  className?: string
+  disabled?: boolean
   label: string
   min: number
   max: number
@@ -21,6 +23,8 @@ export interface SliderProperties {
 }
 
 export const Slider = ({
+  className,
+  disabled,
   label,
   min,
   max,
@@ -166,8 +170,16 @@ export const Slider = ({
 
   // Rendering //
 
+  const classes = ['slider']
+  if (className) {
+    classes.push(className)
+  }
+  if (disabled) {
+    classes.push('slider--disabled')
+  }
+
   return (
-    <div className='slider'>
+    <div className={classes.join(' ')}>
 
       <input
         style={{
@@ -180,7 +192,10 @@ export const Slider = ({
         onChange={handleChange}
       />
 
-      <ControlButton onClick={handleValueDown}>
+      <ControlButton
+        disabled={disabled}
+        onClick={handleValueDown}
+      >
         <FontAwesomeIcon icon={['fas', 'chevron-left']} />
       </ControlButton>
 
@@ -225,7 +240,10 @@ export const Slider = ({
         </div>
       </div>
 
-      <ControlButton onClick={handleValueUp}>
+      <ControlButton
+        disabled={disabled}
+        onClick={handleValueUp}
+      >
         <FontAwesomeIcon icon={['fas', 'chevron-right']} />
       </ControlButton>
 

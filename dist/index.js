@@ -141,6 +141,18 @@ Object.defineProperty(exports, "PanelProperties", {
     return _Panel.PanelProperties;
   }
 });
+Object.defineProperty(exports, "Select", {
+  enumerable: true,
+  get: function get() {
+    return _Select.Select;
+  }
+});
+Object.defineProperty(exports, "SelectProperties", {
+  enumerable: true,
+  get: function get() {
+    return _Select.SelectProperties;
+  }
+});
 Object.defineProperty(exports, "Shortcut", {
   enumerable: true,
   get: function get() {
@@ -218,6 +230,7 @@ var _GridTiles = require("./components/grid/GridTiles");
 var _SquareGrid = require("./components/grid/SquareGrid");
 var _menu = require("./components/menu/menu");
 var _MenuItem = require("./components/menu/MenuItem");
+var _Select = require("./components/menu/controls/Select");
 var _Slider = require("./components/menu/controls/Slider");
 var _Switch = require("./components/menu/controls/Switch");
 var _Page = require("./components/page/Page");
