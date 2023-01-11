@@ -57,6 +57,30 @@ Object.defineProperty(exports, "GridTilesProperties", {
     return _GridTiles.GridTilesProperties;
   }
 });
+Object.defineProperty(exports, "ImageSlider", {
+  enumerable: true,
+  get: function get() {
+    return _ImageSlider.ImageSlider;
+  }
+});
+Object.defineProperty(exports, "ImageSliderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _ImageSlider.ImageSliderProperties;
+  }
+});
+Object.defineProperty(exports, "Loader", {
+  enumerable: true,
+  get: function get() {
+    return _Loader.Loader;
+  }
+});
+Object.defineProperty(exports, "LoaderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _Loader.LoaderProperties;
+  }
+});
 Object.defineProperty(exports, "Menu", {
   enumerable: true,
   get: function get() {
@@ -228,6 +252,8 @@ Object.defineProperty(exports, "normalizeVolumeValue", {
 var _GridContainer = require("./components/grid/GridContainer");
 var _GridTiles = require("./components/grid/GridTiles");
 var _SquareGrid = require("./components/grid/SquareGrid");
+var _ImageSlider = require("./components/image-slider/ImageSlider");
+var _Loader = require("./components/loader/Loader");
 var _menu = require("./components/menu/menu");
 var _MenuItem = require("./components/menu/MenuItem");
 var _Select = require("./components/menu/controls/Select");

@@ -1,6 +1,8 @@
 export { GridContainerProperties, GridContainer, } from './components/grid/GridContainer';
 export { GridTilesProperties, GridTiles, } from './components/grid/GridTiles';
 export { SquareGridProperties, SquareGrid, } from './components/grid/SquareGrid';
+export { ImageSliderProperties, ImageSlider, } from './components/image-slider/ImageSlider';
+export { LoaderProperties, Loader, } from './components/loader/Loader';
 export { MenuProperties, Menu, } from './components/menu/menu';
 export { MenuItemProperties, MenuItem, } from './components/menu/MenuItem';
 export { SelectProperties, Select, } from './components/menu/controls/Select';
