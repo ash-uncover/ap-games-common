@@ -43,7 +43,6 @@ var ImageSlider = function ImageSlider(_ref) {
   // Events //
 
   var handleTouchStart = function handleTouchStart(event) {
-    event.preventDefault();
     if (!animationMode) {
       dragInfo.x = event.touches[0].clientX;
       dragInfo.target = event.touches[0].target;
@@ -56,7 +55,6 @@ var ImageSlider = function ImageSlider(_ref) {
     document.addEventListener('touchmove', doDrag);
   };
   var doDrag = function doDrag(event) {
-    event.preventDefault();
     var offset = (event.touches[0].clientX - dragInfo.x) / dragInfo.target.offsetWidth;
     offset = Math.max(-1, Math.min(1, offset));
     setOffsetX(offset);

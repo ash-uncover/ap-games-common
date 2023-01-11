@@ -41,7 +41,6 @@ export const ImageSlider = ({
   // Events //
 
   const handleTouchStart = (event: React.TouchEvent) => {
-    event.preventDefault()
     if (!animationMode) {
       dragInfo.x = event.touches[0].clientX
       dragInfo.target = event.touches[0].target as HTMLImageElement
@@ -56,7 +55,6 @@ export const ImageSlider = ({
   }
 
   const doDrag = (event: TouchEvent) => {
-    event.preventDefault()
     let offset = (event.touches[0].clientX - dragInfo.x) / dragInfo.target!.offsetWidth
     offset = Math.max(-1, Math.min(1, offset))
     setOffsetX(offset)
