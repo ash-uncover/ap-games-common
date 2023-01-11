@@ -15,6 +15,20 @@ export {
 } from './components/grid/SquareGrid'
 
 
+// Components > image-slider > ImageSlider
+export {
+  ImageSliderProperties,
+  ImageSlider,
+} from './components/image-slider/ImageSlider'
+
+
+// Components > loader > Loader
+export {
+  LoaderProperties,
+  Loader,
+} from './components/loader/Loader'
+
+
 // Components > menu > Menu
 export {
   MenuProperties,
@@ -59,6 +73,7 @@ export {
   PageContentProperties,
   PageContent,
 } from './components/page/PageContent'
+
 
 // Components > panel > Panel
 export {
