@@ -3,24 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "AudioManager", {
-  enumerable: true,
-  get: function get() {
-    return _AudioManager.AudioManager;
-  }
-});
-Object.defineProperty(exports, "AudioType", {
-  enumerable: true,
-  get: function get() {
-    return _AudioManager.AudioType;
-  }
-});
-Object.defineProperty(exports, "AudioTypes", {
-  enumerable: true,
-  get: function get() {
-    return _AudioManager.AudioTypes;
-  }
-});
 Object.defineProperty(exports, "DataManager", {
   enumerable: true,
   get: function get() {
@@ -84,7 +66,7 @@ Object.defineProperty(exports, "LoaderProperties", {
 Object.defineProperty(exports, "Menu", {
   enumerable: true,
   get: function get() {
-    return _menu.Menu;
+    return _Menu.Menu;
   }
 });
 Object.defineProperty(exports, "MenuItem", {
@@ -102,7 +84,7 @@ Object.defineProperty(exports, "MenuItemProperties", {
 Object.defineProperty(exports, "MenuProperties", {
   enumerable: true,
   get: function get() {
-    return _menu.MenuProperties;
+    return _Menu.MenuProperties;
   }
 });
 Object.defineProperty(exports, "Page", {
@@ -243,18 +225,12 @@ Object.defineProperty(exports, "SwitchProperties", {
     return _Switch.SwitchProperties;
   }
 });
-Object.defineProperty(exports, "normalizeVolumeValue", {
-  enumerable: true,
-  get: function get() {
-    return _AudioManager.normalizeVolumeValue;
-  }
-});
 var _GridContainer = require("./components/grid/GridContainer");
 var _GridTiles = require("./components/grid/GridTiles");
 var _SquareGrid = require("./components/grid/SquareGrid");
 var _ImageSlider = require("./components/image-slider/ImageSlider");
 var _Loader = require("./components/loader/Loader");
-var _menu = require("./components/menu/menu");
+var _Menu = require("./components/menu/Menu");
 var _MenuItem = require("./components/menu/MenuItem");
 var _Select = require("./components/menu/controls/Select");
 var _Slider = require("./components/menu/controls/Slider");
@@ -264,7 +240,6 @@ var _PageMenu = require("./components/page/PageMenu");
 var _PageContent = require("./components/page/PageContent");
 var _Panel = require("./components/panel/Panel");
 var _PanelButton = require("./components/panel/PanelButton");
-var _AudioManager = require("./utils/AudioManager");
 var _DataManager = require("./utils/DataManager");
 var _FullscreenHelper = require("./utils/FullscreenHelper");
 var _ShortcutManager = require("./utils/ShortcutManager");

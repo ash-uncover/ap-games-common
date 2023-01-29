@@ -33,7 +33,7 @@ export {
 export {
   MenuProperties,
   Menu,
-} from './components/menu/menu'
+} from './components/menu/Menu'
 // Components > menu > MenuItem
 export {
   MenuItemProperties,
@@ -87,13 +87,6 @@ export {
 } from './components/panel/PanelButton'
 
 
-// Lib > Audio
-export {
-  AudioManager,
-  AudioType,
-  AudioTypes,
-  normalizeVolumeValue,
-} from './utils/AudioManager'
 // Lib > Data
 export {
   DataManager
