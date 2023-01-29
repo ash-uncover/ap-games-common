@@ -35,7 +35,7 @@ export const Loader = ({
           <div
             className='loader__bar-inner'
             style={{
-              width: `${Math.min(100, Math.max(0, value))}%`
+              width: `${Math.floor(Math.min(100, Math.max(0, value)))}%`
             }}
           />
           <div

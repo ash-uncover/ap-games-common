@@ -2,7 +2,10 @@
   --panel__background: var(--base_background_2);
   --panel__color: var(--base_item_color);
 
+  background: var(--base_background_2);
+
   background: var(--panel__background);
+  color: var(--base_item_color);
   color: var(--panel__color);
 
   /* XS Screen layout */

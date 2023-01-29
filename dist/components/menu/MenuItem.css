@@ -6,7 +6,10 @@
   --menu-item__background: var(--base_item_background);
   --menu-item__color: var(--base_item_color);
 
+  background: var(--base_item_background);
+
   background: var(--menu-item__background);
+  color: var(--base_item_color);
   color: var(--menu-item__color);
 
   cursor: pointer;

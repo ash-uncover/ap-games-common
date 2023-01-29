@@ -9,7 +9,9 @@
   border-radius: 50%;
   border: 0;
   cursor: pointer;
+  background: var(--base_background_2);
   background: var(--control-button_background);
+  color: var(--base_background_6);
   color: var(--control-button_color);
   display: flex;
   align-items: center;

@@ -24,7 +24,7 @@ var Loader = function Loader(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "loader__bar-inner",
     style: {
-      width: "".concat(Math.min(100, Math.max(0, value)), "%")
+      width: "".concat(Math.floor(Math.min(100, Math.max(0, value))), "%")
     }
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: "loader__bar-value"
