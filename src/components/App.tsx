@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 // Components
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  FontAwesomeIcon
+} from '@fortawesome/react-fontawesome'
 import {
   Menu,
   Slider,
