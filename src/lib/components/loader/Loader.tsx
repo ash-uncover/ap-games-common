@@ -5,12 +5,22 @@ import './Loader.css'
 export interface LoaderProperties {
   text?: string
   value: number
+  onClick?: () => void
 }
 
 export const Loader = ({
   text,
   value,
+  onClick
 }: LoaderProperties) => {
+
+  // Events //
+
+  const handleClick = () => {
+    if (onClick) {
+      onClick()
+    }
+  }
 
   // Rendering //
 
@@ -19,6 +29,7 @@ export const Loader = ({
   return (
     <div
       className={classes.join(' ')}
+      onClick={handleClick}
     >
       <div
         className='loader__content'

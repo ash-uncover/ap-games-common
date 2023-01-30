@@ -9,12 +9,22 @@ require("./Loader.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Loader = function Loader(_ref) {
   var text = _ref.text,
-    value = _ref.value;
+    value = _ref.value,
+    onClick = _ref.onClick;
+  // Events //
+
+  var handleClick = function handleClick() {
+    if (onClick) {
+      onClick();
+    }
+  };
+
   // Rendering //
 
   var classes = ['loader'];
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: classes.join(' ')
+    className: classes.join(' '),
+    onClick: handleClick
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "loader__content"
   }, /*#__PURE__*/_react["default"].createElement("div", {
