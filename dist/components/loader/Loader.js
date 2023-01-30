@@ -8,7 +8,8 @@ var _react = _interopRequireDefault(require("react"));
 require("./Loader.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Loader = function Loader(_ref) {
-  var text = _ref.text,
+  var className = _ref.className,
+    text = _ref.text,
     value = _ref.value,
     onClick = _ref.onClick;
   // Events //
@@ -22,6 +23,9 @@ var Loader = function Loader(_ref) {
   // Rendering //
 
   var classes = ['loader'];
+  if (className) {
+    classes.push(className);
+  }
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: classes.join(' '),
     onClick: handleClick

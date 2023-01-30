@@ -3,12 +3,14 @@ import React from 'react'
 import './Loader.css'
 
 export interface LoaderProperties {
+  className?: string
   text?: string
   value: number
   onClick?: () => void
 }
 
 export const Loader = ({
+  className,
   text,
   value,
   onClick
@@ -25,6 +27,9 @@ export const Loader = ({
   // Rendering //
 
   const classes = ['loader']
+  if (className) {
+    classes.push(className)
+  }
 
   return (
     <div
