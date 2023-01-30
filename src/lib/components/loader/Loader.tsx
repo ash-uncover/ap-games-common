@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 
 import './Loader.css'
 
 export interface LoaderProperties {
   className?: string
+  style?: CSSProperties
+
   text?: string
   value: number
   onClick?: () => void
@@ -11,6 +13,7 @@ export interface LoaderProperties {
 
 export const Loader = ({
   className,
+  style,
   text,
   value,
   onClick
@@ -34,6 +37,7 @@ export const Loader = ({
   return (
     <div
       className={classes.join(' ')}
+      style={style}
       onClick={handleClick}
     >
       <div

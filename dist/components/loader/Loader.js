@@ -9,6 +9,7 @@ require("./Loader.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Loader = function Loader(_ref) {
   var className = _ref.className,
+    style = _ref.style,
     text = _ref.text,
     value = _ref.value,
     onClick = _ref.onClick;
@@ -28,6 +29,7 @@ var Loader = function Loader(_ref) {
   }
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: classes.join(' '),
+    style: style,
     onClick: handleClick
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "loader__content"
