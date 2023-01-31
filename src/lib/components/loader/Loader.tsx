@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, ReactNode } from 'react'
 
 import './Loader.css'
 
@@ -6,7 +6,8 @@ export interface LoaderProperties {
   className?: string
   style?: CSSProperties
 
-  text?: string
+  children?: ReactNode
+
   value: number
   onClick?: () => void
 }
@@ -14,7 +15,7 @@ export interface LoaderProperties {
 export const Loader = ({
   className,
   style,
-  text,
+  children,
   value,
   onClick
 }: LoaderProperties) => {
@@ -43,11 +44,13 @@ export const Loader = ({
       <div
         className='loader__content'
       >
-        <div
-          className='loader__text'
-        >
-          {text}
-        </div>
+        {children ?
+          <div
+            className='loader__control'
+          >
+            {children}
+          </div>
+          : null}
 
         <div
           className='loader__bar'

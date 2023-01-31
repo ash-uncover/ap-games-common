@@ -20,7 +20,7 @@
     padding: 1.5rem 2rem;
     border-radius: 0.5rem;
   }
-.loader .loader__content .loader__text {
+.loader .loader__content .loader__control {
       margin-bottom: 1rem;
     }
 .loader .loader__content .loader__bar {

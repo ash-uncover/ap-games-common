@@ -10,7 +10,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var Loader = function Loader(_ref) {
   var className = _ref.className,
     style = _ref.style,
-    text = _ref.text,
+    children = _ref.children,
     value = _ref.value,
     onClick = _ref.onClick;
   // Events //
@@ -33,9 +33,9 @@ var Loader = function Loader(_ref) {
     onClick: handleClick
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "loader__content"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "loader__text"
-  }, text), /*#__PURE__*/_react["default"].createElement("div", {
+  }, children ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "loader__control"
+  }, children) : null, /*#__PURE__*/_react["default"].createElement("div", {
     className: "loader__bar"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "loader__bar-inner",
