@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { loadAudio } from 'src/lib/audio/hooks'
-import { loadImages } from 'src/lib/images/lib/loadImages'
+import { loadAudio } from '../../audio/hooks'
+import { loadImages } from '../../images/lib/loadImages'
 
 interface useLoadDataPayload {
   images: string[]
