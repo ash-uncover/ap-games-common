@@ -105,10 +105,10 @@ export {
 } from './components/panel/PanelButton'
 
 
-// Audio > hooks
+// Images > hooks
 export {
   loadImages,
-} from './images/hooks'
+} from './images/lib/loadImages'
 
 // Images > constants
 export {
@@ -119,7 +119,10 @@ export {
 // Lib > Data
 export {
   DataManager
-} from './utils/DataManager'
+} from './utils/data/DataManager'
+export {
+  useLoadData
+} from './utils/data/useLoadData'
 // Lib > Fullscreen
 export {
   FullscreenHelper

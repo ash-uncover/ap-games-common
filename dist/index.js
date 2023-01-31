@@ -252,7 +252,7 @@ Object.defineProperty(exports, "loadAudio", {
 Object.defineProperty(exports, "loadImages", {
   enumerable: true,
   get: function get() {
-    return _hooks2.loadImages;
+    return _loadImages.loadImages;
   }
 });
 Object.defineProperty(exports, "useAudio", {
@@ -279,6 +279,12 @@ Object.defineProperty(exports, "useAudioVolume", {
     return _hooks.useAudioVolume;
   }
 });
+Object.defineProperty(exports, "useLoadData", {
+  enumerable: true,
+  get: function get() {
+    return _useLoadData.useLoadData;
+  }
+});
 var _hooks = require("./audio/hooks");
 var _AudioCategory = require("./audio/constants/AudioCategory");
 var _AudioLoadState = require("./audio/constants/AudioLoadState");
@@ -297,8 +303,9 @@ var _PageMenu = require("./components/page/PageMenu");
 var _PageContent = require("./components/page/PageContent");
 var _Panel = require("./components/panel/Panel");
 var _PanelButton = require("./components/panel/PanelButton");
-var _hooks2 = require("./images/hooks");
+var _loadImages = require("./images/lib/loadImages");
 var _ImageLoadState = require("./images/constants/ImageLoadState");
-var _DataManager = require("./utils/DataManager");
+var _DataManager = require("./utils/data/DataManager");
+var _useLoadData = require("./utils/data/useLoadData");
 var _FullscreenHelper = require("./utils/FullscreenHelper");
 var _ShortcutManager = require("./utils/ShortcutManager");

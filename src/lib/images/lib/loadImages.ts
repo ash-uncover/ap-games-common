@@ -1,4 +1,4 @@
-import { ImageLoader } from '../lib/ImageLoader'
+import { ImageLoader } from './ImageLoader'
 
 const loader = new ImageLoader()
 
