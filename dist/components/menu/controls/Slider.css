@@ -8,6 +8,8 @@
   height: 2rem;
   display: flex;
   align-items: center;
+
+  margin: 1rem 0;
 }
 
 .slider .slider__control {

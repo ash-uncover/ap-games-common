@@ -9,6 +9,8 @@
   display: flex;
   align-items: center;
 
+  margin: 1rem 0;
+
   & .slider__control {
     flex-grow: 1;
     height: 2rem;
