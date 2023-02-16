@@ -21,7 +21,8 @@ var GridContainer = function GridContainer(_ref) {
     style = _ref.style,
     width = _ref.width,
     height = _ref.height,
-    children = _ref.children;
+    children = _ref.children,
+    onSizeInvert = _ref.onSizeInvert;
   // Hooks //
 
   var containerRef = (0, _react.useRef)(null);
@@ -46,7 +47,7 @@ var GridContainer = function GridContainer(_ref) {
       var containerRatio = container.clientWidth / container.clientHeight;
       if (ratioBase >= 1) {
         if (containerRatio >= 1) {
-          setInvert(false);
+          handleInvertChange(false);
           if (containerRatio >= ratioBase) {
             container.classList.add('grid-container-h');
             container.classList.remove('grid-container-v');
@@ -55,7 +56,7 @@ var GridContainer = function GridContainer(_ref) {
             container.classList.add('grid-container-v');
           }
         } else {
-          setInvert(true);
+          handleInvertChange(true);
           if (containerRatio <= 1 / ratioBase) {
             container.classList.remove('grid-container-h');
             container.classList.add('grid-container-v');
@@ -66,7 +67,7 @@ var GridContainer = function GridContainer(_ref) {
         }
       } else {
         if (containerRatio >= 1) {
-          setInvert(true);
+          handleInvertChange(true);
           if (containerRatio <= 1 / ratioBase) {
             container.classList.remove('grid-container-h');
             container.classList.add('grid-container-v');
@@ -75,7 +76,7 @@ var GridContainer = function GridContainer(_ref) {
             container.classList.remove('grid-container-v');
           }
         } else {
-          setInvert(false);
+          handleInvertChange(false);
           if (containerRatio >= ratioBase) {
             container.classList.add('grid-container-h');
             container.classList.remove('grid-container-v');
@@ -85,6 +86,15 @@ var GridContainer = function GridContainer(_ref) {
           }
         }
       }
+    }
+  };
+
+  // Events //
+
+  var handleInvertChange = function handleInvertChange(invert) {
+    setInvert(invert);
+    if (onSizeInvert) {
+      onSizeInvert(invert);
     }
   };
 

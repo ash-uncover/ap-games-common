@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { CSSProperties, ReactNode, useState } from 'react'
 // Components
 import { GridContainer } from './GridContainer'
 
@@ -6,6 +6,8 @@ import './GridTiles.css'
 
 export interface GridTilesProperties {
   className?: string
+  style?: CSSProperties
+
   height: number
   width: number
 
@@ -14,24 +16,40 @@ export interface GridTilesProperties {
 
 export const GridTiles = ({
   className,
+  style,
+
   height,
   width,
 
   children,
 }: GridTilesProperties) => {
 
+  // Hooks //
+
+  const [ready, setReady] = useState(false)
+  const [invert, setInvert] = useState(false)
+
+  // Events //
+
+  const handleSizeInvert = (invert: boolean) => {
+    setReady(true)
+    setInvert(invert)
+  }
+
   // Rendering //
 
   const renderGrid = () => {
     const result = []
-    for (let indexRow = 0; indexRow < height; indexRow++) {
+    const nbRows = invert ? width : height
+    for (let indexRow = 0; indexRow < nbRows; indexRow++) {
       result.push(renderGridRow(indexRow))
     }
     return result
   }
   const renderGridRow = (indexRow: number) => {
     const result = []
-    for (let indexCol = 0; indexCol < width; indexCol++) {
+    const nbCols = invert ? height : width
+    for (let indexCol = 0; indexCol < nbCols; indexCol++) {
       result.push(renderGridCell(indexRow, indexCol))
     }
     return (
@@ -45,7 +63,7 @@ export const GridTiles = ({
   }
   const renderGridCell = (indexRow: number, indexCol: number) => {
     let element = null
-    const indexCell = indexRow * width + indexCol
+    const indexCell = indexRow * (invert ? height : width) + indexCol
     if (indexCell < children.length) {
       element = children[indexCell]
     }
@@ -66,12 +84,16 @@ export const GridTiles = ({
 
   return (
     <GridContainer
+      style={style}
       height={height}
       width={width}
+      onSizeInvert={handleSizeInvert}
     >
-      <div className={classes.join(' ')}>
-        {renderGrid()}
-      </div>
+      {ready ?
+        <div className={classes.join(' ')}>
+          {renderGrid()}
+        </div>
+      : null}
     </GridContainer>
   )
 }

@@ -16,6 +16,8 @@ export interface GridContainerProperties {
   height: number
 
   children?: ReactNode
+
+  onSizeInvert?: (invert: boolean) => void
 }
 
 export const GridContainer = ({
@@ -26,6 +28,8 @@ export const GridContainer = ({
   height,
 
   children,
+
+  onSizeInvert,
 }: GridContainerProperties) => {
 
   // Hooks //
@@ -52,7 +56,7 @@ export const GridContainer = ({
 
       if (ratioBase >= 1) {
         if (containerRatio >= 1) {
-          setInvert(false)
+          handleInvertChange(false)
           if (containerRatio >= ratioBase) {
             container.classList.add('grid-container-h')
             container.classList.remove('grid-container-v')
@@ -61,7 +65,7 @@ export const GridContainer = ({
             container.classList.add('grid-container-v')
           }
         } else {
-          setInvert(true)
+          handleInvertChange(true)
           if (containerRatio <= (1 / ratioBase)) {
             container.classList.remove('grid-container-h')
             container.classList.add('grid-container-v')
@@ -72,7 +76,7 @@ export const GridContainer = ({
         }
       } else {
         if (containerRatio >= 1) {
-          setInvert(true)
+          handleInvertChange(true)
           if (containerRatio <= (1 / ratioBase)) {
             container.classList.remove('grid-container-h')
             container.classList.add('grid-container-v')
@@ -81,7 +85,7 @@ export const GridContainer = ({
             container.classList.remove('grid-container-v')
           }
         } else {
-          setInvert(false)
+          handleInvertChange(false)
           if (containerRatio >= ratioBase) {
             container.classList.add('grid-container-h')
             container.classList.remove('grid-container-v')
@@ -91,6 +95,15 @@ export const GridContainer = ({
           }
         }
       }
+    }
+  }
+
+  // Events //
+
+  const handleInvertChange = (invert: boolean) => {
+    setInvert(invert)
+    if (onSizeInvert) {
+      onSizeInvert(invert)
     }
   }
 

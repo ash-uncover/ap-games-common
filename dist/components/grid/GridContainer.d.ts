@@ -6,5 +6,6 @@ export interface GridContainerProperties {
     width: number;
     height: number;
     children?: ReactNode;
+    onSizeInvert?: (invert: boolean) => void;
 }
-export declare const GridContainer: ({ className, style, width, height, children, }: GridContainerProperties) => JSX.Element;
+export declare const GridContainer: ({ className, style, width, height, children, onSizeInvert, }: GridContainerProperties) => JSX.Element;
