@@ -26,8 +26,10 @@ export const Switch = ({
 
   // Rendering //
 
+  const classes = ['menu-control switch']
+
   return (
-    <div className='switch'>
+    <div className={classes.join(' ')}>
       <input
         id={id}
         className='switch__input'

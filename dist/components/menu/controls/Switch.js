@@ -25,8 +25,9 @@ var Switch = function Switch(_ref) {
 
   // Rendering //
 
+  var classes = ['menu-control switch'];
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "switch"
+    className: classes.join(' ')
   }, /*#__PURE__*/_react["default"].createElement("input", {
     id: id,
     className: "switch__input",

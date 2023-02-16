@@ -5,6 +5,6 @@ export interface GridContainerProperties {
     style?: CSSProperties;
     width: number;
     height: number;
-    children: ReactNode;
+    children?: ReactNode;
 }
 export declare const GridContainer: ({ className, style, width, height, children, }: GridContainerProperties) => JSX.Element;

@@ -170,7 +170,7 @@ export const Slider = ({
 
   // Rendering //
 
-  const classes = ['slider']
+  const classes = ['menu-control slider']
   if (className) {
     classes.push(className)
   }

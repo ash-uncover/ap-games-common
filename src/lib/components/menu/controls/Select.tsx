@@ -46,7 +46,7 @@ export const Select = ({
 
   // Rendering //
 
-  const classes = ['select']
+  const classes = ['menu-control select']
   if (className) {
     classes.push(className)
   }

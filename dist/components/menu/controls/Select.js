@@ -42,7 +42,7 @@ var Select = function Select(_ref) {
 
   // Rendering //
 
-  var classes = ['select'];
+  var classes = ['menu-control select'];
   if (className) {
     classes.push(className);
   }

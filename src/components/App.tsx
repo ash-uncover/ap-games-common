@@ -11,7 +11,8 @@ import {
   PageMenu,
   Panel,
   Switch,
-  Select
+  Select,
+  GridContainer
 } from '../lib'
 
 export const App = () => {
@@ -71,6 +72,19 @@ export const App = () => {
           <h2>
             Big Title
           </h2>
+        </Panel>
+
+        <Panel title='Grid'>
+
+          <GridContainer
+            style={{
+              width: '100%',
+              height: '300px'
+            }}
+            width={4}
+            height={4}
+          />
+
         </Panel>
 
         <Panel title='Title'>

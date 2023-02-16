@@ -1,19 +1,27 @@
-import React, { CSSProperties, ReactNode, useEffect, useRef } from 'react'
+import React, {
+  CSSProperties,
+  ReactNode,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 
 import './GridContainer.css'
 
 export interface GridContainerProperties {
   className?: string
   style?: CSSProperties
+
   width: number
   height: number
 
-  children: ReactNode
+  children?: ReactNode
 }
 
 export const GridContainer = ({
   className,
   style,
+
   width,
   height,
 
@@ -22,8 +30,9 @@ export const GridContainer = ({
 
   // Hooks //
 
-  const container = useRef<HTMLDivElement>(null)
-  const innerContainer = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const [invert, setInvert] = useState(false)
 
   useEffect(() => {
     updateSize()
@@ -36,16 +45,51 @@ export const GridContainer = ({
   }, [])
 
   const updateSize = () => {
-    const currentContainer = container.current
-    const ratio = width / height
-    if (currentContainer) {
-      const containerRatio = currentContainer.clientWidth / currentContainer.clientHeight
-      if (containerRatio >= ratio) {
-        currentContainer.classList.add('grid-container-h')
-        currentContainer.classList.remove('grid-container-v')
+    const container = containerRef.current
+    if (container) {
+      const ratioBase = width / height
+      const containerRatio = container.clientWidth / container.clientHeight
+
+      if (ratioBase >= 1) {
+        if (containerRatio >= 1) {
+          setInvert(false)
+          if (containerRatio >= ratioBase) {
+            container.classList.add('grid-container-h')
+            container.classList.remove('grid-container-v')
+          } else {
+            container.classList.remove('grid-container-h')
+            container.classList.add('grid-container-v')
+          }
+        } else {
+          setInvert(true)
+          if (containerRatio <= (1 / ratioBase)) {
+            container.classList.remove('grid-container-h')
+            container.classList.add('grid-container-v')
+          } else {
+            container.classList.add('grid-container-h')
+            container.classList.remove('grid-container-v')
+          }
+        }
       } else {
-        currentContainer.classList.remove('grid-container-h')
-        currentContainer.classList.add('grid-container-v')
+        if (containerRatio >= 1) {
+          setInvert(true)
+          if (containerRatio <= (1 / ratioBase)) {
+            container.classList.remove('grid-container-h')
+            container.classList.add('grid-container-v')
+          } else {
+            container.classList.add('grid-container-h')
+            container.classList.remove('grid-container-v')
+          }
+        } else {
+          setInvert(false)
+          if (containerRatio >= ratioBase) {
+            container.classList.add('grid-container-h')
+            container.classList.remove('grid-container-v')
+          } else {
+            container.classList.remove('grid-container-h')
+            container.classList.add('grid-container-v')
+          }
+        }
       }
     }
   }
@@ -61,13 +105,12 @@ export const GridContainer = ({
     <div
       className={classes.join(' ')}
       style={style}
-      ref={container}
+      ref={containerRef}
     >
       <div
         className='grid-container-inner'
-        ref={innerContainer}
         style={{
-          aspectRatio: width / height
+          aspectRatio: invert ? height / width : width / height
         }}
       >
         {children}

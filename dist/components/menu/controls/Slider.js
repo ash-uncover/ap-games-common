@@ -157,7 +157,7 @@ var Slider = function Slider(_ref) {
 
   // Rendering //
 
-  var classes = ['slider'];
+  var classes = ['menu-control slider'];
   if (className) {
     classes.push(className);
   }
