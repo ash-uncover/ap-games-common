@@ -5,6 +5,8 @@ export { GridContainerProperties, GridContainer, } from './components/grid/GridC
 export { GridTilesProperties, GridTiles, } from './components/grid/GridTiles';
 export { SquareGridProperties, SquareGrid, } from './components/grid/SquareGrid';
 export { ImageSliderProperties, ImageSlider, } from './components/image-slider/ImageSlider';
+export { GameFooterActionProperties, GameFooterAction, } from './components/layout/GameFooterAction';
+export { GameLayoutProperties, GameLayout, } from './components/layout/GameLayout';
 export { LoaderProperties, Loader, } from './components/loader/Loader';
 export { MenuProperties, Menu, } from './components/menu/Menu';
 export { MenuItemProperties, MenuItem, } from './components/menu/MenuItem';

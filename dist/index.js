@@ -27,6 +27,30 @@ Object.defineProperty(exports, "FullscreenHelper", {
     return _FullscreenHelper.FullscreenHelper;
   }
 });
+Object.defineProperty(exports, "GameFooterAction", {
+  enumerable: true,
+  get: function get() {
+    return _GameFooterAction.GameFooterAction;
+  }
+});
+Object.defineProperty(exports, "GameFooterActionProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameFooterAction.GameFooterActionProperties;
+  }
+});
+Object.defineProperty(exports, "GameLayout", {
+  enumerable: true,
+  get: function get() {
+    return _GameLayout.GameLayout;
+  }
+});
+Object.defineProperty(exports, "GameLayoutProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameLayout.GameLayoutProperties;
+  }
+});
 Object.defineProperty(exports, "GridContainer", {
   enumerable: true,
   get: function get() {
@@ -292,6 +316,8 @@ var _GridContainer = require("./components/grid/GridContainer");
 var _GridTiles = require("./components/grid/GridTiles");
 var _SquareGrid = require("./components/grid/SquareGrid");
 var _ImageSlider = require("./components/image-slider/ImageSlider");
+var _GameFooterAction = require("./components/layout/GameFooterAction");
+var _GameLayout = require("./components/layout/GameLayout");
 var _Loader = require("./components/loader/Loader");
 var _Menu = require("./components/menu/Menu");
 var _MenuItem = require("./components/menu/MenuItem");

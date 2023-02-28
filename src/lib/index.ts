@@ -40,6 +40,18 @@ export {
 } from './components/image-slider/ImageSlider'
 
 
+// Components > layout > GameFooterAction
+export {
+  GameFooterActionProperties,
+  GameFooterAction,
+} from './components/layout/GameFooterAction'
+// Components > layout > GameLayout
+export {
+  GameLayoutProperties,
+  GameLayout,
+} from './components/layout/GameLayout'
+
+
 // Components > loader > Loader
 export {
   LoaderProperties,
