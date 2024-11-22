@@ -7,10 +7,10 @@ exports.GameFooterAction = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 require("./GameFooterAction.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 // Components
 
-var GameFooterAction = function GameFooterAction(_ref) {
+var GameFooterAction = exports.GameFooterAction = function GameFooterAction(_ref) {
   var icon = _ref.icon,
     selected = _ref.selected,
     title = _ref.title,
@@ -32,4 +32,3 @@ var GameFooterAction = function GameFooterAction(_ref) {
     icon: icon
   }) : title);
 };
-exports.GameFooterAction = GameFooterAction;

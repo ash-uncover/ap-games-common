@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.PageMenu = void 0;
 var _react = _interopRequireDefault(require("react"));
 require("./PageMenu.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 // Style
 
-var PageMenu = function PageMenu(_ref) {
+var PageMenu = exports.PageMenu = function PageMenu(_ref) {
   var children = _ref.children;
   // Hooks //
 
@@ -21,4 +21,3 @@ var PageMenu = function PageMenu(_ref) {
     className: "page-menu"
   }, children);
 };
-exports.PageMenu = PageMenu;

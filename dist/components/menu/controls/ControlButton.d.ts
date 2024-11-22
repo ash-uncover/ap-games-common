@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './ControlButton.css';
 export interface ControlButtonProperties {
     className?: string;
@@ -7,4 +7,4 @@ export interface ControlButtonProperties {
     children: ReactNode;
     onClick: () => void;
 }
-export declare const ControlButton: ({ className, disabled, title, children, onClick, }: ControlButtonProperties) => JSX.Element;
+export declare const ControlButton: ({ className, disabled, title, children, onClick, }: ControlButtonProperties) => React.JSX.Element;

@@ -6,19 +6,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.grid-container.grid-container-h {
+
+  &.grid-container-h {
     flex-direction: row;
-  }
-.grid-container.grid-container-h .grid-container-inner {
+    & .grid-container-inner {
       height: 100%;
     }
-.grid-container.grid-container-v {
-    flex-direction: column;
   }
-.grid-container.grid-container-v .grid-container-inner {
+
+  &.grid-container-v {
+    flex-direction: column;
+    & .grid-container-inner {
       width: 100%;
     }
-.grid-container .grid-container-inner {
+  }
+
+  & .grid-container-inner {
     position: relative;
   }
+}

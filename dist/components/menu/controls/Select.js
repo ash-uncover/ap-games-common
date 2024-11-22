@@ -8,12 +8,12 @@ var _react = _interopRequireDefault(require("react"));
 var _ControlButton = require("./ControlButton");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 require("./Select.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 // Components
 
 // Styles
 
-var Select = function Select(_ref) {
+var Select = exports.Select = function Select(_ref) {
   var className = _ref.className,
     disabled = _ref.disabled,
     value = _ref.value,
@@ -67,4 +67,3 @@ var Select = function Select(_ref) {
     icon: ['fas', 'chevron-right']
   })));
 };
-exports.Select = Select;

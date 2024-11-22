@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './PanelButton.css';
 export interface PanelButtonProperties {
     className?: string;
@@ -6,4 +6,4 @@ export interface PanelButtonProperties {
     children: ReactNode;
     onClick: () => void;
 }
-export declare const PanelButton: ({ className, title, children, onClick }: PanelButtonProperties) => JSX.Element;
+export declare const PanelButton: ({ className, title, children, onClick }: PanelButtonProperties) => React.JSX.Element;

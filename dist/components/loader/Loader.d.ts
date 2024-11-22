@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import './Loader.css';
 export interface LoaderProperties {
     className?: string;
@@ -7,4 +7,4 @@ export interface LoaderProperties {
     value: number;
     onClick?: () => void;
 }
-export declare const Loader: ({ className, style, children, value, onClick }: LoaderProperties) => JSX.Element;
+export declare const Loader: ({ className, style, children, value, onClick }: LoaderProperties) => React.JSX.Element;

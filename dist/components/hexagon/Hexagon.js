@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 require("./Hexagon.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var Hexagon = function Hexagon(_ref) {
   var children = _ref.children;
   // Rendering //
@@ -49,5 +49,4 @@ var Hexagon = function Hexagon(_ref) {
     }
   }, children))));
 };
-var _default = Hexagon;
-exports["default"] = _default;
+var _default = exports["default"] = Hexagon;

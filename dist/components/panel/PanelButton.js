@@ -7,12 +7,12 @@ exports.PanelButton = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _Panel = require("./Panel");
 require("./PanelButton.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 // Components
 
 // Styles
 
-var PanelButton = function PanelButton(_ref) {
+var PanelButton = exports.PanelButton = function PanelButton(_ref) {
   var className = _ref.className,
     title = _ref.title,
     children = _ref.children,
@@ -23,16 +23,15 @@ var PanelButton = function PanelButton(_ref) {
 
   // Rendering //
 
-  var classes = ['panel-button__button'];
+  var classesButton = ['panel-button__button'];
   if (className) {
-    classes.push(className);
+    classesButton.push(className);
   }
   return /*#__PURE__*/_react["default"].createElement(_Panel.Panel, {
     className: "panel-button"
   }, /*#__PURE__*/_react["default"].createElement("button", {
-    className: classes.join(' '),
+    className: classesButton.join(' '),
     title: title,
     onClick: onClick
   }, /*#__PURE__*/_react["default"].createElement("h3", null, children)));
 };
-exports.PanelButton = PanelButton;

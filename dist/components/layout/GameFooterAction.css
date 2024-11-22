@@ -16,12 +16,14 @@
   color: var(--base_item_color);
 
   font-weight: bold;
-}
-.game-footer-action:hover:not(.selected) {
+
+  &:hover:not(.selected) {
     background: var(--base_hover_background);
     color: var(--base_hover_color);
   }
-.game-footer-action.selected {
+
+  &.selected {
     background: var(--base_selected_background);
     color: var(--base_selected_color);
   }
+}

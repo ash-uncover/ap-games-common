@@ -22,11 +22,10 @@ document.addEventListener('keyup', function (event) {
     shortcut.callback();
   }
 });
-var getShortcutId = function getShortcutId(shortcut) {
+var getShortcutId = exports.getShortcutId = function getShortcutId(shortcut) {
   return "".concat(shortcut.code, "-").concat(Boolean(shortcut.altKey), "-").concat(Boolean(shortcut.ctrlKey), "-").concat(Boolean(shortcut.shiftKey));
 };
-exports.getShortcutId = getShortcutId;
-var updateShortcuts = function updateShortcuts() {
+var updateShortcuts = exports.updateShortcuts = function updateShortcuts() {
   SHORTCUTS_DOWN = SHORTCUTS_SETS.reduce(function (acc, shortcutSet) {
     shortcutSet.shortcuts.forEach(function (shortcut) {
       if (shortcut.down) {
@@ -52,8 +51,7 @@ var updateShortcuts = function updateShortcuts() {
     return acc;
   }, {});
 };
-exports.updateShortcuts = updateShortcuts;
-var ShortcutManager = {
+var ShortcutManager = exports.ShortcutManager = {
   addShortcuts: function addShortcuts(shortcuts) {
     ShortcutManager.removeShortcuts(shortcuts.id, false);
     SHORTCUTS_SETS.push(shortcuts);
@@ -77,4 +75,3 @@ var ShortcutManager = {
     SHORTCUTS_SETS.length = 0;
   }
 };
-exports.ShortcutManager = ShortcutManager;

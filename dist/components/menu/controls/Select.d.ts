@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import './Select.css';
 export interface SelectProperties {
     className?: string;
@@ -11,4 +11,4 @@ export interface SelectValue {
     id: string;
     text: string;
 }
-export declare const Select: ({ className, disabled, value, values, onChange, }: SelectProperties) => JSX.Element;
+export declare const Select: ({ className, disabled, value, values, onChange, }: SelectProperties) => React.JSX.Element;

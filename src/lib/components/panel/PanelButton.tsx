@@ -26,15 +26,15 @@ export const PanelButton = ({
 
   // Rendering //
 
-  const classes= ['panel-button__button']
+  const classesButton = ['panel-button__button']
   if (className) {
-    classes.push(className)
+    classesButton.push(className)
   }
 
   return (
     <Panel className='panel-button'>
       <button
-        className={classes.join(' ')}
+        className={classesButton.join(' ')}
         title={title}
         onClick={onClick}
       >

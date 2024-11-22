@@ -11,7 +11,7 @@
 
   cursor: pointer;
 
-  &:hover:not(.menu-item--selected) {
+  &:hover:not(.menu-item--selected):not(.menu-item--disabled) {
     --menu-item__background: var(--base_hover_background);
     --menu-item__color: var(--base_hover_color);
   }
@@ -20,6 +20,12 @@
     --menu-item__background: var(--base_selected_background);
     --menu-item__color: var(--base_selected_color);
     font-weight: bold;
+  }
+
+  &.menu-item--disabled {
+    filter: grayscale(0.5);
+    font-style: italic;
+    cursor: not-allowed;
   }
 
   flex-shrink: 0;

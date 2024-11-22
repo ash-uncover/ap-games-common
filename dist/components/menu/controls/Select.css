@@ -8,9 +8,8 @@
   align-items: center;
 
   margin: 1rem 0;
-}
 
-.select .select__value {
+  & .select__value {
     flex-grow: 1;
     display: flex;
     align-items: center;
@@ -24,10 +23,10 @@
     background: var(--select__value_background);
   }
 
-.select.select--disabled {
+  &.select--disabled {
     --select__value_background: var(--base_background_1);
-  }
-
-.select.select--disabled .select__value {
+    & .select__value {
       font-style: italic;
     }
+  }
+}

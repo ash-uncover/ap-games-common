@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import './Slider.css';
 export interface SliderProperties {
     className?: string;
@@ -10,4 +10,4 @@ export interface SliderProperties {
     value: number;
     onChange: (arg: number) => void;
 }
-export declare const Slider: ({ className, disabled, label, min, max, step, value, onChange, }: SliderProperties) => JSX.Element;
+export declare const Slider: ({ className, disabled, label, min, max, step, value, onChange, }: SliderProperties) => React.JSX.Element;

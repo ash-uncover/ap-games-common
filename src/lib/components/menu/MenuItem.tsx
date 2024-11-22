@@ -1,10 +1,10 @@
 import React, { MouseEvent, ReactElement } from 'react'
-// Styles
 import './MenuItem.css'
 
 export interface MenuItemProperties {
   className?: string
   collapsed?: boolean
+  disabled?: boolean
   icon?: ReactElement
   selected?: boolean
   text: string
@@ -15,6 +15,7 @@ export interface MenuItemProperties {
 export const MenuItem = ({
   className,
   collapsed,
+  disabled,
   icon,
   selected,
   text,
@@ -22,22 +23,26 @@ export const MenuItem = ({
   onClick,
 }: MenuItemProperties) => {
 
-  // Events //
-
+  // #region Events
   const handleClick = (event: MouseEvent) => {
     event.preventDefault()
-    onClick()
+    if (!disabled) {
+      onClick()
+    }
     return false
   }
+  // #endregion
 
-  // Rendering //
-
+  // #region Rendering
   const classes = ['menu-item']
   if (className) {
     classes.push(className)
   }
   if (selected) {
     classes.push('menu-item--selected')
+  }
+  if (disabled) {
+    classes.push('menu-item--disabled')
   }
 
   return (
@@ -60,5 +65,5 @@ export const MenuItem = ({
         </span>
       </a>
     </li>
-  )
+  )// #endregion
 }

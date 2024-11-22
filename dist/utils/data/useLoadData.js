@@ -7,7 +7,7 @@ exports.useLoadData = void 0;
 var _react = require("react");
 var _hooks = require("../../audio/hooks");
 var _loadImages = require("../../images/lib/loadImages");
-var useLoadData = function useLoadData(_ref, onProgress, onLoaded) {
+var useLoadData = exports.useLoadData = function useLoadData(_ref, onProgress, onLoaded) {
   var images = _ref.images,
     audios = _ref.audios,
     delayed = _ref.delayed;
@@ -34,4 +34,3 @@ var useLoadData = function useLoadData(_ref, onProgress, onLoaded) {
     }
   }, [images, audios, delayed]);
 };
-exports.useLoadData = useLoadData;

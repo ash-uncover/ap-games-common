@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './GameLayout.css';
 export interface GameLayoutProperties {
     className?: string;
@@ -6,4 +6,4 @@ export interface GameLayoutProperties {
     content: ReactNode;
     footer?: ReactNode;
 }
-export declare const GameLayout: ({ className, header, content, footer, }: GameLayoutProperties) => JSX.Element;
+export declare const GameLayout: ({ className, header, content, footer, }: GameLayoutProperties) => React.JSX.Element;

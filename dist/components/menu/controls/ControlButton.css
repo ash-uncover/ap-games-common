@@ -9,19 +9,19 @@
   border-radius: 50%;
   border: 0;
   cursor: pointer;
-  background: var(--base_background_2);
   background: var(--control-button_background);
-  color: var(--base_background_6);
   color: var(--control-button_color);
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.control-button:hover {
+
+  &:hover {
     --control-button_background: var(--base_background_4);
     --control-button_color: var(--base_background_8);
   }
-.control-button.control-button--disabled {
+
+  &.control-button--disabled {
     --control-button_background: var(--base_background_1);
     --control-button_color: var(--base_background_4);
   }
+}

@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 exports.PageContent = void 0;
 var _react = _interopRequireDefault(require("react"));
 require("./PageContent.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 // Style
 
-var PageContent = function PageContent(_ref) {
+var PageContent = exports.PageContent = function PageContent(_ref) {
   var children = _ref.children;
   // Hooks //
 
@@ -21,4 +21,3 @@ var PageContent = function PageContent(_ref) {
     className: "page-content"
   }, children);
 };
-exports.PageContent = PageContent;

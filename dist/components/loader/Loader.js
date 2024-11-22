@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.Loader = void 0;
 var _react = _interopRequireDefault(require("react"));
 require("./Loader.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var Loader = function Loader(_ref) {
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+var Loader = exports.Loader = function Loader(_ref) {
   var className = _ref.className,
     style = _ref.style,
     children = _ref.children,
@@ -46,4 +46,3 @@ var Loader = function Loader(_ref) {
     className: "loader__bar-value"
   }, value, "%"))));
 };
-exports.Loader = Loader;

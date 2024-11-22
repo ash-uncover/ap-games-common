@@ -1,6 +1,6 @@
 import { AudioPlayOptions } from '../lib/AudioPlayOptions';
-export declare const loadAudio: (path: string | string[], onProgress?: ((value: number) => void) | undefined) => Promise<void | PromiseSettledResult<void>[]>;
-export declare const useAudioLoad: (path: string | string[], onProgress?: ((value: number) => void) | undefined) => void;
+export declare const loadAudio: (path: string | string[], onProgress?: (value: number) => void) => Promise<void | PromiseSettledResult<void>[]>;
+export declare const useAudioLoad: (path: string | string[], onProgress?: (value: number) => void) => void;
 export declare const useAudioEffect: (path: string | string[], options?: AudioPlayOptions) => void;
 export declare const useAudio: (path: string | string[], options?: AudioPlayOptions) => {
     play: () => void;

@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import React from 'react';
 import { MenuItemProperties } from './MenuItem';
 import './Menu.css';
 export interface MenuProperties {
@@ -7,4 +7,4 @@ export interface MenuProperties {
     items: MenuItemProperties[];
     onMenuToggle?: () => void;
 }
-export declare const Menu: ({ collapsed, title, items, }: MenuProperties) => JSX.Element;
+export declare const Menu: ({ collapsed, title, items, }: MenuProperties) => React.JSX.Element;

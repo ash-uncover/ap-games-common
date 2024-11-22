@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.ControlButton = void 0;
 var _react = _interopRequireDefault(require("react"));
 require("./ControlButton.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var ControlButton = function ControlButton(_ref) {
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+var ControlButton = exports.ControlButton = function ControlButton(_ref) {
   var className = _ref.className,
     disabled = _ref.disabled,
     title = _ref.title,
@@ -35,4 +35,3 @@ var ControlButton = function ControlButton(_ref) {
     onClick: onClick
   }, children);
 };
-exports.ControlButton = ControlButton;

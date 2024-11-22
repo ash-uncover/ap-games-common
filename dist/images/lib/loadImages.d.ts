@@ -1,1 +1,1 @@
-export declare const loadImages: (path: string | string[], onProgress?: ((value: number) => void) | undefined) => Promise<void | PromiseSettledResult<void>[]>;
+export declare const loadImages: (path: string | string[], onProgress?: (value: number) => void) => Promise<void | PromiseSettledResult<void>[]>;

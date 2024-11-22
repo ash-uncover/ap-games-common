@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import './GridContainer.css';
 export interface GridContainerProperties {
     className?: string;
@@ -8,4 +8,4 @@ export interface GridContainerProperties {
     children?: ReactNode;
     onSizeInvert?: (invert: boolean) => void;
 }
-export declare const GridContainer: ({ className, style, width, height, children, onSizeInvert, }: GridContainerProperties) => JSX.Element;
+export declare const GridContainer: ({ className, style, width, height, children, onSizeInvert, }: GridContainerProperties) => React.JSX.Element;

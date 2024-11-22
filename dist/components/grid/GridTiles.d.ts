@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from 'react';
+import React, { CSSProperties, ReactNode } from 'react';
 import './GridTiles.css';
 export interface GridTilesProperties {
     className?: string;
@@ -7,4 +7,4 @@ export interface GridTilesProperties {
     width: number;
     children: ReactNode[];
 }
-export declare const GridTiles: ({ className, style, height, width, children, }: GridTilesProperties) => JSX.Element;
+export declare const GridTiles: ({ className, style, height, width, children, }: GridTilesProperties) => React.JSX.Element;

@@ -6,8 +6,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.GameLayout = void 0;
 var _react = _interopRequireDefault(require("react"));
 require("./GameLayout.css");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var GameLayout = function GameLayout(_ref) {
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+var GameLayout = exports.GameLayout = function GameLayout(_ref) {
   var className = _ref.className,
     header = _ref.header,
     content = _ref.content,
@@ -30,4 +30,3 @@ var GameLayout = function GameLayout(_ref) {
     className: "game-layout__footer"
   }, footer) : null);
 };
-exports.GameLayout = GameLayout;

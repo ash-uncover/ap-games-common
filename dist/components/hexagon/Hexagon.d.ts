@@ -1,7 +1,7 @@
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import './Hexagon.css';
 interface HexagonProperties {
     children: ReactNode;
 }
-declare const Hexagon: ({ children }: HexagonProperties) => JSX.Element;
+declare const Hexagon: ({ children }: HexagonProperties) => React.JSX.Element;
 export default Hexagon;

@@ -1,22 +1,20 @@
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.AudioVolumeManager = void 0;
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-function _classPrivateFieldInitSpec(obj, privateMap, value) { _checkPrivateRedeclaration(obj, privateMap); privateMap.set(obj, value); }
-function _checkPrivateRedeclaration(obj, privateCollection) { if (privateCollection.has(obj)) { throw new TypeError("Cannot initialize the same private elements twice on an object"); } }
-function _classPrivateFieldGet(receiver, privateMap) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "get"); return _classApplyDescriptorGet(receiver, descriptor); }
-function _classApplyDescriptorGet(receiver, descriptor) { if (descriptor.get) { return descriptor.get.call(receiver); } return descriptor.value; }
-function _classPrivateFieldSet(receiver, privateMap, value) { var descriptor = _classExtractFieldDescriptor(receiver, privateMap, "set"); _classApplyDescriptorSet(receiver, descriptor, value); return value; }
-function _classExtractFieldDescriptor(receiver, privateMap, action) { if (!privateMap.has(receiver)) { throw new TypeError("attempted to " + action + " private field on non-instance"); } return privateMap.get(receiver); }
-function _classApplyDescriptorSet(receiver, descriptor, value) { if (descriptor.set) { descriptor.set.call(receiver, value); } else { if (!descriptor.writable) { throw new TypeError("attempted to set read only private field"); } descriptor.value = value; } }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _classPrivateFieldInitSpec(e, t, a) { _checkPrivateRedeclaration(e, t), t.set(e, a); }
+function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("Cannot initialize the same private elements twice on an object"); }
+function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
+function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
+function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
 var normalizeVolumeValue = function normalizeVolumeValue(value) {
   return Math.min(Math.max(0, value), 100);
 };
@@ -48,142 +46,116 @@ var _music = /*#__PURE__*/new WeakMap();
 var _musicVolume = /*#__PURE__*/new WeakMap();
 var _ui = /*#__PURE__*/new WeakMap();
 var _uiVolume = /*#__PURE__*/new WeakMap();
-var AudioVolumeManager = /*#__PURE__*/function () {
+var AudioVolumeManager = exports.AudioVolumeManager = /*#__PURE__*/function () {
   function AudioVolumeManager() {
     _classCallCheck(this, AudioVolumeManager);
-    _classPrivateFieldInitSpec(this, _master, {
-      writable: true,
-      value: true
-    });
-    _classPrivateFieldInitSpec(this, _masterVolume, {
-      writable: true,
-      value: 100
-    });
-    _classPrivateFieldInitSpec(this, _game, {
-      writable: true,
-      value: true
-    });
-    _classPrivateFieldInitSpec(this, _gameVolume, {
-      writable: true,
-      value: 100
-    });
-    _classPrivateFieldInitSpec(this, _music, {
-      writable: true,
-      value: true
-    });
-    _classPrivateFieldInitSpec(this, _musicVolume, {
-      writable: true,
-      value: 100
-    });
-    _classPrivateFieldInitSpec(this, _ui, {
-      writable: true,
-      value: true
-    });
-    _classPrivateFieldInitSpec(this, _uiVolume, {
-      writable: true,
-      value: 100
-    });
+    _classPrivateFieldInitSpec(this, _master, true);
+    _classPrivateFieldInitSpec(this, _masterVolume, 100);
+    _classPrivateFieldInitSpec(this, _game, true);
+    _classPrivateFieldInitSpec(this, _gameVolume, 100);
+    _classPrivateFieldInitSpec(this, _music, true);
+    _classPrivateFieldInitSpec(this, _musicVolume, 100);
+    _classPrivateFieldInitSpec(this, _ui, true);
+    _classPrivateFieldInitSpec(this, _uiVolume, 100);
     var store = load();
     if (typeof store.master !== 'undefined') {
-      _classPrivateFieldSet(this, _master, store.master);
+      _classPrivateFieldSet(_master, this, store.master);
     }
     if (typeof store.masterVolume !== 'undefined') {
-      _classPrivateFieldSet(this, _masterVolume, store.masterVolume);
+      _classPrivateFieldSet(_masterVolume, this, store.masterVolume);
     }
     if (typeof store.game !== 'undefined') {
-      _classPrivateFieldSet(this, _game, store.game);
+      _classPrivateFieldSet(_game, this, store.game);
     }
     if (typeof store.gameVolume !== 'undefined') {
-      _classPrivateFieldSet(this, _gameVolume, store.gameVolume);
+      _classPrivateFieldSet(_gameVolume, this, store.gameVolume);
     }
     if (typeof store.ui !== 'undefined') {
-      _classPrivateFieldSet(this, _ui, store.ui);
+      _classPrivateFieldSet(_ui, this, store.ui);
     }
     if (typeof store.uiVolume !== 'undefined') {
-      _classPrivateFieldSet(this, _uiVolume, store.uiVolume);
+      _classPrivateFieldSet(_uiVolume, this, store.uiVolume);
     }
     if (typeof store.music !== 'undefined') {
-      _classPrivateFieldSet(this, _music, store.music);
+      _classPrivateFieldSet(_music, this, store.music);
     }
     if (typeof store.musicVolume !== 'undefined') {
-      _classPrivateFieldSet(this, _musicVolume, store.musicVolume);
+      _classPrivateFieldSet(_musicVolume, this, store.musicVolume);
     }
   }
 
   // Getter & Setters //
-  _createClass(AudioVolumeManager, [{
+  return _createClass(AudioVolumeManager, [{
     key: "master",
     get: function get() {
-      return _classPrivateFieldGet(this, _master);
+      return _classPrivateFieldGet(_master, this);
     },
     set: function set(on) {
-      _classPrivateFieldSet(this, _master, on);
+      _classPrivateFieldSet(_master, this, on);
       store(this);
     }
   }, {
     key: "masterVolume",
     get: function get() {
-      return _classPrivateFieldGet(this, _masterVolume);
+      return _classPrivateFieldGet(_masterVolume, this);
     },
     set: function set(value) {
-      _classPrivateFieldSet(this, _masterVolume, normalizeVolumeValue(value));
+      _classPrivateFieldSet(_masterVolume, this, normalizeVolumeValue(value));
       store(this);
     }
   }, {
     key: "music",
     get: function get() {
-      return _classPrivateFieldGet(this, _music);
+      return _classPrivateFieldGet(_music, this);
     },
     set: function set(on) {
-      _classPrivateFieldSet(this, _music, on);
+      _classPrivateFieldSet(_music, this, on);
       store(this);
     }
   }, {
     key: "musicVolume",
     get: function get() {
-      return _classPrivateFieldGet(this, _musicVolume);
+      return _classPrivateFieldGet(_musicVolume, this);
     },
     set: function set(value) {
-      _classPrivateFieldSet(this, _musicVolume, normalizeVolumeValue(value));
+      _classPrivateFieldSet(_musicVolume, this, normalizeVolumeValue(value));
       store(this);
     }
   }, {
     key: "ui",
     get: function get() {
-      return _classPrivateFieldGet(this, _ui);
+      return _classPrivateFieldGet(_ui, this);
     },
     set: function set(on) {
-      _classPrivateFieldSet(this, _ui, on);
+      _classPrivateFieldSet(_ui, this, on);
       store(this);
     }
   }, {
     key: "uiVolume",
     get: function get() {
-      return _classPrivateFieldGet(this, _uiVolume);
+      return _classPrivateFieldGet(_uiVolume, this);
     },
     set: function set(value) {
-      _classPrivateFieldSet(this, _uiVolume, normalizeVolumeValue(value));
+      _classPrivateFieldSet(_uiVolume, this, normalizeVolumeValue(value));
       store(this);
     }
   }, {
     key: "game",
     get: function get() {
-      return _classPrivateFieldGet(this, _game);
+      return _classPrivateFieldGet(_game, this);
     },
     set: function set(on) {
-      _classPrivateFieldSet(this, _game, on);
+      _classPrivateFieldSet(_game, this, on);
       store(this);
     }
   }, {
     key: "gameVolume",
     get: function get() {
-      return _classPrivateFieldGet(this, _gameVolume);
+      return _classPrivateFieldGet(_gameVolume, this);
     },
     set: function set(value) {
-      _classPrivateFieldSet(this, _gameVolume, normalizeVolumeValue(value));
+      _classPrivateFieldSet(_gameVolume, this, normalizeVolumeValue(value));
       store(this);
     }
   }]);
-  return AudioVolumeManager;
 }();
-exports.AudioVolumeManager = AudioVolumeManager;

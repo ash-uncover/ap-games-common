@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.loadImages = void 0;
 var _ImageLoader = require("./ImageLoader");
 var loader = new _ImageLoader.ImageLoader();
-var loadImages = function loadImages(path, onProgress) {
+var loadImages = exports.loadImages = function loadImages(path, onProgress) {
   return loader.loadImages(path, onProgress);
 };
-exports.loadImages = loadImages;
