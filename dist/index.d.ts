@@ -18,6 +18,8 @@ export { PageMenuProperties, PageMenu, } from './components/page/PageMenu';
 export { PageContentProperties, PageContent, } from './components/page/PageContent';
 export { PanelProperties, Panel, } from './components/panel/Panel';
 export { PanelButtonProperties, PanelButton, } from './components/panel/PanelButton';
+export { GameAppProperties, GameApp, } from './settings/GameApp';
+export { GameSettingsProviderProperties, GameSettingsContext, GameSettingsDispatchContext, GameSettingsProvider, GameSettingsActions, } from './settings/GameSettingsProvider';
 export { loadImages, } from './images/lib/loadImages';
 export { ImageLoadStates, } from './images/constants/ImageLoadState';
 export { DataManager } from './utils/data/DataManager';

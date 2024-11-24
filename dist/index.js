@@ -27,6 +27,18 @@ Object.defineProperty(exports, "FullscreenHelper", {
     return _FullscreenHelper.FullscreenHelper;
   }
 });
+Object.defineProperty(exports, "GameApp", {
+  enumerable: true,
+  get: function get() {
+    return _GameApp.GameApp;
+  }
+});
+Object.defineProperty(exports, "GameAppProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameApp.GameAppProperties;
+  }
+});
 Object.defineProperty(exports, "GameFooterAction", {
   enumerable: true,
   get: function get() {
@@ -49,6 +61,36 @@ Object.defineProperty(exports, "GameLayoutProperties", {
   enumerable: true,
   get: function get() {
     return _GameLayout.GameLayoutProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingsActions", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingsProvider.GameSettingsActions;
+  }
+});
+Object.defineProperty(exports, "GameSettingsContext", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingsProvider.GameSettingsContext;
+  }
+});
+Object.defineProperty(exports, "GameSettingsDispatchContext", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingsProvider.GameSettingsDispatchContext;
+  }
+});
+Object.defineProperty(exports, "GameSettingsProvider", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingsProvider.GameSettingsProvider;
+  }
+});
+Object.defineProperty(exports, "GameSettingsProviderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingsProvider.GameSettingsProviderProperties;
   }
 });
 Object.defineProperty(exports, "GridContainer", {
@@ -329,6 +371,8 @@ var _PageMenu = require("./components/page/PageMenu");
 var _PageContent = require("./components/page/PageContent");
 var _Panel = require("./components/panel/Panel");
 var _PanelButton = require("./components/panel/PanelButton");
+var _GameApp = require("./settings/GameApp");
+var _GameSettingsProvider = require("./settings/GameSettingsProvider");
 var _loadImages = require("./images/lib/loadImages");
 var _ImageLoadState = require("./images/constants/ImageLoadState");
 var _DataManager = require("./utils/data/DataManager");

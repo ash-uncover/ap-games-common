@@ -3,7 +3,7 @@ import {
   ImageLoadState,
   ImageLoadStates
 } from '../constants/ImageLoadState'
-import Logger from '@uncover/js-utils-logger'
+import { Logger } from '@uncover/js-utils-logger'
 
 const LOGGER = new Logger('ImageLoader')
 

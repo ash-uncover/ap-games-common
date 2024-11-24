@@ -117,6 +117,20 @@ export {
 } from './components/panel/PanelButton'
 
 
+// Settings > GameSettings
+export {
+  GameAppProperties,
+  GameApp,
+} from './settings/GameApp'
+export {
+  GameSettingsProviderProperties,
+  GameSettingsContext,
+  GameSettingsDispatchContext,
+  GameSettingsProvider,
+  GameSettingsActions,
+} from './settings/GameSettingsProvider'
+
+
 // Images > hooks
 export {
   loadImages,
