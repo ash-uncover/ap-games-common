@@ -1,6 +1,7 @@
-import React, { ReactNode } from 'react';
-export interface GameAppProperties {
+import React, { PropsWithChildren } from 'react';
+import './GameApp.css';
+export interface GameAppProperties extends PropsWithChildren {
     className: string;
-    children: ReactNode;
+    name: string;
 }
-export declare const GameApp: ({ className, children }: GameAppProperties) => React.JSX.Element;
+export declare const GameApp: ({ className, name, children }: GameAppProperties) => React.JSX.Element;

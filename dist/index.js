@@ -63,6 +63,30 @@ Object.defineProperty(exports, "GameLayoutProperties", {
     return _GameLayout.GameLayoutProperties;
   }
 });
+Object.defineProperty(exports, "GameSettingDisplayBrightnessSlider", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingDisplayBrightnessSlider.GameSettingDisplayBrightnessSlider;
+  }
+});
+Object.defineProperty(exports, "GameSettingDisplayBrightnessSliderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingDisplayBrightnessSlider.GameSettingDisplayBrightnessSliderProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingDisplayContrastSlider", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingDisplayContrastSlider.GameSettingDisplayContrastSlider;
+  }
+});
+Object.defineProperty(exports, "GameSettingDisplayContrastSliderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingDisplayContrastSlider.GameSettingDisplayContrastSliderProperties;
+  }
+});
 Object.defineProperty(exports, "GameSettingsActions", {
   enumerable: true,
   get: function get() {
@@ -373,6 +397,8 @@ var _Panel = require("./components/panel/Panel");
 var _PanelButton = require("./components/panel/PanelButton");
 var _GameApp = require("./settings/GameApp");
 var _GameSettingsProvider = require("./settings/GameSettingsProvider");
+var _GameSettingDisplayBrightnessSlider = require("./settings/GameSettingDisplayBrightnessSlider");
+var _GameSettingDisplayContrastSlider = require("./settings/GameSettingDisplayContrastSlider");
 var _loadImages = require("./images/lib/loadImages");
 var _ImageLoadState = require("./images/constants/ImageLoadState");
 var _DataManager = require("./utils/data/DataManager");

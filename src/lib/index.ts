@@ -129,6 +129,14 @@ export {
   GameSettingsProvider,
   GameSettingsActions,
 } from './settings/GameSettingsProvider'
+export {
+  GameSettingDisplayBrightnessSliderProperties,
+  GameSettingDisplayBrightnessSlider,
+} from './settings/GameSettingDisplayBrightnessSlider'
+export {
+  GameSettingDisplayContrastSliderProperties,
+  GameSettingDisplayContrastSlider,
+} from './settings/GameSettingDisplayContrastSlider'
 
 
 // Images > hooks

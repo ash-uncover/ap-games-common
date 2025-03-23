@@ -1,21 +1,44 @@
-import React, { 
-  ReactNode, 
-  useContext, 
-  useEffect, 
-  useState 
+import React, {
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useState
 } from 'react'
 import {
   GameSettingsContext,
+  GameSettingsProvider,
 } from './GameSettingsProvider'
+// CSS
+import './GameApp.css'
 
-export interface GameAppProperties {
+export interface GameAppProperties extends PropsWithChildren {
   className: string
-  children: ReactNode
+  name: string
 }
 export const GameApp = ({
   className,
+  name,
   children
 }: GameAppProperties) => {
+
+  // #region Rendering
+  return (
+    <GameSettingsProvider name={name}>
+      <GameAppInner className={className}>
+        {children}
+      </GameAppInner>
+    </GameSettingsProvider>
+  )
+  // #endregion
+}
+
+interface GameAppInnerProperties extends PropsWithChildren {
+  className: string
+}
+const GameAppInner = ({
+  className,
+  children
+}: GameAppInnerProperties) => {
 
   // #region Hooks
   const settingsContext = useContext(GameSettingsContext)
@@ -26,18 +49,18 @@ export const GameApp = ({
       contrast
     } = settingsContext
     setStyle({
-      filter: `brightness(${brightness / 100}) contrast(${contrast / 100})`
+      filter: `brightness(${brightness}%) contrast(${contrast}%)`
     })
   }, [settingsContext])
   // #endregion
 
   // #region Rendering
-  const classes= ['alpha-game-app']
+  const classes = ['alpha-game-app']
   if (className) {
     classes.push(className)
   }
   return (
-    <div 
+    <div
       className={classes.join(' ')}
       style={style}
     >

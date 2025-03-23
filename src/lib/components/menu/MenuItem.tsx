@@ -23,7 +23,7 @@ export const MenuItem = ({
   onClick,
 }: MenuItemProperties) => {
 
-  // #region Events
+  // #region Events  
   const handleClick = (event: MouseEvent) => {
     event.preventDefault()
     if (!disabled) {

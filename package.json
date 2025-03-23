@@ -21,11 +21,11 @@
   },
   "dependencies": {
     "@uncover/js-utils": "0.0.16",
-    "@uncover/js-utils-logger": "0.2.1"    
+    "@uncover/js-utils-logger": "0.2.1"
   },
   "peerDependencies": {
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react": "../ap-games-dominion/node_modules/react",
+    "react-dom": "../ap-games-dominion/node_modules/react-dom"
   },
   "devDependencies": {
     "@babel/cli": "7.25.9",
@@ -45,7 +45,7 @@
     "i18next-browser-languagedetector": "8.0.0",
     "i18next-http-backend": "3.0.1",
     "i18next-resources-to-backend": "1.2.1",
-    
+
     "react-i18next": "15.1.1",
     "source-map-loader": "5.0.0",
     "style-loader": "4.0.0",

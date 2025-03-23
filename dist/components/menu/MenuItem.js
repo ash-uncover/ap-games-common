@@ -15,7 +15,7 @@ var MenuItem = exports.MenuItem = function MenuItem(_ref) {
     selected = _ref.selected,
     text = _ref.text,
     onClick = _ref.onClick;
-  // #region Events
+  // #region Events  
   var handleClick = function handleClick(event) {
     event.preventDefault();
     if (!disabled) {

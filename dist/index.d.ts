@@ -20,6 +20,8 @@ export { PanelProperties, Panel, } from './components/panel/Panel';
 export { PanelButtonProperties, PanelButton, } from './components/panel/PanelButton';
 export { GameAppProperties, GameApp, } from './settings/GameApp';
 export { GameSettingsProviderProperties, GameSettingsContext, GameSettingsDispatchContext, GameSettingsProvider, GameSettingsActions, } from './settings/GameSettingsProvider';
+export { GameSettingDisplayBrightnessSliderProperties, GameSettingDisplayBrightnessSlider, } from './settings/GameSettingDisplayBrightnessSlider';
+export { GameSettingDisplayContrastSliderProperties, GameSettingDisplayContrastSlider, } from './settings/GameSettingDisplayContrastSlider';
 export { loadImages, } from './images/lib/loadImages';
 export { ImageLoadStates, } from './images/constants/ImageLoadState';
 export { DataManager } from './utils/data/DataManager';

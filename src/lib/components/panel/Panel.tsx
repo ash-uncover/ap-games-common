@@ -1,30 +1,28 @@
-import React, { ReactNode } from 'react'
-// Styles
+import React, { PropsWithChildren } from 'react'
+// CSS
 import './Panel.css'
 
-export interface PanelProperties {
+export interface PanelProperties extends PropsWithChildren {
   className?: string
   title?: string
-  children?: ReactNode
 }
-
 export const Panel = ({
   className,
   title,
   children,
 }: PanelProperties) => {
 
-  // Hooks //
+  // #region Hooks
+  // #endregion
 
-  // Events //
+  // #region Events
+  // #endregion
 
-  // Rendering //
-
+  // #region Rendering
   const classes = ['panel']
   if (className) {
     classes.push(className)
   }
-
   return (
     <div className={classes.join(' ')}>
       {title ?
@@ -35,4 +33,5 @@ export const Panel = ({
       {children}
     </div>
   )
+  // #endregion
 }
