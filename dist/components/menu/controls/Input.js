@@ -3,16 +3,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Panel = void 0;
+exports.Input = void 0;
 var _react = _interopRequireDefault(require("react"));
-require("./Panel.css");
+require("./Input.css");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 // CSS
 
-var Panel = exports.Panel = function Panel(_ref) {
+var Input = exports.Input = function Input(_ref) {
   var className = _ref.className,
-    title = _ref.title,
-    children = _ref.children;
+    disabled = _ref.disabled,
+    value = _ref.value,
+    onChange = _ref.onChange;
   // #region Hooks
   // #endregion
 
@@ -20,12 +21,16 @@ var Panel = exports.Panel = function Panel(_ref) {
   // #endregion
 
   // #region Rendering
-  var classes = ['panel'];
+  var classes = ['menu-control input'];
   if (className) {
     classes.push(className);
   }
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: classes.join(' ')
-  }, title ? /*#__PURE__*/_react["default"].createElement("h3", null, title) : null, children);
+  if (disabled) {
+    classes.push('input--disabled');
+  }
+  return /*#__PURE__*/_react["default"].createElement("input", {
+    className: classes.join(' '),
+    disabled: disabled
+  });
   // #endregion
 };
