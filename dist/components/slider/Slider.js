@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.Slider = void 0;
 var _react = _interopRequireWildcard(require("react"));
-var _ControlButton = require("./ControlButton");
+var _ControlButton = require("../menu/controls/ControlButton");
 var _reactFontawesome = require("@fortawesome/react-fontawesome");
 require("./Slider.css");
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -16,8 +16,7 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; } // Components
-// Styles
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var DEFAULT_STEPS = 10;
 var TOOLTIP_TIMEOUT;
 var TOOLTIP_TIMEOUT_DELAY = 1000;
@@ -30,8 +29,7 @@ var Slider = exports.Slider = function Slider(_ref) {
     step = _ref.step,
     value = _ref.value,
     onChange = _ref.onChange;
-  // Hooks //
-
+  // #region Hooks
   var sliderBar = (0, _react.useRef)(null);
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
@@ -69,9 +67,9 @@ var Slider = exports.Slider = function Slider(_ref) {
       return setShowTooltip(false);
     }, TOOLTIP_TIMEOUT_DELAY);
   };
+  // #endregion
 
-  // Events //
-
+  // #region Events
   var getStep = function getStep() {
     var realStep = step;
     if (!realStep) {
@@ -155,9 +153,9 @@ var Slider = exports.Slider = function Slider(_ref) {
   var handleChange = function handleChange(event) {
     updateValue(Number(event.target.value));
   };
+  // #endregion
 
-  // Rendering //
-
+  // #region Rendering
   var classes = ['menu-control slider'];
   if (className) {
     classes.push(className);
@@ -213,4 +211,5 @@ var Slider = exports.Slider = function Slider(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_reactFontawesome.FontAwesomeIcon, {
     icon: ['fas', 'chevron-right']
   })));
+  // #endregion
 };

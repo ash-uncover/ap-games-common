@@ -1,4 +1,4 @@
-@import '../../../styles/variables.css';
+@import '../../styles/variables.css';
 
 .slider {
   --slider__control_background: var(--base_background_2);

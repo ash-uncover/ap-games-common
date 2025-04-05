@@ -8,7 +8,7 @@ import {
 } from './GameSettingsProvider'
 import {
   Slider
-} from '../components/menu/controls/Slider'
+} from '../components/slider/Slider'
 
 export interface GameSettingDisplayBrightnessSliderProperties {
   className?: string

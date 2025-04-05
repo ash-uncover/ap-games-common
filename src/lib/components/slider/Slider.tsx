@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react'
-// Components
-import { ControlButton } from './ControlButton'
+
+import { ControlButton } from '../menu/controls/ControlButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// Styles
+
 import './Slider.css'
 
 const DEFAULT_STEPS = 10
@@ -34,8 +34,7 @@ export const Slider = ({
   onChange,
 }: SliderProperties) => {
 
-  // Hooks //
-
+  // #region Hooks
   const sliderBar = useRef<HTMLDivElement>(null)
 
   const [dragMode, setDragMode] = useState(false)
@@ -66,9 +65,9 @@ export const Slider = ({
     clearTimeout(TOOLTIP_TIMEOUT)
     TOOLTIP_TIMEOUT = setTimeout(() => setShowTooltip(false), TOOLTIP_TIMEOUT_DELAY)
   }
+  // #endregion
 
-  // Events //
-
+  // #region Events
   const getStep = () => {
     let realStep = step
     if (!realStep) {
@@ -76,7 +75,6 @@ export const Slider = ({
     }
     return realStep
   }
-
   const moveSlider = (x: number) => {
     if (sliderBar?.current) {
       const rectBar = sliderBar.current.getBoundingClientRect()
@@ -86,15 +84,12 @@ export const Slider = ({
       updateValue(newValue)
     }
   }
-
   const handleTouchStart = () => {
     startTouch()
   }
-
   const handleMouseDown = () => {
     startDrag()
   }
-
   const startTouch = () => {
     setShowTooltip(true)
     setDragMode(true)
@@ -102,11 +97,9 @@ export const Slider = ({
     document.addEventListener('touchcancel', stopTouch)
     document.addEventListener('touchmove', doTouch)
   }
-
   const doTouch = (event: TouchEvent) => {
     moveSlider(event.touches[0].clientX)
   }
-
   const stopTouch = (event: TouchEvent) => {
     startTooltipTimeout()
     moveSlider(event.changedTouches[0].clientX)
@@ -115,7 +108,6 @@ export const Slider = ({
     document.removeEventListener('touchcancel', stopTouch)
     document.removeEventListener('touchmove', doTouch)
   }
-
   const startDrag = () => {
     setShowTooltip(true)
     setDragMode(true)
@@ -123,11 +115,9 @@ export const Slider = ({
     document.addEventListener('mouseup', stopDrag)
     document.addEventListener('mousemove', doDrag)
   }
-
   const doDrag = (event: MouseEvent) => {
     moveSlider(event.clientX)
   }
-
   const stopDrag = (event: MouseEvent) => {
     startTooltipTimeout()
     moveSlider(event.clientX)
@@ -136,15 +126,12 @@ export const Slider = ({
     document.removeEventListener('mouseup', stopDrag)
     document.removeEventListener('mousemove', doDrag)
   }
-
   const handleMouseEnter = () => {
     setShowTooltip(true)
   }
-
   const handleMouseLeave = () => {
     startTooltipTimeout()
   }
-
   const handleValueDown = () => {
     const realStep = getStep()
     let newValue = (Math.floor(currentValue / realStep) - 1) * realStep
@@ -153,23 +140,20 @@ export const Slider = ({
     }
     updateValue(newValue)
   }
-
   const handleValueUp = () => {
     const realStep = getStep()
     const newValue = (Math.floor(currentValue / realStep) + 1) * realStep
     updateValue(newValue)
   }
-
   const handleSliderClick = (event: React.MouseEvent) => {
     moveSlider(event.clientX)
   }
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     updateValue(Number(event.target.value))
   }
+  // #endregion
 
-  // Rendering //
-
+  // #region Rendering
   const classes = ['menu-control slider']
   if (className) {
     classes.push(className)
@@ -247,6 +231,7 @@ export const Slider = ({
         <FontAwesomeIcon icon={['fas', 'chevron-right']} />
       </ControlButton>
 
-  </div>
+    </div>
   )
+  // #endregion
 }

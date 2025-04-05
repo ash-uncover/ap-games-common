@@ -11,7 +11,7 @@ export { LoaderProperties, Loader, } from './components/loader/Loader';
 export { MenuProperties, Menu, } from './components/menu/Menu';
 export { MenuItemProperties, MenuItem, } from './components/menu/MenuItem';
 export { SelectProperties, Select, } from './components/menu/controls/Select';
-export { SliderProperties, Slider, } from './components/menu/controls/Slider';
+export { SliderProperties, Slider, } from './components/slider/Slider';
 export { SwitchProperties, Switch, } from './components/menu/controls/Switch';
 export { PageProperties, Page, } from './components/page/Page';
 export { PageMenuProperties, PageMenu, } from './components/page/PageMenu';

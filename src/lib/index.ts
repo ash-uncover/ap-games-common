@@ -7,16 +7,20 @@ export {
   useAudioVolume,
 } from './audio/hooks'
 
-// Audio > constants
+// #region Audio
+// #region > constants
 export {
   AudioCategories,
 } from './audio/constants/AudioCategory'
 export {
   AudioLoadStates,
 } from './audio/constants/AudioLoadState'
+// #endregion
+// #endregion
 
-
-// Components > grid > GridContainer
+// #region Components
+// #region > grid
+// #region > > GridContainer
 export {
   GridContainerProperties,
   GridContainer,
@@ -31,7 +35,7 @@ export {
   SquareGridProperties,
   SquareGrid,
 } from './components/grid/SquareGrid'
-
+// #endregion
 
 // Components > image-slider > ImageSlider
 export {
@@ -80,7 +84,7 @@ export {
 export {
   SliderProperties,
   Slider,
-} from './components/menu/controls/Slider'
+} from './components/slider/Slider'
 // Components > menu > controls > Switch
 export {
   SwitchProperties,

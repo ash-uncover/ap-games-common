@@ -17,44 +17,48 @@
     "build": "npm run build:tsc && npm run build:babel",
     "build:babel": "babel src/lib --extensions .ts,.tsx --out-dir dist --copy-files",
     "build:tsc": "tsc --project tsconfig.build.json",
-    "start": "webpack serve --progress --mode development"
+    "postinstall": "npm update @uncover/js-utils @uncover/js-utils-logger",
+    "watch": "npm run watch:tsc && npm run watch:babel",
+    "watch:babel": "babel -w src/lib --extensions .ts,.tsx --out-dir dist --copy-files",
+    "watch:tsc": "tsc -w --project tsconfig.build.json",
+    "start": "webpack serve --progress --mode development",
+    "prepare": "husky"
   },
   "dependencies": {
-    "@uncover/js-utils": "0.0.18",
-    "@uncover/js-utils-logger": "0.2.1"
-  },
-  "peerDependencies": {
-    "react": "../ap-games-dominion/node_modules/react",
-    "react-dom": "../ap-games-dominion/node_modules/react-dom"
+    "@uncover/js-utils": "ash-uncover/js-utils",
+    "@uncover/js-utils-logger": "ash-uncover/js-utils-logger"
   },
   "devDependencies": {
-    "@babel/cli": "7.26.4",
+    "@babel/cli": "7.27.0",
     "@babel/core": "7.26.10",
     "@babel/preset-env": "7.26.9",
     "@babel/preset-react": "7.26.3",
-    "@babel/preset-typescript": "7.26.0",
+    "@babel/preset-typescript": "7.27.0",
     "@fortawesome/fontawesome-svg-core": "6.7.2",
     "@fortawesome/free-regular-svg-icons": "6.7.2",
     "@fortawesome/free-solid-svg-icons": "6.7.2",
     "@fortawesome/react-fontawesome": "0.2.2",
-    "@types/react": "19.0.12",
-    "@types/react-dom": "19.0.4",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
     "babel-loader": "10.0.0",
     "css-loader": "7.1.2",
     "html-webpack-plugin": "5.6.3",
+    "husky": "^9.1.7",
     "i18next": "24.2.3",
     "i18next-browser-languagedetector": "8.0.4",
     "i18next-http-backend": "3.0.2",
     "i18next-resources-to-backend": "1.2.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "react-i18next": "15.4.1",
     "source-map-loader": "5.0.0",
     "style-loader": "4.0.0",
     "ts-loader": "9.5.2",
     "ts-node": "10.9.2",
-    "typescript": "5.8.2",
+    "typescript": "5.8.3",
     "webpack": "5.98.0",
     "webpack-cli": "6.0.1",
-    "webpack-dev-server": "5.2.0"
+    "webpack-dev-server": "5.2.1"
   },
   "eslintConfig": {
     "extends": "react-app",
