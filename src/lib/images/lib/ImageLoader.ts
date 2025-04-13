@@ -1,9 +1,9 @@
-import { ObjectUtils } from '@uncover/js-utils'
+import { ObjectUtils } from '@sol.ac/js-utils'
 import {
   ImageLoadState,
   ImageLoadStates
 } from '../constants/ImageLoadState'
-import { Logger } from '@uncover/js-utils-logger'
+import { Logger } from '@sol.ac/js-utils-logger'
 
 const LOGGER = new Logger('ImageLoader')
 

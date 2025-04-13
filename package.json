@@ -1,6 +1,6 @@
 {
-  "name": "@uncover/games-common",
-  "version": "0.0.1",
+  "name": "@sol.ac/games-common",
+  "version": "1.0.0",
   "author": "aSH <ash.uncover@gmail.com>",
   "description": "Util project for all react games",
   "license": "MIT",
@@ -17,7 +17,6 @@
     "build": "npm run build:tsc && npm run build:babel",
     "build:babel": "babel src/lib --extensions .ts,.tsx --out-dir dist --copy-files",
     "build:tsc": "tsc --project tsconfig.build.json",
-    "postinstall": "npm update @uncover/js-utils @uncover/js-utils-logger",
     "watch": "npm run watch:tsc && npm run watch:babel",
     "watch:babel": "babel -w src/lib --extensions .ts,.tsx --out-dir dist --copy-files",
     "watch:tsc": "tsc -w --project tsconfig.build.json",
@@ -25,8 +24,8 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@uncover/js-utils": "ash-uncover/js-utils",
-    "@uncover/js-utils-logger": "ash-uncover/js-utils-logger"
+    "@sol.ac/js-utils": "1.0.1",
+    "@sol.ac/js-utils-logger": "1.0.3"
   },
   "devDependencies": {
     "@babel/cli": "7.27.0",
@@ -38,8 +37,8 @@
     "@fortawesome/free-regular-svg-icons": "6.7.2",
     "@fortawesome/free-solid-svg-icons": "6.7.2",
     "@fortawesome/react-fontawesome": "0.2.2",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
+    "@types/react": "19.1.1",
+    "@types/react-dom": "19.1.2",
     "babel-loader": "10.0.0",
     "css-loader": "7.1.2",
     "html-webpack-plugin": "5.6.3",
@@ -56,7 +55,7 @@
     "ts-loader": "9.5.2",
     "ts-node": "10.9.2",
     "typescript": "5.8.3",
-    "webpack": "5.98.0",
+    "webpack": "5.99.5",
     "webpack-cli": "6.0.1",
     "webpack-dev-server": "5.2.1"
   },

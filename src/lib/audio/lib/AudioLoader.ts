@@ -2,7 +2,7 @@ import {
   AudioLoadState,
   AudioLoadStates
 } from '../constants/AudioLoadState'
-import { Logger } from '@uncover/js-utils-logger'
+import { Logger } from '@sol.ac/js-utils-logger'
 
 const LOGGER = new Logger('AudioLoader')
 

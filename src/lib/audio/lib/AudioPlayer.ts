@@ -1,4 +1,4 @@
-import { ArrayUtils, ObjectUtils } from '@uncover/js-utils'
+import { ArrayUtils, ObjectUtils } from '@sol.ac/js-utils'
 import { AudioCategories } from '../constants/AudioCategory'
 import { AudioLoader } from './AudioLoader'
 import { AudioVolumeManager } from './AudioVolumeManager'

@@ -1,4 +1,4 @@
-import { ArrayUtils } from '@uncover/js-utils'
+import { ArrayUtils } from '@sol.ac/js-utils'
 
 export interface Shortcuts {
   id: string

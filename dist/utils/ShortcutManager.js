@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.updateShortcuts = exports.getShortcutId = exports.ShortcutManager = void 0;
-var _jsUtils = require("@uncover/js-utils");
+var _jsUtils = require("@sol.ac/js-utils");
 var SHORTCUTS_DOWN = {};
 var SHORTCUTS_UP = {};
 var SHORTCUTS_SETS = [];

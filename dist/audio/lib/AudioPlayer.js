@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.AudioPlayer = void 0;
-var _jsUtils = require("@uncover/js-utils");
+var _jsUtils = require("@sol.ac/js-utils");
 var _AudioCategory = require("../constants/AudioCategory");
 var _AudioLoader = require("./AudioLoader");
 var _AudioVolumeManager = require("./AudioVolumeManager");

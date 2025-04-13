@@ -49,5 +49,6 @@ var MenuItem = exports.MenuItem = function MenuItem(_ref) {
     className: "menu-item__icon"
   }, icon ? icon : null) : null, /*#__PURE__*/_react["default"].createElement("span", {
     className: "menu-item__text"
-  }, collapsed ? null : text))); // #endregion
+  }, collapsed ? null : text)));
+  // #endregion
 };

@@ -65,5 +65,6 @@ export const MenuItem = ({
         </span>
       </a>
     </li>
-  )// #endregion
+  )
+  // #endregion
 }
