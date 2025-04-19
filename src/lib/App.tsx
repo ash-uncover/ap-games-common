@@ -14,7 +14,7 @@ import {
   Select,
   GridContainer,
   GridTiles
-} from '../lib'
+} from '.'
 
 export const App = () => {
 
@@ -41,6 +41,8 @@ export const App = () => {
   }
 
   // Rendering //
+
+  
 
   return (
     <Page>

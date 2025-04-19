@@ -13,7 +13,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 library.add(fas)
 
 // Import components
-import { App } from './components/App'
+import { App } from './lib/App'
 
 i18n
   .use(HttpBackend)
