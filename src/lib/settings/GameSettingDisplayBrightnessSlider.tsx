@@ -6,9 +6,7 @@ import {
   GameSettingsContext,
   GameSettingsDispatchContext,
 } from './GameSettingsProvider'
-import {
-  Slider
-} from '../components/slider/Slider'
+import { Slider } from '@sol.ac/react-commons'
 
 export interface GameSettingDisplayBrightnessSliderProperties {
   className?: string
@@ -19,23 +17,23 @@ export const GameSettingDisplayBrightnessSlider = ({
   label
 }: GameSettingDisplayBrightnessSliderProperties) => {
 
-  // #region Hooks
+  // #region > Hooks
   const settingsContext = useContext(GameSettingsContext)
   const dispatch = useContext(GameSettingsDispatchContext);
   // #endregion
 
-  // #region Events
-  function handleChange(brightness: number) {
-    const action = GameSettingsActions.setBrightness(brightness)
+  // #region > Events
+  function handleChange(event: { value: number }) {
+    const action = GameSettingsActions.setBrightness(event.value)
     dispatch(action)
   }
   // #endregion
 
-  // #region Rendering
+  // #region > Render
   return (
     <Slider
       className={className}
-      label={label}
+      // label={label}
       min={0}
       max={200}
       value={settingsContext.brightness}

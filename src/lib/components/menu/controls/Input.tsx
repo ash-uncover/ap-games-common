@@ -15,13 +15,13 @@ export const Input = ({
   onChange,
 }: InputProperties) => {
 
-  // #region Hooks
+  // #region > Hooks
   // #endregion
 
-  // #region Events
+  // #region > Events
   // #endregion
 
-  // #region Rendering
+  // #region > Render
   const classes = ['menu-control input']
   if (className) {
     classes.push(className)

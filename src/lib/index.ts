@@ -80,17 +80,6 @@ export {
   SelectProperties,
   Select,
 } from './components/menu/controls/Select'
-// Components > menu > controls > Slider
-export {
-  SliderProperties,
-  Slider,
-} from './components/slider/Slider'
-// Components > menu > controls > Switch
-export {
-  SwitchProperties,
-  Switch,
-} from './components/menu/controls/Switch'
-
 
 // Components > page > Page
 export {
@@ -121,7 +110,7 @@ export {
 } from './components/panel/PanelButton'
 
 
-// Settings > GameSettings
+// #region Settings
 export {
   GameAppProperties,
   GameApp,
@@ -134,6 +123,38 @@ export {
   GameSettingsActions,
 } from './settings/GameSettingsProvider'
 export {
+  GameSettingAudioGameSwitchProperties,
+  GameSettingAudioGameSwitch,
+} from './settings/GameSettingAudioGameSwitch'
+export {
+  GameSettingAudioGameVolumeSliderProperties,
+  GameSettingAudioGameVolumeSlider,
+} from './settings/GameSettingAudioGameVolumeSlider'
+export {
+  GameSettingAudioMasterSwitchProperties,
+  GameSettingAudioMasterSwitch,
+} from './settings/GameSettingAudioMasterSwitch'
+export {
+  GameSettingAudioMasterVolumeSliderProperties,
+  GameSettingAudioMasterVolumeSlider,
+} from './settings/GameSettingAudioMasterVolumeSlider'
+export {
+  GameSettingAudioMusicSwitchProperties,
+  GameSettingAudioMusicSwitch,
+} from './settings/GameSettingAudioMusicSwitch'
+export {
+  GameSettingAudioMusicVolumeSliderProperties,
+  GameSettingAudioMusicVolumeSlider,
+} from './settings/GameSettingAudioMusicVolumeSlider'
+export {
+  GameSettingAudioUiSwitchProperties,
+  GameSettingAudioUiSwitch,
+} from './settings/GameSettingAudioUiSwitch'
+export {
+  GameSettingAudioUiVolumeSliderProperties,
+  GameSettingAudioUiVolumeSlider,
+} from './settings/GameSettingAudioUiVolumeSlider'
+export {
   GameSettingDisplayBrightnessSliderProperties,
   GameSettingDisplayBrightnessSlider,
 } from './settings/GameSettingDisplayBrightnessSlider'
@@ -141,7 +162,7 @@ export {
   GameSettingDisplayContrastSliderProperties,
   GameSettingDisplayContrastSlider,
 } from './settings/GameSettingDisplayContrastSlider'
-
+// #endregion
 
 // Images > hooks
 export {

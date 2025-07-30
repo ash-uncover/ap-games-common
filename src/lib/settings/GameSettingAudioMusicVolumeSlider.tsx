@@ -8,14 +8,14 @@ import {
 } from './GameSettingsProvider'
 import { Slider } from '@sol.ac/react-commons'
 
-export interface GameSettingDisplayContrastSliderProperties {
+export interface GameSettingAudioMusicVolumeSliderProperties {
   className?: string
   label: string
 }
-export const GameSettingDisplayContrastSlider = ({
+export const GameSettingAudioMusicVolumeSlider = ({
   className,
   label
-}: GameSettingDisplayContrastSliderProperties) => {
+}: GameSettingAudioMusicVolumeSliderProperties) => {
 
   // #region > Hooks
   const settingsContext = useContext(GameSettingsContext)
@@ -24,7 +24,7 @@ export const GameSettingDisplayContrastSlider = ({
 
   // #region > Events
   function handleChange(event: { value: number }) {
-    const action = GameSettingsActions.setContrast(event.value)
+    const action = GameSettingsActions.setAudioMusicVolume(event.value)
     dispatch(action)
   }
   // #endregion
@@ -35,8 +35,8 @@ export const GameSettingDisplayContrastSlider = ({
       className={className}
       // label={label}
       min={0}
-      max={200}
-      value={settingsContext.contrast}
+      max={100}
+      value={settingsContext.audioMusicVolume}
       onChange={handleChange}
     />
   )

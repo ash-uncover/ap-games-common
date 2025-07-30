@@ -23,7 +23,7 @@ export const MenuItem = ({
   onClick,
 }: MenuItemProperties) => {
 
-  // #region Events  
+  // #region > Events  
   const handleClick = (event: MouseEvent) => {
     event.preventDefault()
     if (!disabled) {
@@ -33,7 +33,7 @@ export const MenuItem = ({
   }
   // #endregion
 
-  // #region Rendering
+  // #region > Render
   const classes = ['menu-item']
   if (className) {
     classes.push(className)

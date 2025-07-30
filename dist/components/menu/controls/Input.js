@@ -14,13 +14,13 @@ var Input = exports.Input = function Input(_ref) {
     disabled = _ref.disabled,
     value = _ref.value,
     onChange = _ref.onChange;
-  // #region Hooks
+  // #region > Hooks
   // #endregion
 
-  // #region Events
+  // #region > Events
   // #endregion
 
-  // #region Rendering
+  // #region > Render
   var classes = ['menu-control input'];
   if (className) {
     classes.push(className);

@@ -63,6 +63,102 @@ Object.defineProperty(exports, "GameLayoutProperties", {
     return _GameLayout.GameLayoutProperties;
   }
 });
+Object.defineProperty(exports, "GameSettingAudioGameSwitch", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioGameSwitch.GameSettingAudioGameSwitch;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioGameSwitchProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioGameSwitch.GameSettingAudioGameSwitchProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioGameVolumeSlider", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioGameVolumeSlider.GameSettingAudioGameVolumeSlider;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioGameVolumeSliderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioGameVolumeSlider.GameSettingAudioGameVolumeSliderProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioMasterSwitch", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioMasterSwitch.GameSettingAudioMasterSwitch;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioMasterSwitchProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioMasterSwitch.GameSettingAudioMasterSwitchProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioMasterVolumeSlider", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioMasterVolumeSlider.GameSettingAudioMasterVolumeSlider;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioMasterVolumeSliderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioMasterVolumeSlider.GameSettingAudioMasterVolumeSliderProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioMusicSwitch", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioMusicSwitch.GameSettingAudioMusicSwitch;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioMusicSwitchProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioMusicSwitch.GameSettingAudioMusicSwitchProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioMusicVolumeSlider", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioMusicVolumeSlider.GameSettingAudioMusicVolumeSlider;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioMusicVolumeSliderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioMusicVolumeSlider.GameSettingAudioMusicVolumeSliderProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioUiSwitch", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioUiSwitch.GameSettingAudioUiSwitch;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioUiSwitchProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioUiSwitch.GameSettingAudioUiSwitchProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioUiVolumeSlider", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioUiVolumeSlider.GameSettingAudioUiVolumeSlider;
+  }
+});
+Object.defineProperty(exports, "GameSettingAudioUiVolumeSliderProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingAudioUiVolumeSlider.GameSettingAudioUiVolumeSliderProperties;
+  }
+});
 Object.defineProperty(exports, "GameSettingDisplayBrightnessSlider", {
   enumerable: true,
   get: function get() {
@@ -297,18 +393,6 @@ Object.defineProperty(exports, "Shortcuts", {
     return _ShortcutManager.Shortcuts;
   }
 });
-Object.defineProperty(exports, "Slider", {
-  enumerable: true,
-  get: function get() {
-    return _Slider.Slider;
-  }
-});
-Object.defineProperty(exports, "SliderProperties", {
-  enumerable: true,
-  get: function get() {
-    return _Slider.SliderProperties;
-  }
-});
 Object.defineProperty(exports, "SquareGrid", {
   enumerable: true,
   get: function get() {
@@ -319,18 +403,6 @@ Object.defineProperty(exports, "SquareGridProperties", {
   enumerable: true,
   get: function get() {
     return _SquareGrid.SquareGridProperties;
-  }
-});
-Object.defineProperty(exports, "Switch", {
-  enumerable: true,
-  get: function get() {
-    return _Switch.Switch;
-  }
-});
-Object.defineProperty(exports, "SwitchProperties", {
-  enumerable: true,
-  get: function get() {
-    return _Switch.SwitchProperties;
   }
 });
 Object.defineProperty(exports, "loadAudio", {
@@ -388,8 +460,6 @@ var _Loader = require("./components/loader/Loader");
 var _Menu = require("./components/menu/Menu");
 var _MenuItem = require("./components/menu/MenuItem");
 var _Select = require("./components/menu/controls/Select");
-var _Slider = require("./components/slider/Slider");
-var _Switch = require("./components/menu/controls/Switch");
 var _Page = require("./components/page/Page");
 var _PageMenu = require("./components/page/PageMenu");
 var _PageContent = require("./components/page/PageContent");
@@ -397,6 +467,14 @@ var _Panel = require("./components/panel/Panel");
 var _PanelButton = require("./components/panel/PanelButton");
 var _GameApp = require("./settings/GameApp");
 var _GameSettingsProvider = require("./settings/GameSettingsProvider");
+var _GameSettingAudioGameSwitch = require("./settings/GameSettingAudioGameSwitch");
+var _GameSettingAudioGameVolumeSlider = require("./settings/GameSettingAudioGameVolumeSlider");
+var _GameSettingAudioMasterSwitch = require("./settings/GameSettingAudioMasterSwitch");
+var _GameSettingAudioMasterVolumeSlider = require("./settings/GameSettingAudioMasterVolumeSlider");
+var _GameSettingAudioMusicSwitch = require("./settings/GameSettingAudioMusicSwitch");
+var _GameSettingAudioMusicVolumeSlider = require("./settings/GameSettingAudioMusicVolumeSlider");
+var _GameSettingAudioUiSwitch = require("./settings/GameSettingAudioUiSwitch");
+var _GameSettingAudioUiVolumeSlider = require("./settings/GameSettingAudioUiVolumeSlider");
 var _GameSettingDisplayBrightnessSlider = require("./settings/GameSettingDisplayBrightnessSlider");
 var _GameSettingDisplayContrastSlider = require("./settings/GameSettingDisplayContrastSlider");
 var _loadImages = require("./images/lib/loadImages");

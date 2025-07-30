@@ -21,11 +21,13 @@
     "watch:babel": "babel -w src/lib --extensions .ts,.tsx --out-dir dist --copy-files",
     "watch:tsc": "tsc -w --project tsconfig.build.json",
     "start": "webpack serve --progress --mode development",
-    "prepare": "husky"
+    "prepare": "husky",
+    "update": "npm update @sol.ac/react-commons"
   },
   "dependencies": {
     "@sol.ac/js-utils": "1.0.1",
-    "@sol.ac/js-utils-logger": "1.0.3"
+    "@sol.ac/js-utils-logger": "1.0.3",
+    "@sol.ac/react-commons": "ash-uncover/react-commons"
   },
   "devDependencies": {
     "@babel/cli": "7.28.0",

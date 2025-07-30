@@ -1,21 +1,23 @@
 import React, {
   useContext,
 } from 'react'
+import { 
+  Slider 
+} from '@sol.ac/react-commons'
 import {
   GameSettingsActions,
   GameSettingsContext,
   GameSettingsDispatchContext,
 } from './GameSettingsProvider'
-import { Slider } from '@sol.ac/react-commons'
 
-export interface GameSettingDisplayContrastSliderProperties {
+export interface GameSettingAudioGameVolumeSliderProperties {
   className?: string
   label: string
 }
-export const GameSettingDisplayContrastSlider = ({
+export const GameSettingAudioGameVolumeSlider = ({
   className,
   label
-}: GameSettingDisplayContrastSliderProperties) => {
+}: GameSettingAudioGameVolumeSliderProperties) => {
 
   // #region > Hooks
   const settingsContext = useContext(GameSettingsContext)
@@ -24,7 +26,7 @@ export const GameSettingDisplayContrastSlider = ({
 
   // #region > Events
   function handleChange(event: { value: number }) {
-    const action = GameSettingsActions.setContrast(event.value)
+    const action = GameSettingsActions.setAudioGameVolume(event.value)
     dispatch(action)
   }
   // #endregion
@@ -35,8 +37,8 @@ export const GameSettingDisplayContrastSlider = ({
       className={className}
       // label={label}
       min={0}
-      max={200}
-      value={settingsContext.contrast}
+      max={100}
+      value={settingsContext.audioGameVolume}
       onChange={handleChange}
     />
   )

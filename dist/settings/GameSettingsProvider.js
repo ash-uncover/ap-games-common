@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.GameSettingsProvider = exports.GameSettingsDispatchContext = exports.GameSettingsContext = exports.GameSettingsActions = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _GameSettingsModel = require("./GameSettingsModel");
+var _AudioUtils = require("../audio/lib/AudioUtils");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
@@ -59,6 +60,62 @@ var GameSettingsProvider = exports.GameSettingsProvider = function GameSettingsP
 // #endregion
 
 // #region Reducer
+var SET_AUDIO_MASTER = 'SET_AUDIO_MASTER';
+function setAudioMaster(audioMaster) {
+  return {
+    type: SET_AUDIO_MASTER,
+    audioMaster: audioMaster
+  };
+}
+var SET_AUDIO_MASTER_VOLUME = 'SET_AUDIO_MASTER_VOLUME';
+function setAudioMasterVolume(audioMasterVolume) {
+  return {
+    type: SET_AUDIO_MASTER_VOLUME,
+    audioMasterVolume: audioMasterVolume
+  };
+}
+var SET_AUDIO_GAME = 'SET_AUDIO_GAME';
+function setAudioGame(audioGame) {
+  return {
+    type: SET_AUDIO_GAME,
+    audioGame: audioGame
+  };
+}
+var SET_AUDIO_GAME_VOLUME = 'SET_AUDIO_GAME_VOLUME';
+function setAudioGameVolume(audioGameVolume) {
+  return {
+    type: SET_AUDIO_GAME_VOLUME,
+    audioGameVolume: audioGameVolume
+  };
+}
+var SET_AUDIO_MUSIC = 'SET_AUDIO_MUSIC';
+function setAudioMusic(audioMusic) {
+  return {
+    type: SET_AUDIO_MUSIC,
+    audioMusic: audioMusic
+  };
+}
+var SET_AUDIO_MUSIC_VOLUME = 'SET_AUDIO_MUSIC_VOLUME';
+function setAudioMusicVolume(audioMusicVolume) {
+  return {
+    type: SET_AUDIO_MUSIC_VOLUME,
+    audioMusicVolume: audioMusicVolume
+  };
+}
+var SET_AUDIO_UI = 'SET_AUDIO_UI';
+function setAudioUi(audioUi) {
+  return {
+    type: SET_AUDIO_UI,
+    audioUi: audioUi
+  };
+}
+var SET_AUDIO_UI_VOLUME = 'SET_AUDIO_UI_VOLUME';
+function setAudioUiVolume(audioUiVolume) {
+  return {
+    type: SET_AUDIO_UI_VOLUME,
+    audioUiVolume: audioUiVolume
+  };
+}
 var SET_BRIGHTNESS = 'SET_BRIGHTNESS';
 function setBrightness(brightness) {
   return {
@@ -74,11 +131,67 @@ function setContrast(contrast) {
   };
 }
 var GameSettingsActions = exports.GameSettingsActions = {
+  setAudioGame: setAudioGame,
+  setAudioGameVolume: setAudioGameVolume,
+  setAudioMaster: setAudioMaster,
+  setAudioMasterVolume: setAudioMasterVolume,
+  setAudioMusic: setAudioMusic,
+  setAudioMusicVolume: setAudioMusicVolume,
+  setAudioUi: setAudioUi,
+  setAudioUiVolume: setAudioUiVolume,
   setBrightness: setBrightness,
   setContrast: setContrast
 };
 function settingsReducer(settings, action) {
   switch (action.type) {
+    case SET_AUDIO_GAME:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          audioGame: Boolean(action.audioGame)
+        });
+      }
+    case SET_AUDIO_GAME_VOLUME:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          audioGameVolume: (0, _AudioUtils.normalizeVolumeValue)(action.audioGameVolume)
+        });
+      }
+    case SET_AUDIO_MASTER:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          audioMaster: Boolean(action.audioMaster)
+        });
+      }
+    case SET_AUDIO_MASTER_VOLUME:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          audioMasterVolume: (0, _AudioUtils.normalizeVolumeValue)(action.audioMasterVolume)
+        });
+      }
+    case SET_AUDIO_MUSIC:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          audioMusic: Boolean(action.audioMusic)
+        });
+      }
+    case SET_AUDIO_MUSIC_VOLUME:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          audioMusicVolume: (0, _AudioUtils.normalizeVolumeValue)(action.audioMusicVolume)
+        });
+      }
+    case SET_AUDIO_UI:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          audioUi: Boolean(action.audioUi)
+        });
+      }
+    case SET_AUDIO_UI_VOLUME:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          audioUiVolume: (0, _AudioUtils.normalizeVolumeValue)(action.audioUiVolume)
+        });
+      }
     case SET_BRIGHTNESS:
       {
         return _objectSpread(_objectSpread({}, settings), {}, {

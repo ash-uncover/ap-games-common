@@ -1,6 +1,4 @@
-const normalizeVolumeValue = (value: number) => {
-  return Math.min(Math.max(0, value), 100)
-}
+import { normalizeVolumeValue } from "./AudioUtils"
 
 const ALPHA_AUDIO = 'alpha-audio'
 const USE_LOCAL_STORAGE = true

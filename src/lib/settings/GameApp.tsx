@@ -21,7 +21,7 @@ export const GameApp = ({
   children
 }: GameAppProperties) => {
 
-  // #region Rendering
+  // #region > Render
   return (
     <GameSettingsProvider name={name}>
       <GameAppInner className={className}>
@@ -40,7 +40,7 @@ const GameAppInner = ({
   children
 }: GameAppInnerProperties) => {
 
-  // #region Hooks
+  // #region > Hooks
   const settingsContext = useContext(GameSettingsContext)
   const [style, setStyle] = useState({})
   useEffect(() => {
@@ -54,7 +54,7 @@ const GameAppInner = ({
   }, [settingsContext])
   // #endregion
 
-  // #region Rendering
+  // #region > Render
   const classes = ['alpha-game-app']
   if (className) {
     classes.push(className)

@@ -19,7 +19,7 @@ var GameApp = exports.GameApp = function GameApp(_ref) {
   var className = _ref.className,
     name = _ref.name,
     children = _ref.children;
-  // #region Rendering
+  // #region > Render
   return /*#__PURE__*/_react["default"].createElement(_GameSettingsProvider.GameSettingsProvider, {
     name: name
   }, /*#__PURE__*/_react["default"].createElement(GameAppInner, {
@@ -30,7 +30,7 @@ var GameApp = exports.GameApp = function GameApp(_ref) {
 var GameAppInner = function GameAppInner(_ref2) {
   var className = _ref2.className,
     children = _ref2.children;
-  // #region Hooks
+  // #region > Hooks
   var settingsContext = (0, _react.useContext)(_GameSettingsProvider.GameSettingsContext);
   var _useState = (0, _react.useState)({}),
     _useState2 = _slicedToArray(_useState, 2),
@@ -45,7 +45,7 @@ var GameAppInner = function GameAppInner(_ref2) {
   }, [settingsContext]);
   // #endregion
 
-  // #region Rendering
+  // #region > Render
   var classes = ['alpha-game-app'];
   if (className) {
     classes.push(className);

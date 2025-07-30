@@ -12,13 +12,13 @@ export const Panel = ({
   children,
 }: PanelProperties) => {
 
-  // #region Hooks
+  // #region > Hooks
   // #endregion
 
-  // #region Events
+  // #region > Events
   // #endregion
 
-  // #region Rendering
+  // #region > Render
   const classes = ['panel']
   if (className) {
     classes.push(className)

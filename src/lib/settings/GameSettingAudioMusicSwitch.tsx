@@ -6,16 +6,16 @@ import {
   GameSettingsContext,
   GameSettingsDispatchContext,
 } from './GameSettingsProvider'
-import { Slider } from '@sol.ac/react-commons'
+import { Switch } from '@sol.ac/react-commons'
 
-export interface GameSettingDisplayContrastSliderProperties {
+export interface GameSettingAudioMusicSwitchProperties {
   className?: string
   label: string
 }
-export const GameSettingDisplayContrastSlider = ({
+export const GameSettingAudioMusicSwitch = ({
   className,
   label
-}: GameSettingDisplayContrastSliderProperties) => {
+}: GameSettingAudioMusicSwitchProperties) => {
 
   // #region > Hooks
   const settingsContext = useContext(GameSettingsContext)
@@ -23,20 +23,18 @@ export const GameSettingDisplayContrastSlider = ({
   // #endregion
 
   // #region > Events
-  function handleChange(event: { value: number }) {
-    const action = GameSettingsActions.setContrast(event.value)
+  function handleChange(event: { value: boolean }) {
+    const action = GameSettingsActions.setAudioMusic(event.value)
     dispatch(action)
   }
   // #endregion
 
   // #region > Render
   return (
-    <Slider
+    <Switch
       className={className}
-      // label={label}
-      min={0}
-      max={200}
-      value={settingsContext.contrast}
+      label={label}
+      checked={settingsContext.audioGame}
       onChange={handleChange}
     />
   )

@@ -13,13 +13,13 @@ var Panel = exports.Panel = function Panel(_ref) {
   var className = _ref.className,
     title = _ref.title,
     children = _ref.children;
-  // #region Hooks
+  // #region > Hooks
   // #endregion
 
-  // #region Events
+  // #region > Events
   // #endregion
 
-  // #region Rendering
+  // #region > Render
   var classes = ['panel'];
   if (className) {
     classes.push(className);

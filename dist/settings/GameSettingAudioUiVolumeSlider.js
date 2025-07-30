@@ -4,12 +4,12 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.GameSettingDisplayBrightnessSlider = void 0;
+exports.GameSettingAudioUiVolumeSlider = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _GameSettingsProvider = require("./GameSettingsProvider");
 var _reactCommons = require("@sol.ac/react-commons");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
-var GameSettingDisplayBrightnessSlider = exports.GameSettingDisplayBrightnessSlider = function GameSettingDisplayBrightnessSlider(_ref) {
+var GameSettingAudioUiVolumeSlider = exports.GameSettingAudioUiVolumeSlider = function GameSettingAudioUiVolumeSlider(_ref) {
   var className = _ref.className,
     label = _ref.label;
   // #region > Hooks
@@ -19,7 +19,7 @@ var GameSettingDisplayBrightnessSlider = exports.GameSettingDisplayBrightnessSli
 
   // #region > Events
   function handleChange(event) {
-    var action = _GameSettingsProvider.GameSettingsActions.setBrightness(event.value);
+    var action = _GameSettingsProvider.GameSettingsActions.setAudioUiVolume(event.value);
     dispatch(action);
   }
   // #endregion
@@ -30,8 +30,8 @@ var GameSettingDisplayBrightnessSlider = exports.GameSettingDisplayBrightnessSli
     // label={label}
     ,
     min: 0,
-    max: 200,
-    value: settingsContext.brightness,
+    max: 100,
+    value: settingsContext.audioUiVolume,
     onChange: handleChange
   });
   // #endregion

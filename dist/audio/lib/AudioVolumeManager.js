@@ -5,6 +5,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.AudioVolumeManager = void 0;
+var _AudioUtils = require("./AudioUtils");
 function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
@@ -15,9 +16,6 @@ function _checkPrivateRedeclaration(e, t) { if (t.has(e)) throw new TypeError("C
 function _classPrivateFieldGet(s, a) { return s.get(_assertClassBrand(s, a)); }
 function _classPrivateFieldSet(s, a, r) { return s.set(_assertClassBrand(s, a), r), r; }
 function _assertClassBrand(e, t, n) { if ("function" == typeof e ? e === t : e.has(t)) return arguments.length < 3 ? t : n; throw new TypeError("Private element is not present on this object"); }
-var normalizeVolumeValue = function normalizeVolumeValue(value) {
-  return Math.min(Math.max(0, value), 100);
-};
 var ALPHA_AUDIO = 'alpha-audio';
 var USE_LOCAL_STORAGE = true;
 if (!USE_LOCAL_STORAGE) {
@@ -100,7 +98,7 @@ var AudioVolumeManager = exports.AudioVolumeManager = /*#__PURE__*/function () {
       return _classPrivateFieldGet(_masterVolume, this);
     },
     set: function set(value) {
-      _classPrivateFieldSet(_masterVolume, this, normalizeVolumeValue(value));
+      _classPrivateFieldSet(_masterVolume, this, (0, _AudioUtils.normalizeVolumeValue)(value));
       store(this);
     }
   }, {
@@ -118,7 +116,7 @@ var AudioVolumeManager = exports.AudioVolumeManager = /*#__PURE__*/function () {
       return _classPrivateFieldGet(_musicVolume, this);
     },
     set: function set(value) {
-      _classPrivateFieldSet(_musicVolume, this, normalizeVolumeValue(value));
+      _classPrivateFieldSet(_musicVolume, this, (0, _AudioUtils.normalizeVolumeValue)(value));
       store(this);
     }
   }, {
@@ -136,7 +134,7 @@ var AudioVolumeManager = exports.AudioVolumeManager = /*#__PURE__*/function () {
       return _classPrivateFieldGet(_uiVolume, this);
     },
     set: function set(value) {
-      _classPrivateFieldSet(_uiVolume, this, normalizeVolumeValue(value));
+      _classPrivateFieldSet(_uiVolume, this, (0, _AudioUtils.normalizeVolumeValue)(value));
       store(this);
     }
   }, {
@@ -154,7 +152,7 @@ var AudioVolumeManager = exports.AudioVolumeManager = /*#__PURE__*/function () {
       return _classPrivateFieldGet(_gameVolume, this);
     },
     set: function set(value) {
-      _classPrivateFieldSet(_gameVolume, this, normalizeVolumeValue(value));
+      _classPrivateFieldSet(_gameVolume, this, (0, _AudioUtils.normalizeVolumeValue)(value));
       store(this);
     }
   }]);
