@@ -80,25 +80,25 @@ var useAudioVolume = exports.useAudioVolume = function useAudioVolume() {
     game = _useState8[0],
     _setGame = _useState8[1];
   var _useState9 = (0, _react.useState)(player.gameVolume),
-    _useState10 = _slicedToArray(_useState9, 2),
-    gameVolume = _useState10[0],
-    _setGameVolume = _useState10[1];
-  var _useState11 = (0, _react.useState)(player.music),
+    _useState0 = _slicedToArray(_useState9, 2),
+    gameVolume = _useState0[0],
+    _setGameVolume = _useState0[1];
+  var _useState1 = (0, _react.useState)(player.music),
+    _useState10 = _slicedToArray(_useState1, 2),
+    music = _useState10[0],
+    _setMusic = _useState10[1];
+  var _useState11 = (0, _react.useState)(player.musicVolume),
     _useState12 = _slicedToArray(_useState11, 2),
-    music = _useState12[0],
-    _setMusic = _useState12[1];
-  var _useState13 = (0, _react.useState)(player.musicVolume),
+    musicVolume = _useState12[0],
+    _setMusicVolume = _useState12[1];
+  var _useState13 = (0, _react.useState)(player.ui),
     _useState14 = _slicedToArray(_useState13, 2),
-    musicVolume = _useState14[0],
-    _setMusicVolume = _useState14[1];
-  var _useState15 = (0, _react.useState)(player.ui),
+    ui = _useState14[0],
+    _setUi = _useState14[1];
+  var _useState15 = (0, _react.useState)(player.uiVolume),
     _useState16 = _slicedToArray(_useState15, 2),
-    ui = _useState16[0],
-    _setUi = _useState16[1];
-  var _useState17 = (0, _react.useState)(player.uiVolume),
-    _useState18 = _slicedToArray(_useState17, 2),
-    uiVolume = _useState18[0],
-    _setUiVolume = _useState18[1];
+    uiVolume = _useState16[0],
+    _setUiVolume = _useState16[1];
   return {
     master: master,
     masterVolume: masterVolume,
