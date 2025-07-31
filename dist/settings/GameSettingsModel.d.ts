@@ -9,5 +9,6 @@ export interface GameSettingsModel {
     audioUiVolume: number;
     brightness: number;
     contrast: number;
+    lang: string | null;
 }
 export declare function getDefaultGameSettings(): GameSettingsModel;

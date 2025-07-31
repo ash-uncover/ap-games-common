@@ -10,11 +10,16 @@ import {
 } from './GameSettingsProvider'
 // CSS
 import './GameApp.css'
+import { ClassBuilder } from '@sol.ac/react-commons'
 
+// #region Declaration
 export interface GameAppProperties extends PropsWithChildren {
   className: string
   name: string
 }
+// #endregion
+
+// #region Component
 export const GameApp = ({
   className,
   name,
@@ -31,6 +36,7 @@ export const GameApp = ({
   )
   // #endregion
 }
+// #endregion
 
 interface GameAppInnerProperties extends PropsWithChildren {
   className: string
@@ -54,14 +60,15 @@ const GameAppInner = ({
   }, [settingsContext])
   // #endregion
 
+  // #region > Event
+  // #endregion
+
   // #region > Render
-  const classes = ['alpha-game-app']
-  if (className) {
-    classes.push(className)
-  }
+  const classes = new ClassBuilder(['alpha-game-app', className])
+
   return (
     <div
-      className={classes.join(' ')}
+      className={classes.className}
       style={style}
     >
       {children}
@@ -69,3 +76,4 @@ const GameAppInner = ({
   )
   // #endregion
 }
+// #endregion

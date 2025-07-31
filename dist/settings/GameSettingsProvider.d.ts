@@ -47,6 +47,10 @@ declare function setContrast(contrast: number): {
     type: string;
     contrast: number;
 };
+declare function setLang(lang: String): {
+    type: string;
+    lang: String;
+};
 export declare const GameSettingsActions: {
     setAudioGame: typeof setAudioGame;
     setAudioGameVolume: typeof setAudioGameVolume;
@@ -58,5 +62,6 @@ export declare const GameSettingsActions: {
     setAudioUiVolume: typeof setAudioUiVolume;
     setBrightness: typeof setBrightness;
     setContrast: typeof setContrast;
+    setLang: typeof setLang;
 };
 export {};

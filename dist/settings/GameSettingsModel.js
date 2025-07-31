@@ -15,6 +15,7 @@ function getDefaultGameSettings() {
     audioUi: true,
     audioUiVolume: 100,
     brightness: 100,
-    contrast: 100
+    contrast: 100,
+    lang: null
   };
 }

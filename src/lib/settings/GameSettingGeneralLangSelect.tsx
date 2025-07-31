@@ -1,23 +1,26 @@
 import React from 'react'
+import { Select } from '@sol.ac/react-commons'
+//
 import {
   GameSettingsActions,
   GameSettingsContext,
   GameSettingsDispatchContext,
 } from './GameSettingsProvider'
-import { Switch } from '@sol.ac/react-commons'
 
 // #region Declaration
-export interface GameSettingAudioGameSwitchProperties {
+export interface GameSettingGeneralLangSelectProperties {
   className?: string
-  label: string
+  value: string
+  values: any[]
 }
 // #endregion
 
 // #region Component
-export const GameSettingAudioGameSwitch = ({
+export const GameSettingGeneralLangSelect = ({
   className,
-  label
-}: GameSettingAudioGameSwitchProperties) => {
+  value,
+  values
+}: GameSettingGeneralLangSelectProperties) => {
 
   // #region > Hooks
   const settingsContext = React.useContext(GameSettingsContext)
@@ -25,18 +28,18 @@ export const GameSettingAudioGameSwitch = ({
   // #endregion
 
   // #region > Events
-  function handleChange(event: { value: boolean }) {
-    const action = GameSettingsActions.setAudioGame(event.value)
+  function handleChange(event: { value: string }) {
+    const action = GameSettingsActions.setLang(event.value)
     dispatch(action)
   }
   // #endregion
 
   // #region > Render
   return (
-    <Switch
+    <Select
       className={className}
-      label={label}
-      checked={settingsContext.audioGame}
+      value={value}
+      values={values}
       onChange={handleChange}
     />
   )

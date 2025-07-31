@@ -8,6 +8,7 @@ exports.GameApp = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _GameSettingsProvider = require("./GameSettingsProvider");
 require("./GameApp.css");
+var _reactCommons = require("@sol.ac/react-commons");
 function _interopRequireWildcard(e, t) { if ("function" == typeof WeakMap) var r = new WeakMap(), n = new WeakMap(); return (_interopRequireWildcard = function _interopRequireWildcard(e, t) { if (!t && e && e.__esModule) return e; var o, i, f = { __proto__: null, "default": e }; if (null === e || "object" != _typeof(e) && "function" != typeof e) return f; if (o = t ? n : r) { if (o.has(e)) return o.get(e); o.set(e, f); } for (var _t in e) "default" !== _t && {}.hasOwnProperty.call(e, _t) && ((i = (o = Object.defineProperty) && Object.getOwnPropertyDescriptor(e, _t)) && (i.get || i.set) ? o(f, _t, i) : f[_t] = e[_t]); return f; })(e, t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -15,6 +16,11 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; } // CSS
+// #region Declaration
+
+// #endregion
+
+// #region Component
 var GameApp = exports.GameApp = function GameApp(_ref) {
   var className = _ref.className,
     name = _ref.name,
@@ -27,6 +33,8 @@ var GameApp = exports.GameApp = function GameApp(_ref) {
   }, children));
   // #endregion
 };
+// #endregion
+
 var GameAppInner = function GameAppInner(_ref2) {
   var className = _ref2.className,
     children = _ref2.children;
@@ -45,14 +53,15 @@ var GameAppInner = function GameAppInner(_ref2) {
   }, [settingsContext]);
   // #endregion
 
+  // #region > Event
+  // #endregion
+
   // #region > Render
-  var classes = ['alpha-game-app'];
-  if (className) {
-    classes.push(className);
-  }
+  var classes = new _reactCommons.ClassBuilder(['alpha-game-app', className]);
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: classes.join(' '),
+    className: classes.className,
     style: style
   }, children);
   // #endregion
 };
+// #endregion

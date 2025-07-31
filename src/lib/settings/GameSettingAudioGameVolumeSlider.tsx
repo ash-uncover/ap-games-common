@@ -1,6 +1,4 @@
-import React, {
-  useContext,
-} from 'react'
+import React from 'react'
 import { 
   Slider 
 } from '@sol.ac/react-commons'
@@ -10,18 +8,22 @@ import {
   GameSettingsDispatchContext,
 } from './GameSettingsProvider'
 
+// #region Declaration
 export interface GameSettingAudioGameVolumeSliderProperties {
   className?: string
   label: string
 }
+// #endregion
+
+// #region Component
 export const GameSettingAudioGameVolumeSlider = ({
   className,
   label
 }: GameSettingAudioGameVolumeSliderProperties) => {
 
   // #region > Hooks
-  const settingsContext = useContext(GameSettingsContext)
-  const dispatch = useContext(GameSettingsDispatchContext);
+  const settingsContext = React.useContext(GameSettingsContext)
+  const dispatch = React.useContext(GameSettingsDispatchContext);
   // #endregion
 
   // #region > Events
@@ -44,3 +46,4 @@ export const GameSettingAudioGameVolumeSlider = ({
   )
   // #endregion
 }
+// #endregion

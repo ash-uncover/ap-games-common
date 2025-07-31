@@ -130,6 +130,13 @@ function setContrast(contrast) {
     contrast: contrast
   };
 }
+var SET_LANG = 'SET_LANG';
+function setLang(lang) {
+  return {
+    type: SET_LANG,
+    lang: lang
+  };
+}
 var GameSettingsActions = exports.GameSettingsActions = {
   setAudioGame: setAudioGame,
   setAudioGameVolume: setAudioGameVolume,
@@ -140,7 +147,8 @@ var GameSettingsActions = exports.GameSettingsActions = {
   setAudioUi: setAudioUi,
   setAudioUiVolume: setAudioUiVolume,
   setBrightness: setBrightness,
-  setContrast: setContrast
+  setContrast: setContrast,
+  setLang: setLang
 };
 function settingsReducer(settings, action) {
   switch (action.type) {
@@ -202,6 +210,12 @@ function settingsReducer(settings, action) {
       {
         return _objectSpread(_objectSpread({}, settings), {}, {
           contrast: action.contrast
+        });
+      }
+    case SET_LANG:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          lang: action.lang
         });
       }
     default:

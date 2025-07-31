@@ -123,7 +123,14 @@ const SET_CONTRAST = 'SET_CONTRAST'
 function setContrast(contrast: number) {
   return {
     type: SET_CONTRAST,
-    contrast: contrast
+    contrast
+  }
+}
+const SET_LANG = 'SET_LANG'
+function setLang(lang: String) {
+  return {
+    type: SET_LANG,
+    lang
   }
 }
 export const GameSettingsActions = {
@@ -136,7 +143,8 @@ export const GameSettingsActions = {
   setAudioUi,
   setAudioUiVolume,
   setBrightness,
-  setContrast
+  setContrast,
+  setLang
 }
 function settingsReducer(settings: GameSettingsModel, action: any) {
   switch (action.type) {
@@ -198,6 +206,12 @@ function settingsReducer(settings: GameSettingsModel, action: any) {
       return {
         ...settings,
         contrast: action.contrast
+      }
+    }
+    case SET_LANG: {
+      return {
+        ...settings,
+        lang: action.lang
       }
     }
     default: {

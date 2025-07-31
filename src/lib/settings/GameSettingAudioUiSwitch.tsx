@@ -1,6 +1,4 @@
-import React, {
-  useContext,
-} from 'react'
+import React from 'react'
 import {
   GameSettingsActions,
   GameSettingsContext,
@@ -8,18 +6,22 @@ import {
 } from './GameSettingsProvider'
 import { Switch } from '@sol.ac/react-commons'
 
+// #region Declaration
 export interface GameSettingAudioUiSwitchProperties {
   className?: string
   label: string
 }
+// #endregion
+
+// #region Component
 export const GameSettingAudioUiSwitch = ({
   className,
   label
 }: GameSettingAudioUiSwitchProperties) => {
 
   // #region > Hooks
-  const settingsContext = useContext(GameSettingsContext)
-  const dispatch = useContext(GameSettingsDispatchContext);
+  const settingsContext = React.useContext(GameSettingsContext)
+  const dispatch = React.useContext(GameSettingsDispatchContext);
   // #endregion
 
   // #region > Events
@@ -40,3 +42,4 @@ export const GameSettingAudioUiSwitch = ({
   )
   // #endregion
 }
+// #endregion
