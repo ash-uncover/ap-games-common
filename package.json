@@ -22,12 +22,21 @@
     "watch:tsc": "tsc -w --project tsconfig.build.json",
     "start": "webpack serve --progress --mode development",
     "prepare": "husky",
-    "update": "npm update @sol.ac/react-commons"
+    "update": "npm update @sol.ac/react-commons",
+    "link:local": "npm link '@sol.ac/react-commons'"
   },
-  "dependencies": {
+  "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "7.0.0",
+    "@fortawesome/free-brands-svg-icons": "7.0.0",
+    "@fortawesome/free-regular-svg-icons": "7.0.0",
+    "@fortawesome/free-solid-svg-icons": "7.0.0",
+    "@fortawesome/react-fontawesome": "0.2.3",
     "@sol.ac/js-utils": "1.0.1",
     "@sol.ac/js-utils-logger": "1.0.3",
-    "@sol.ac/react-commons": "ash-uncover/react-commons"
+    "@sol.ac/react-commons": "ash-uncover/react-commons",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "react-router": "7.7.1"
   },
   "devDependencies": {
     "@babel/cli": "7.28.0",
