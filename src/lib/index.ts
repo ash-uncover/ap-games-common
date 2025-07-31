@@ -75,12 +75,6 @@ export {
 } from './components/menu/MenuItem'
 
 
-// Components > menu > controls > Select
-export {
-  SelectProperties,
-  Select,
-} from './components/menu/controls/Select'
-
 // Components > page > Page
 export {
   PageProperties,

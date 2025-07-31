@@ -351,18 +351,6 @@ Object.defineProperty(exports, "PanelProperties", {
     return _Panel.PanelProperties;
   }
 });
-Object.defineProperty(exports, "Select", {
-  enumerable: true,
-  get: function get() {
-    return _Select.Select;
-  }
-});
-Object.defineProperty(exports, "SelectProperties", {
-  enumerable: true,
-  get: function get() {
-    return _Select.SelectProperties;
-  }
-});
 Object.defineProperty(exports, "Shortcut", {
   enumerable: true,
   get: function get() {
@@ -459,7 +447,6 @@ var _GameLayout = require("./components/layout/GameLayout");
 var _Loader = require("./components/loader/Loader");
 var _Menu = require("./components/menu/Menu");
 var _MenuItem = require("./components/menu/MenuItem");
-var _Select = require("./components/menu/controls/Select");
 var _Page = require("./components/page/Page");
 var _PageMenu = require("./components/page/PageMenu");
 var _PageContent = require("./components/page/PageContent");

@@ -10,7 +10,6 @@ export { GameLayoutProperties, GameLayout, } from './components/layout/GameLayou
 export { LoaderProperties, Loader, } from './components/loader/Loader';
 export { MenuProperties, Menu, } from './components/menu/Menu';
 export { MenuItemProperties, MenuItem, } from './components/menu/MenuItem';
-export { SelectProperties, Select, } from './components/menu/controls/Select';
 export { PageProperties, Page, } from './components/page/Page';
 export { PageMenuProperties, PageMenu, } from './components/page/PageMenu';
 export { PageContentProperties, PageContent, } from './components/page/PageContent';
