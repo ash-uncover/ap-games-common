@@ -1,10 +1,13 @@
 import React from 'react'
+import { 
+  Slider 
+} from '@sol.ac/react-commons'
+//
 import {
   GameSettingsActions,
   GameSettingsContext,
   GameSettingsDispatchContext,
 } from './GameSettingsProvider'
-import { Slider } from '@sol.ac/react-commons'
 
 // #region Declaration
 export interface GameSettingAudioMasterVolumeSliderProperties {

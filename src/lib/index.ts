@@ -131,6 +131,14 @@ export {
   GameSettingDisplayContrastSliderProperties,
   GameSettingDisplayContrastSlider,
 } from './settings/GameSettingDisplayContrastSlider'
+export {
+  GameSettingDisplayFullScreenSwitchProperties,
+  GameSettingDisplayFullScreenSwitch,
+} from './settings/GameSettingDisplayFullScreenSwitch'
+export {
+  GameSettingGeneralLangSelectProperties,
+  GameSettingGeneralLangSelect,
+} from './settings/GameSettingGeneralLangSelect'
 // #endregion
 
 // Images > hooks

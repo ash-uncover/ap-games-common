@@ -47,6 +47,10 @@ declare function setContrast(contrast: number): {
     type: string;
     contrast: number;
 };
+declare function setFullScreen(fullScreen: boolean): {
+    type: string;
+    fullScreen: boolean;
+};
 declare function setLang(lang: String): {
     type: string;
     lang: String;
@@ -62,6 +66,7 @@ export declare const GameSettingsActions: {
     setAudioUiVolume: typeof setAudioUiVolume;
     setBrightness: typeof setBrightness;
     setContrast: typeof setContrast;
+    setFullScreen: typeof setFullScreen;
     setLang: typeof setLang;
 };
 export {};

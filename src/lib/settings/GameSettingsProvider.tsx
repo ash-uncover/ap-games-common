@@ -13,7 +13,11 @@ export const GameSettingsDispatchContext = createContext<React.Dispatch<any>>(
 
 // #region Storage
 const storeContext = (name: string, settings: GameSettingsModel) => {
-  localStorage.setItem(`${name}-settings`, JSON.stringify(settings))
+  const storedSettings = {
+    ...settings,
+    fullScreen: false
+  }
+  localStorage.setItem(`${name}-settings`, JSON.stringify(storedSettings))
 }
 const loadContext = (name: string) => {
   return JSON.parse(localStorage.getItem(`${name}-settings`) || '{}')
@@ -126,6 +130,13 @@ function setContrast(contrast: number) {
     contrast
   }
 }
+const SET_FULL_SCREEN = 'SET_FULL_SCREEN'
+function setFullScreen(fullScreen: boolean) {
+  return {
+    type: SET_FULL_SCREEN,
+    fullScreen
+  }
+}
 const SET_LANG = 'SET_LANG'
 function setLang(lang: String) {
   return {
@@ -144,6 +155,7 @@ export const GameSettingsActions = {
   setAudioUiVolume,
   setBrightness,
   setContrast,
+  setFullScreen,
   setLang
 }
 function settingsReducer(settings: GameSettingsModel, action: any) {
@@ -206,6 +218,12 @@ function settingsReducer(settings: GameSettingsModel, action: any) {
       return {
         ...settings,
         contrast: action.contrast
+      }
+    }
+    case SET_FULL_SCREEN: {
+      return {
+        ...settings,
+        fullScreen: action.fullScreen
       }
     }
     case SET_LANG: {

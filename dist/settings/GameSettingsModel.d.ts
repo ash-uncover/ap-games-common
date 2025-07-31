@@ -9,6 +9,7 @@ export interface GameSettingsModel {
     audioUiVolume: number;
     brightness: number;
     contrast: number;
+    fullScreen: boolean;
     lang: string | null;
 }
 export declare function getDefaultGameSettings(): GameSettingsModel;

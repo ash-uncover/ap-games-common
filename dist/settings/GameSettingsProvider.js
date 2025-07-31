@@ -27,7 +27,10 @@ var GameSettingsDispatchContext = exports.GameSettingsDispatchContext = /*#__PUR
 
 // #region Storage
 var storeContext = function storeContext(name, settings) {
-  localStorage.setItem("".concat(name, "-settings"), JSON.stringify(settings));
+  var storedSettings = _objectSpread(_objectSpread({}, settings), {}, {
+    fullScreen: false
+  });
+  localStorage.setItem("".concat(name, "-settings"), JSON.stringify(storedSettings));
 };
 var loadContext = function loadContext(name) {
   return JSON.parse(localStorage.getItem("".concat(name, "-settings")) || '{}');
@@ -130,6 +133,13 @@ function setContrast(contrast) {
     contrast: contrast
   };
 }
+var SET_FULL_SCREEN = 'SET_FULL_SCREEN';
+function setFullScreen(fullScreen) {
+  return {
+    type: SET_FULL_SCREEN,
+    fullScreen: fullScreen
+  };
+}
 var SET_LANG = 'SET_LANG';
 function setLang(lang) {
   return {
@@ -148,6 +158,7 @@ var GameSettingsActions = exports.GameSettingsActions = {
   setAudioUiVolume: setAudioUiVolume,
   setBrightness: setBrightness,
   setContrast: setContrast,
+  setFullScreen: setFullScreen,
   setLang: setLang
 };
 function settingsReducer(settings, action) {
@@ -210,6 +221,12 @@ function settingsReducer(settings, action) {
       {
         return _objectSpread(_objectSpread({}, settings), {}, {
           contrast: action.contrast
+        });
+      }
+    case SET_FULL_SCREEN:
+      {
+        return _objectSpread(_objectSpread({}, settings), {}, {
+          fullScreen: action.fullScreen
         });
       }
     case SET_LANG:

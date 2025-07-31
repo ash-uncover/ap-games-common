@@ -1,6 +1,6 @@
 import React from 'react'
 import { 
-  Slider 
+  Switch 
 } from '@sol.ac/react-commons'
 //
 import {
@@ -10,17 +10,17 @@ import {
 } from './GameSettingsProvider'
 
 // #region Declaration
-export interface GameSettingDisplayBrightnessSliderProperties {
+export interface GameSettingDisplayFullScreenSwitchProperties {
   className?: string
   label: string
 }
 // #endregion
 
 // #region Component
-export const GameSettingDisplayBrightnessSlider = ({
+export const GameSettingDisplayFullScreenSwitch = ({
   className,
   label
-}: GameSettingDisplayBrightnessSliderProperties) => {
+}: GameSettingDisplayFullScreenSwitchProperties) => {
 
   // #region > Hooks
   const settingsContext = React.useContext(GameSettingsContext)
@@ -28,20 +28,18 @@ export const GameSettingDisplayBrightnessSlider = ({
   // #endregion
 
   // #region > Events
-  function handleChange(event: { value: number }) {
-    const action = GameSettingsActions.setBrightness(event.value)
+  function handleChange(event: { value: boolean }) {
+    const action = GameSettingsActions.setAudioGame(event.value)
     dispatch(action)
   }
   // #endregion
 
   // #region > Render
   return (
-    <Slider
+    <Switch
       className={className}
-      // label={label}
-      min={0}
-      max={200}
-      value={settingsContext.brightness}
+      label={label}
+      checked={settingsContext.audioGame}
       onChange={handleChange}
     />
   )

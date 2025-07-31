@@ -183,6 +183,30 @@ Object.defineProperty(exports, "GameSettingDisplayContrastSliderProperties", {
     return _GameSettingDisplayContrastSlider.GameSettingDisplayContrastSliderProperties;
   }
 });
+Object.defineProperty(exports, "GameSettingDisplayFullScreenSwitch", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingDisplayFullScreenSwitch.GameSettingDisplayFullScreenSwitch;
+  }
+});
+Object.defineProperty(exports, "GameSettingDisplayFullScreenSwitchProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingDisplayFullScreenSwitch.GameSettingDisplayFullScreenSwitchProperties;
+  }
+});
+Object.defineProperty(exports, "GameSettingGeneralLangSelect", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingGeneralLangSelect.GameSettingGeneralLangSelect;
+  }
+});
+Object.defineProperty(exports, "GameSettingGeneralLangSelectProperties", {
+  enumerable: true,
+  get: function get() {
+    return _GameSettingGeneralLangSelect.GameSettingGeneralLangSelectProperties;
+  }
+});
 Object.defineProperty(exports, "GameSettingsActions", {
   enumerable: true,
   get: function get() {
@@ -412,6 +436,8 @@ var _GameSettingAudioUiSwitch = require("./settings/GameSettingAudioUiSwitch");
 var _GameSettingAudioUiVolumeSlider = require("./settings/GameSettingAudioUiVolumeSlider");
 var _GameSettingDisplayBrightnessSlider = require("./settings/GameSettingDisplayBrightnessSlider");
 var _GameSettingDisplayContrastSlider = require("./settings/GameSettingDisplayContrastSlider");
+var _GameSettingDisplayFullScreenSwitch = require("./settings/GameSettingDisplayFullScreenSwitch");
+var _GameSettingGeneralLangSelect = require("./settings/GameSettingGeneralLangSelect");
 var _loadImages = require("./images/lib/loadImages");
 var _ImageLoadState = require("./images/constants/ImageLoadState");
 var _DataManager = require("./utils/data/DataManager");

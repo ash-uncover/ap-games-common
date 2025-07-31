@@ -23,6 +23,8 @@ export { GameSettingAudioUiSwitchProperties, GameSettingAudioUiSwitch, } from '.
 export { GameSettingAudioUiVolumeSliderProperties, GameSettingAudioUiVolumeSlider, } from './settings/GameSettingAudioUiVolumeSlider';
 export { GameSettingDisplayBrightnessSliderProperties, GameSettingDisplayBrightnessSlider, } from './settings/GameSettingDisplayBrightnessSlider';
 export { GameSettingDisplayContrastSliderProperties, GameSettingDisplayContrastSlider, } from './settings/GameSettingDisplayContrastSlider';
+export { GameSettingDisplayFullScreenSwitchProperties, GameSettingDisplayFullScreenSwitch, } from './settings/GameSettingDisplayFullScreenSwitch';
+export { GameSettingGeneralLangSelectProperties, GameSettingGeneralLangSelect, } from './settings/GameSettingGeneralLangSelect';
 export { loadImages, } from './images/lib/loadImages';
 export { ImageLoadStates, } from './images/constants/ImageLoadState';
 export { DataManager } from './utils/data/DataManager';

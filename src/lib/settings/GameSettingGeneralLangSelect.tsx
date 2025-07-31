@@ -1,5 +1,7 @@
 import React from 'react'
-import { Select } from '@sol.ac/react-commons'
+import {
+  Select
+} from '@sol.ac/react-commons'
 //
 import {
   GameSettingsActions,

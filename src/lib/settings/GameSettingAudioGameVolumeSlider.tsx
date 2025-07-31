@@ -2,6 +2,7 @@ import React from 'react'
 import { 
   Slider 
 } from '@sol.ac/react-commons'
+//
 import {
   GameSettingsActions,
   GameSettingsContext,

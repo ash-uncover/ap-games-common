@@ -8,6 +8,8 @@ var _react = _interopRequireDefault(require("react"));
 var _reactCommons = require("@sol.ac/react-commons");
 var _GameSettingsProvider = require("./GameSettingsProvider");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+//
+
 // #region Declaration
 
 // #endregion
