@@ -267,30 +267,6 @@ Object.defineProperty(exports, "LoaderProperties", {
     return _Loader.LoaderProperties;
   }
 });
-Object.defineProperty(exports, "Menu", {
-  enumerable: true,
-  get: function get() {
-    return _Menu.Menu;
-  }
-});
-Object.defineProperty(exports, "MenuItem", {
-  enumerable: true,
-  get: function get() {
-    return _MenuItem.MenuItem;
-  }
-});
-Object.defineProperty(exports, "MenuItemProperties", {
-  enumerable: true,
-  get: function get() {
-    return _MenuItem.MenuItemProperties;
-  }
-});
-Object.defineProperty(exports, "MenuProperties", {
-  enumerable: true,
-  get: function get() {
-    return _Menu.MenuProperties;
-  }
-});
 Object.defineProperty(exports, "Page", {
   enumerable: true,
   get: function get() {
@@ -325,30 +301,6 @@ Object.defineProperty(exports, "PageProperties", {
   enumerable: true,
   get: function get() {
     return _Page.PageProperties;
-  }
-});
-Object.defineProperty(exports, "Panel", {
-  enumerable: true,
-  get: function get() {
-    return _Panel.Panel;
-  }
-});
-Object.defineProperty(exports, "PanelButton", {
-  enumerable: true,
-  get: function get() {
-    return _PanelButton.PanelButton;
-  }
-});
-Object.defineProperty(exports, "PanelButtonProperties", {
-  enumerable: true,
-  get: function get() {
-    return _PanelButton.PanelButtonProperties;
-  }
-});
-Object.defineProperty(exports, "PanelProperties", {
-  enumerable: true,
-  get: function get() {
-    return _Panel.PanelProperties;
   }
 });
 Object.defineProperty(exports, "Shortcut", {
@@ -445,13 +397,9 @@ var _ImageSlider = require("./components/image-slider/ImageSlider");
 var _GameFooterAction = require("./components/layout/GameFooterAction");
 var _GameLayout = require("./components/layout/GameLayout");
 var _Loader = require("./components/loader/Loader");
-var _Menu = require("./components/menu/Menu");
-var _MenuItem = require("./components/menu/MenuItem");
 var _Page = require("./components/page/Page");
 var _PageMenu = require("./components/page/PageMenu");
 var _PageContent = require("./components/page/PageContent");
-var _Panel = require("./components/panel/Panel");
-var _PanelButton = require("./components/panel/PanelButton");
 var _GameApp = require("./settings/GameApp");
 var _GameSettingsProvider = require("./settings/GameSettingsProvider");
 var _GameSettingAudioGameSwitch = require("./settings/GameSettingAudioGameSwitch");

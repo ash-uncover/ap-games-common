@@ -63,18 +63,6 @@ export {
 } from './components/loader/Loader'
 
 
-// Components > menu > Menu
-export {
-  MenuProperties,
-  Menu,
-} from './components/menu/Menu'
-// Components > menu > MenuItem
-export {
-  MenuItemProperties,
-  MenuItem,
-} from './components/menu/MenuItem'
-
-
 // Components > page > Page
 export {
   PageProperties,
@@ -90,19 +78,6 @@ export {
   PageContentProperties,
   PageContent,
 } from './components/page/PageContent'
-
-
-// Components > panel > Panel
-export {
-  PanelProperties,
-  Panel,
-} from './components/panel/Panel'
-// Components > panel > PanelButton
-export {
-  PanelButtonProperties,
-  PanelButton,
-} from './components/panel/PanelButton'
-
 
 // #region Settings
 export {

@@ -8,13 +8,9 @@ export { ImageSliderProperties, ImageSlider, } from './components/image-slider/I
 export { GameFooterActionProperties, GameFooterAction, } from './components/layout/GameFooterAction';
 export { GameLayoutProperties, GameLayout, } from './components/layout/GameLayout';
 export { LoaderProperties, Loader, } from './components/loader/Loader';
-export { MenuProperties, Menu, } from './components/menu/Menu';
-export { MenuItemProperties, MenuItem, } from './components/menu/MenuItem';
 export { PageProperties, Page, } from './components/page/Page';
 export { PageMenuProperties, PageMenu, } from './components/page/PageMenu';
 export { PageContentProperties, PageContent, } from './components/page/PageContent';
-export { PanelProperties, Panel, } from './components/panel/Panel';
-export { PanelButtonProperties, PanelButton, } from './components/panel/PanelButton';
 export { GameAppProperties, GameApp, } from './settings/GameApp';
 export { GameSettingsProviderProperties, GameSettingsContext, GameSettingsDispatchContext, GameSettingsProvider, GameSettingsActions, } from './settings/GameSettingsProvider';
 export { GameSettingAudioGameSwitchProperties, GameSettingAudioGameSwitch, } from './settings/GameSettingAudioGameSwitch';
