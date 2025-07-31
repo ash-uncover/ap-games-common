@@ -28,7 +28,7 @@ var GameSettingAudioMasterSwitch = exports.GameSettingAudioMasterSwitch = functi
   return /*#__PURE__*/_react["default"].createElement(_reactCommons.Switch, {
     className: className,
     label: label,
-    checked: settingsContext.audioGame,
+    checked: settingsContext.audioMaster,
     onChange: handleChange
   });
   // #endregion

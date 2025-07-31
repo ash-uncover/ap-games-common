@@ -28,7 +28,7 @@ var GameSettingAudioMusicSwitch = exports.GameSettingAudioMusicSwitch = function
   return /*#__PURE__*/_react["default"].createElement(_reactCommons.Switch, {
     className: className,
     label: label,
-    checked: settingsContext.audioGame,
+    checked: settingsContext.audioMusic,
     onChange: handleChange
   });
   // #endregion

@@ -34,7 +34,7 @@ export const GameSettingAudioMasterSwitch = ({
     <Switch
       className={className}
       label={label}
-      checked={settingsContext.audioGame}
+      checked={settingsContext.audioMaster}
       onChange={handleChange}
     />
   )
