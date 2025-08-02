@@ -1,10 +1,6 @@
-import React, {
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useState
-} from 'react'
+import React from 'react'
 import { 
+  Shell,
   useClasses 
 } from '@sol.ac/react-commons'
 //
@@ -16,7 +12,7 @@ import {
 import './GameApp.css'
 
 // #region Declaration
-export interface GameAppProperties extends PropsWithChildren {
+export interface GameAppProperties extends React.PropsWithChildren {
   className: string
   name: string
 }
@@ -41,7 +37,7 @@ export const GameApp = ({
 }
 // #endregion
 
-interface GameAppInnerProperties extends PropsWithChildren {
+interface GameAppInnerProperties extends React.PropsWithChildren {
   className: string
 }
 const GameAppInner = ({
@@ -50,9 +46,9 @@ const GameAppInner = ({
 }: GameAppInnerProperties) => {
 
   // #region > Hooks
-  const settingsContext = useContext(GameSettingsContext)
-  const [style, setStyle] = useState({})
-  useEffect(() => {
+  const settingsContext = React.useContext(GameSettingsContext)
+  const [style, setStyle] = React.useState({})
+  React.useEffect(() => {
     const {
       brightness,
       contrast
@@ -69,12 +65,12 @@ const GameAppInner = ({
 
   // #region > Render
   return (
-    <div
+    <Shell
       className={classes}
       style={style}
     >
       {children}
-    </div>
+    </Shell>
   )
   // #endregion
 }

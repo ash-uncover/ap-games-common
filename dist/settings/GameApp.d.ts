@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import './GameApp.css';
-export interface GameAppProperties extends PropsWithChildren {
+export interface GameAppProperties extends React.PropsWithChildren {
     className: string;
     name: string;
 }
