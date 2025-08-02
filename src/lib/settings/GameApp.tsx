@@ -4,13 +4,16 @@ import React, {
   useEffect,
   useState
 } from 'react'
+import { 
+  useClasses 
+} from '@sol.ac/react-commons'
+//
 import {
   GameSettingsContext,
   GameSettingsProvider,
 } from './GameSettingsProvider'
 // CSS
 import './GameApp.css'
-import { ClassBuilder } from '@sol.ac/react-commons'
 
 // #region Declaration
 export interface GameAppProperties extends PropsWithChildren {
@@ -58,17 +61,16 @@ const GameAppInner = ({
       filter: `brightness(${brightness}%) contrast(${contrast}%)`
     })
   }, [settingsContext])
+  const { classes } = useClasses(['alpha-game-app', className])
   // #endregion
 
   // #region > Event
   // #endregion
 
   // #region > Render
-  const classes = new ClassBuilder(['alpha-game-app', className])
-
   return (
     <div
-      className={classes.className}
+      className={classes}
       style={style}
     >
       {children}
