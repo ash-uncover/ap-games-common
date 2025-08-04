@@ -2,21 +2,14 @@
 
 const path = require('path')
 
-const DIR_DIST = path.resolve(__dirname, 'dist')
 const DIR_SRC = path.resolve(__dirname, 'src')
+const DIR_APP = path.resolve(DIR_SRC, 'app')
 const DIR_NODE_MODULES = path.resolve(__dirname, 'node_modules')
 
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: path.resolve(DIR_SRC, 'index.tsx'),
-
-  output: {
-    clean: true,
-    path: DIR_DIST,
-    filename: '[name].bundle.js',
-    publicPath: '/',
-  },
+  entry: path.resolve(DIR_APP, 'index.tsx'),
 
   resolve: {
     modules: ['node_modules', './src'],
@@ -24,23 +17,13 @@ module.exports = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      title: 'AP Games Commons',
+    new CopyPlugin({
+      patterns: [{
+        from: path.resolve(__dirname, '_redirects'),
+        to: '.',
+      }]
     }),
   ],
-  devtool: 'inline-source-map',
-  devServer: {
-    client: {
-      progress: false,
-    },
-    compress: true,
-    historyApiFallback: true,
-    port: 8080,
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-  },
 
   module: {
     rules: [
@@ -49,8 +32,7 @@ module.exports = {
         include: DIR_SRC,
         exclude: DIR_NODE_MODULES,
         use: [
-          { loader: 'source-map-loader' },
-          { loader: 'babel-loader' }
+          { loader: 'babel-loader' },
         ],
       },
       {
@@ -58,7 +40,6 @@ module.exports = {
         include: DIR_SRC,
         exclude: DIR_NODE_MODULES,
         use: [
-          { loader: 'source-map-loader' },
           {
             loader: 'ts-loader',
             options: {
@@ -72,19 +53,17 @@ module.exports = {
         test: /\.css$/i,
         use: [
           { loader: 'style-loader' },
-          {
-            loader: 'css-loader', options: {
-              url: {
-                filter: (url, resourcePath) => {
-                  // Don't handle `images` urls
-                  if (url.includes('images/')) {
-                    return false
-                  }
-                  return true
-                },
+          { loader: 'css-loader', options: {
+            url: {
+              filter: (url, resourcePath) => {
+                // Don't handle `images` urls
+                if (url.includes('images/')) {
+                  return false;
+                }
+                return true;
               },
-            }
-          },
+            },
+          } }
         ],
       },
       {

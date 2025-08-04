@@ -13,7 +13,8 @@ import './GameApp.css'
 
 // #region Declaration
 export interface GameAppProperties extends React.PropsWithChildren {
-  className: string
+  className?: string
+  lang?: string
   name: string
 }
 // #endregion
@@ -21,13 +22,18 @@ export interface GameAppProperties extends React.PropsWithChildren {
 // #region Component
 export const GameApp = ({
   className,
+  lang,
   name,
+
   children
 }: GameAppProperties) => {
 
   // #region > Render
   return (
-    <GameSettingsProvider name={name}>
+    <GameSettingsProvider 
+      name={name}
+      lang={lang}
+    >
       <GameAppInner className={className}>
         {children}
       </GameAppInner>
@@ -38,7 +44,7 @@ export const GameApp = ({
 // #endregion
 
 interface GameAppInnerProperties extends React.PropsWithChildren {
-  className: string
+  className?: string
 }
 const GameAppInner = ({
   className,

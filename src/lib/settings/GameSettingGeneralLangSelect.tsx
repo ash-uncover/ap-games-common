@@ -25,6 +25,18 @@ export const GameSettingGeneralLangSelect = ({
   // #region > Hooks
   const settingsContext = React.useContext(GameSettingsContext)
   const dispatch = React.useContext(GameSettingsDispatchContext);
+  const [selectedLang, setSelectedLang] = React.useState('')
+  React.useEffect(() => {
+    if (values?.length) {
+      if (settingsContext.lang && values.some(v => v.id === settingsContext.lang)) {
+        setSelectedLang(settingsContext.lang)
+      } else {
+        setSelectedLang(values[0].id)
+      }
+    } else {
+      setSelectedLang('')
+    }
+  }, [settingsContext, values])
   // #endregion
 
   // #region > Events
@@ -38,7 +50,7 @@ export const GameSettingGeneralLangSelect = ({
   return (
     <Select
       className={className}
-      value={values.find(v => v.id === settingsContext.lang)}
+      value={selectedLang}
       values={values}
       onChange={handleChange}
     />

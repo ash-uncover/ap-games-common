@@ -23,11 +23,13 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; } //
 // #region Component
 var GameApp = exports.GameApp = function GameApp(_ref) {
   var className = _ref.className,
+    lang = _ref.lang,
     name = _ref.name,
     children = _ref.children;
   // #region > Render
   return /*#__PURE__*/_react["default"].createElement(_GameSettingsProvider.GameSettingsProvider, {
-    name: name
+    name: name,
+    lang: lang
   }, /*#__PURE__*/_react["default"].createElement(GameAppInner, {
     className: className
   }, children));
