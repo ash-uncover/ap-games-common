@@ -12,7 +12,6 @@ import {
 // #region Declaration
 export interface GameSettingGeneralLangSelectProperties {
   className?: string
-  value: string
   values: any[]
 }
 // #endregion
@@ -20,7 +19,6 @@ export interface GameSettingGeneralLangSelectProperties {
 // #region Component
 export const GameSettingGeneralLangSelect = ({
   className,
-  value,
   values
 }: GameSettingGeneralLangSelectProperties) => {
 
@@ -40,7 +38,7 @@ export const GameSettingGeneralLangSelect = ({
   return (
     <Select
       className={className}
-      value={value}
+      value={values.find(v => v.id === settingsContext.lang)}
       values={values}
       onChange={handleChange}
     />

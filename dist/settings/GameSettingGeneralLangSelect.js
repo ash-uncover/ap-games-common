@@ -17,7 +17,6 @@ function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default":
 // #region Component
 var GameSettingGeneralLangSelect = exports.GameSettingGeneralLangSelect = function GameSettingGeneralLangSelect(_ref) {
   var className = _ref.className,
-    value = _ref.value,
     values = _ref.values;
   // #region > Hooks
   var settingsContext = _react["default"].useContext(_GameSettingsProvider.GameSettingsContext);
@@ -34,7 +33,9 @@ var GameSettingGeneralLangSelect = exports.GameSettingGeneralLangSelect = functi
   // #region > Render
   return /*#__PURE__*/_react["default"].createElement(_reactCommons.Select, {
     className: className,
-    value: value,
+    value: values.find(function (v) {
+      return v.id === settingsContext.lang;
+    }),
     values: values,
     onChange: handleChange
   });
