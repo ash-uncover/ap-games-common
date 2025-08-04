@@ -27,10 +27,12 @@ const loadContext = (name: string) => {
 // #region Provider
 export interface GameSettingsProviderProperties {
   name: string
+  lang?: string
   children: ReactNode
 }
 export const GameSettingsProvider = ({
   name,
+  lang,
   children
 }: GameSettingsProviderProperties) => {
 
@@ -38,7 +40,7 @@ export const GameSettingsProvider = ({
   const [settings, dispatch] = useReducer(
     settingsReducer,
     {
-      ...getDefaultGameSettings(),
+      ...getDefaultGameSettings({ lang }),
       ...loadContext(name)
     }
   )

@@ -41,9 +41,12 @@ var loadContext = function loadContext(name) {
 
 var GameSettingsProvider = exports.GameSettingsProvider = function GameSettingsProvider(_ref) {
   var name = _ref.name,
+    lang = _ref.lang,
     children = _ref.children;
   // #region > Hooks
-  var _useReducer = (0, _react.useReducer)(settingsReducer, _objectSpread(_objectSpread({}, (0, _GameSettingsModel.getDefaultGameSettings)()), loadContext(name))),
+  var _useReducer = (0, _react.useReducer)(settingsReducer, _objectSpread(_objectSpread({}, (0, _GameSettingsModel.getDefaultGameSettings)({
+      lang: lang
+    })), loadContext(name))),
     _useReducer2 = _slicedToArray(_useReducer, 2),
     settings = _useReducer2[0],
     dispatch = _useReducer2[1];

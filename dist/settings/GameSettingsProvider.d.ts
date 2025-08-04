@@ -4,9 +4,10 @@ export declare const GameSettingsContext: React.Context<GameSettingsModel>;
 export declare const GameSettingsDispatchContext: React.Context<React.Dispatch<any>>;
 export interface GameSettingsProviderProperties {
     name: string;
+    lang?: string;
     children: ReactNode;
 }
-export declare const GameSettingsProvider: ({ name, children }: GameSettingsProviderProperties) => React.JSX.Element;
+export declare const GameSettingsProvider: ({ name, lang, children }: GameSettingsProviderProperties) => React.JSX.Element;
 declare function setAudioMaster(audioMaster: boolean): {
     type: string;
     audioMaster: boolean;
