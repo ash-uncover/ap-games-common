@@ -1,6 +1,7 @@
 import React from 'react'
 import { 
   Shell,
+  useClasseName,
   useClasses 
 } from '@sol.ac/react-commons'
 //
@@ -63,7 +64,8 @@ const GameAppInner = ({
       filter: `brightness(${brightness}%) contrast(${contrast}%)`
     })
   }, [settingsContext])
-  const { classes } = useClasses(['alpha-game-app', className])
+  const { classBuilder, classes } = useClasses(['alpha-game-app'])
+  useClasseName(classBuilder, className)
   // #endregion
 
   // #region > Event

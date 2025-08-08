@@ -1,7 +1,6 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import './Hexagon.css';
-interface HexagonProperties {
-    children: ReactNode;
+export interface HexagonProperties extends React.PropsWithChildren {
+    className?: string;
 }
-declare const Hexagon: ({ children }: HexagonProperties) => React.JSX.Element;
-export default Hexagon;
+export declare const Hexagon: ({ className, children, }: HexagonProperties) => React.JSX.Element;

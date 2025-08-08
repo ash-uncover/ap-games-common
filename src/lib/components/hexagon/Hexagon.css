@@ -1,15 +1,18 @@
-.hexagon {
+:root {
+
+}
+.ap-hexagon {
   width: 88px;
   height: 75px;
   user-select: none;
 
-  & .layer {
+  & .ap-hexagon__layer {
     clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
     transition-property: top, bottom, left, right;
     transition-duration: 0.25s;
     transition-timing-function: ease-out;
   }
-  & .layer-border {
+  & .ap-hexagon__layer--border {
     display: inline-block;
     position: relative;
     width: 100%;
@@ -17,20 +20,20 @@
     box-sizing: border-box;
     transition: background-color 0.5s ease-out;
   }
-  & .layer-content {
+  & .ap-hexagon__layer--content {
     position: absolute;
     overflow: hidden;
   }
-  & .layer-background {
+  & .ap-hexagon__layer--background {
     position: absolute;
   }
-  & .image {
+  & .ap-hexagon__layer--background-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
   }
-  & .layer-elements {
+  & .ap-hexagon__layer-elements {
     position: absolute;
     display: flex;
     align-items: center;

@@ -261,6 +261,18 @@ Object.defineProperty(exports, "GridTilesProperties", {
     return _GridTiles.GridTilesProperties;
   }
 });
+Object.defineProperty(exports, "Hexagon", {
+  enumerable: true,
+  get: function get() {
+    return _Hexagon.Hexagon;
+  }
+});
+Object.defineProperty(exports, "HexagonProperties", {
+  enumerable: true,
+  get: function get() {
+    return _Hexagon.HexagonProperties;
+  }
+});
 Object.defineProperty(exports, "ImageLoadStates", {
   enumerable: true,
   get: function get() {
@@ -420,6 +432,7 @@ var _SquareGrid = require("./components/grid/SquareGrid");
 var _ImageSlider = require("./components/image-slider/ImageSlider");
 var _GameFooterAction = require("./components/layout/GameFooterAction");
 var _GameLayout = require("./components/layout/GameLayout");
+var _Hexagon = require("./components/hexagon/Hexagon");
 var _Loader = require("./components/loader/Loader");
 var _Page = require("./components/page/Page");
 var _PageMenu = require("./components/page/PageMenu");

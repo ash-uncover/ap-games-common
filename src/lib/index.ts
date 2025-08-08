@@ -55,6 +55,10 @@ export {
   GameLayout,
 } from './components/layout/GameLayout'
 
+export {
+  HexagonProperties,
+  Hexagon,
+} from './components/hexagon/Hexagon'
 
 // Components > loader > Loader
 export {

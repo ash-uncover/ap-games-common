@@ -1,32 +1,41 @@
-import React, { ReactNode } from 'react'
-
+import React from 'react'
+import { useClasses } from '@sol.ac/react-commons'
+//
 import './Hexagon.css'
 
-interface HexagonProperties {
-  children: ReactNode
+// #region Declaration
+export interface HexagonProperties extends React.PropsWithChildren {
+  className?: string
 }
+// #endregion
 
-const Hexagon = ({
-  children
+// #region Component
+export const Hexagon = ({
+  className,
+  children,
 }: HexagonProperties) => {
 
-  // Rendering //
+  // #region > Hooks
+  const { classes } = useClasses(['ap-heaxagon', className])
+  // #endregion
+
+  // #region > Render
 
   const borderColor = 'red'
   const borderWidth = '2px'
 
   return (
     <div
-      className='hexagon'
+      className={classes}
     >
       <div
-        className='layer layer-border'
+        className='ap-hexagon__layer ap-hexagon__layer--border'
         style={{
           backgroundColor: borderColor
         }}
       >
         <div
-          className='layer layer-content'
+          className='ap-hexagon__layer ap-hexagon__layer--content'
           style={{
             top: borderWidth,
             bottom: borderWidth,
@@ -35,7 +44,7 @@ const Hexagon = ({
           }}
         >
           <div
-            className='layer layer-background '
+            className='ap-hexagon__layer ap-hexagon__layer--background '
             style={{
               top: `-${borderWidth}`,
               bottom: `-${borderWidth}`,
@@ -44,12 +53,12 @@ const Hexagon = ({
             }}
           >
             <img
-              className='image'
+              className='ap-hexagon__layer--background-image'
               draggable='false'
             />
           </div>
           <div
-            className='layer layer-elements'
+            className='ap-hexagon__layer ap-hexagon__layer-elements'
             style={{
               top: `-${borderWidth}`,
               bottom: `-${borderWidth}`,
@@ -64,5 +73,4 @@ const Hexagon = ({
     </div>
   )
 }
-
-export default Hexagon
+// #endregion

@@ -7,6 +7,7 @@ export { SquareGridProperties, SquareGrid, } from './components/grid/SquareGrid'
 export { ImageSliderProperties, ImageSlider, } from './components/image-slider/ImageSlider';
 export { GameFooterActionProperties, GameFooterAction, } from './components/layout/GameFooterAction';
 export { GameLayoutProperties, GameLayout, } from './components/layout/GameLayout';
+export { HexagonProperties, Hexagon, } from './components/hexagon/Hexagon';
 export { LoaderProperties, Loader, } from './components/loader/Loader';
 export { PageProperties, Page, } from './components/page/Page';
 export { PageMenuProperties, PageMenu, } from './components/page/PageMenu';

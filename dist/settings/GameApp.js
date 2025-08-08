@@ -53,8 +53,10 @@ var GameAppInner = function GameAppInner(_ref2) {
       filter: "brightness(".concat(brightness, "%) contrast(").concat(contrast, "%)")
     });
   }, [settingsContext]);
-  var _useClasses = (0, _reactCommons.useClasses)(['alpha-game-app', className]),
+  var _useClasses = (0, _reactCommons.useClasses)(['alpha-game-app']),
+    classBuilder = _useClasses.classBuilder,
     classes = _useClasses.classes;
+  (0, _reactCommons.useClasseName)(classBuilder, className);
   // #endregion
 
   // #region > Event
